@@ -45,12 +45,12 @@ Plans:
   3. User sees categorized skills with proficiency indicators, a vertical experience timeline, masonry project cards with GitHub links, and medal-style achievements
   4. User can download a PDF CV from the hero or navbar
   5. User on mobile sees the same content in a properly adapted responsive layout
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
-- [ ] 02-03: TBD
+- [ ] 02-01-PLAN.md — Foundation: i18n content, data module, font fix, shared UI components, section dividers, page.tsx rewire
+- [ ] 02-02-PLAN.md — Hero, About, and Skills sections with ink-wash background, photo frame, parchment cards
+- [ ] 02-03-PLAN.md — Experience timeline, Projects masonry, Achievements medals, Contact mon icons, final wiring
 
 ### Phase 3: Animations
 **Goal**: The site comes alive with the full animation experience — kanji intro, scroll-triggered ink/brush reveals, parallax depth layers, floating sakura particles, katana slash transitions, typing effect, and animated stat counters — with graceful degradation on mobile and reduced-motion
@@ -92,6 +92,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete | 2026-03-25 |
-| 2. Content and Visual Design | 0/0 | Not started | - |
+| 2. Content and Visual Design | 0/3 | Not started | - |
 | 3. Animations | 0/0 | Not started | - |
 | 4. Audio and Deploy | 0/0 | Not started | - |
