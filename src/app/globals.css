@@ -53,6 +53,10 @@
   z-index: 300;
 }
 
+@utility paper-grain {
+  position: relative;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
