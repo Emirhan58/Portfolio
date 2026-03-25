@@ -1,0 +1,128 @@
+# Requirements: Samurai Portfolio — Emirhan Kaya
+
+**Defined:** 2025-03-25
+**Core Value:** Ziyaretciyi ilk saniyede etkileyen, Japon estetigi ile harmanlanan profesyonel portfolio deneyimi
+
+## v1 Requirements
+
+### Foundation
+
+- [ ] **FOUND-01**: User sees a responsive, mobile-first layout that adapts seamlessly to all screen sizes
+- [ ] **FOUND-02**: User sees active section highlighted in scroll-spy navigation and can jump to any section
+- [ ] **FOUND-03**: User can switch between Turkish and English with all content translated (next-intl)
+- [ ] **FOUND-04**: Site uses consistent dark theme design tokens (colors, typography, spacing as CSS custom properties)
+- [ ] **FOUND-05**: User with `prefers-reduced-motion` sees a functional site with all animations disabled
+- [ ] **FOUND-06**: Site built on Next.js 15 App Router with TypeScript
+- [ ] **FOUND-07**: Animation infrastructure established with Framer Motion + GSAP (clear ownership split)
+
+### Content
+
+- [ ] **CONT-01**: User sees a full-screen hero with name and role in brush-style typography over animated ink splash
+- [ ] **CONT-02**: User sees About section with bio, profile photo in ink-wash frame, and animated stat counters
+- [ ] **CONT-03**: User sees Skills section with categorized skill display in scroll/tomar style with katana proficiency bars
+- [ ] **CONT-04**: User sees Experience timeline as vertical scroll with samurai journey metaphor and ink stamp logos
+- [ ] **CONT-05**: User sees Projects in masonry grid with parchment-style cards, hover ink reveal, and GitHub links
+- [ ] **CONT-06**: User sees Achievements section with TEKNOFEST/CanSat displayed as medals/badges
+- [ ] **CONT-07**: User sees Contact section with email, GitHub, LinkedIn links styled as mon (crest) icons
+- [ ] **CONT-08**: User can download PDF CV from a button in hero or navbar
+
+### Animations
+
+- [ ] **ANIM-01**: User sees kanji intro animation (侍 brush stroke, 2-3s, skip button, sessionStorage first-visit only)
+- [ ] **ANIM-02**: User sees scroll-triggered ink splash / brush stroke reveals as sections enter viewport
+- [ ] **ANIM-03**: User sees katana slash animation as section transition dividers
+- [ ] **ANIM-04**: User sees parallax mountain/cloud background layers that move at different scroll speeds
+- [ ] **ANIM-05**: User sees subtle sakura particles floating on Canvas (disabled on mobile)
+- [ ] **ANIM-06**: User sees stat numbers count up when About section scrolls into view
+- [ ] **ANIM-07**: User sees JP to EN typing effect on hero tagline
+- [ ] **ANIM-08**: Mobile users see reduced animations (no parallax/particles, basic reveals only)
+
+### Visual
+
+- [ ] **VISL-01**: Site uses Japanese typography pairing (Noto Serif JP subset for 7 kanji + Inter body)
+- [ ] **VISL-02**: Site features ink-wash background textures and paper grain effects
+- [ ] **VISL-03**: Each section displays its decorative kanji character (門, 道, 技, 戦, 作, 誉, 結)
+- [ ] **VISL-04**: Subtle Japanese geometric patterns (asanoha, seigaiha) used as accents
+
+### Audio
+
+- [ ] **AUDL-01**: User can toggle ambient Japanese background music (default muted)
+- [ ] **AUDL-02**: User hears interaction sound effects on transitions (katana draw, brush stroke)
+- [ ] **AUDL-03**: Audio toggle is always visible, AudioContext created lazily on first user click
+
+### Deploy
+
+- [ ] **DEPL-01**: Site deployable to Vercel with zero configuration
+
+## v2 Requirements
+
+### Performance & SEO
+
+- **PERF-01**: Lighthouse performance score 90+
+- **PERF-02**: SEO meta tags and Open Graph cards with Samurai-themed preview images
+- **PERF-03**: Structured data / JSON-LD for person schema
+- **PERF-04**: Image optimization (WebP, lazy loading, blur placeholders)
+
+### Enhancements
+
+- **ENHC-01**: Analytics integration (Vercel Analytics or similar)
+- **ENHC-02**: Sitemap and robots.txt
+- **ENHC-03**: Domain configuration and custom 404 page
+
+## Out of Scope
+
+| Feature | Reason |
+|---------|--------|
+| Contact form / backend | Recruiters use LinkedIn/email anyway; adds complexity for zero value |
+| Light mode / theme toggle | Dark theme IS the brand; light mode would need separate design pass |
+| Custom mouse cursor | Breaks native behavior, accessibility nightmare, terrible on touch |
+| WebGL / Three.js 3D scenes | Massive bundle, kills mobile performance, overkill for portfolio |
+| Horizontal scroll sections | Confusing for recruiters, accessibility issues, mobile conflicts |
+| Blog / CMS integration | Adds massive complexity; static data file is simpler and faster |
+| Separate pages / routing | Breaks scroll-as-storytelling concept; single-page is faster |
+| Auto-playing audio (unmuted) | Universally hated, browsers block it, violates accessibility |
+
+## Traceability
+
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| FOUND-01 | - | Pending |
+| FOUND-02 | - | Pending |
+| FOUND-03 | - | Pending |
+| FOUND-04 | - | Pending |
+| FOUND-05 | - | Pending |
+| FOUND-06 | - | Pending |
+| FOUND-07 | - | Pending |
+| CONT-01 | - | Pending |
+| CONT-02 | - | Pending |
+| CONT-03 | - | Pending |
+| CONT-04 | - | Pending |
+| CONT-05 | - | Pending |
+| CONT-06 | - | Pending |
+| CONT-07 | - | Pending |
+| CONT-08 | - | Pending |
+| ANIM-01 | - | Pending |
+| ANIM-02 | - | Pending |
+| ANIM-03 | - | Pending |
+| ANIM-04 | - | Pending |
+| ANIM-05 | - | Pending |
+| ANIM-06 | - | Pending |
+| ANIM-07 | - | Pending |
+| ANIM-08 | - | Pending |
+| VISL-01 | - | Pending |
+| VISL-02 | - | Pending |
+| VISL-03 | - | Pending |
+| VISL-04 | - | Pending |
+| AUDL-01 | - | Pending |
+| AUDL-02 | - | Pending |
+| AUDL-03 | - | Pending |
+| DEPL-01 | - | Pending |
+
+**Coverage:**
+- v1 requirements: 31 total
+- Mapped to phases: 0
+- Unmapped: 31
+
+---
+*Requirements defined: 2025-03-25*
+*Last updated: 2025-03-25 after initial definition*
