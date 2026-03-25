@@ -134,32 +134,32 @@
     "items": {
       "microservices": {
         "name": "Microservices Java",
-        "description": "Spring Boot microservices, scalable distributed architecture. Service discovery, API gateway, event-driven communication.",
+        "description": "A production-grade distributed system built with Spring Boot and Spring Cloud. Features include Eureka-based service discovery, a centralized API gateway with rate limiting, asynchronous event-driven communication via RabbitMQ, and per-service PostgreSQL databases with Flyway migrations. Each microservice is independently deployable with Docker containers orchestrated through Docker Compose. Implements circuit breaker patterns with Resilience4j, centralized logging with ELK stack, and distributed tracing for full observability across services.",
         "shortDescription": "Spring Boot microservices with service discovery and event-driven communication"
       },
       "flappybird": {
         "name": "STM32 Flappy Bird",
-        "description": "Interactive Flappy Bird on STM32F429I-DISC0. TouchGFX graphics, real-time game loop with hardware integration.",
+        "description": "A fully playable Flappy Bird clone running on the STM32F429I-DISC0 discovery board with its built-in LCD touchscreen. Built using TouchGFX for hardware-accelerated 2D graphics rendering at 60 FPS. Implements a real-time game loop with precise collision detection, gravity physics, scrolling pipe obstacles, and score tracking. Touch input handling provides responsive tap-to-flap controls. The project demonstrates embedded systems programming, direct hardware register manipulation, and real-time constraint management on resource-limited ARM Cortex-M4 hardware.",
         "shortDescription": "Interactive Flappy Bird on STM32 with TouchGFX real-time game loop"
       },
       "behaviorwatch": {
         "name": "BehaviorWatch AI",
-        "description": "Real-time cigarette detection system using YOLOv8 and OpenCV for behavioral monitoring.",
+        "description": "An AI-powered surveillance system that detects cigarette smoking in real-time using YOLOv8 object detection and OpenCV video processing. The model was custom-trained on an annotated dataset of smoking behavior, achieving high accuracy in varied lighting conditions and camera angles. Features include multi-camera stream support, configurable detection zones, automated alert generation with timestamped snapshots, and a dashboard for reviewing flagged incidents. Designed for behavioral monitoring in restricted smoking areas such as hospitals, schools, and public transport stations.",
         "shortDescription": "Real-time cigarette detection with YOLOv8 and OpenCV"
       },
       "bunqchat": {
         "name": "Bunq Chat Backend",
-        "description": "Real-time chat application for Bunq, built with clean architecture and RESTful API design.",
+        "description": "A real-time messaging backend developed as part of the Bunq coding challenge. Built with PHP following clean architecture principles and SOLID design patterns. Features include RESTful API endpoints for user management, conversation creation, and message exchange with full CRUD operations. Implements efficient message retrieval with pagination, conversation threading, and timestamp-based ordering. The codebase emphasizes separation of concerns with distinct domain, application, and infrastructure layers, along with comprehensive unit test coverage.",
         "shortDescription": "Real-time chat backend with clean architecture"
       },
       "allinpro": {
         "name": "AllInPro E-Commerce",
-        "description": "Full-featured e-commerce platform with payment integration, product management, and order processing.",
+        "description": "A comprehensive e-commerce platform supporting the full online shopping lifecycle. Includes a product catalog with category filtering and search, a shopping cart with session persistence, secure checkout flow with payment gateway integration, and an admin dashboard for inventory and order management. Built with PHP and MySQL, featuring user authentication with role-based access control, order status tracking with email notifications, product image upload and gallery management, and responsive design for mobile shopping. Handles concurrent transactions with proper database locking strategies.",
         "shortDescription": "Full-featured e-commerce platform with payment integration"
       },
       "cansat": {
         "name": "CanSat Ground Control",
-        "description": "Ground station for NASA/Lockheed Martin coordinated CanSat competition. Real-time telemetry, GPS tracking, altitude monitoring.",
+        "description": "Ground station software developed for the CanSat competition coordinated by NASA and Lockheed Martin. Receives and visualizes real-time telemetry data from a miniature satellite payload during its descent. Built with Python and PyQt5, featuring live-updating graphs for altitude, temperature, pressure, and GPS coordinates. Includes a 3D trajectory visualization, data logging to CSV with automatic session management, serial port communication handling with error recovery, and a mission control dashboard showing payload health indicators. The system successfully supported the ST FOCOUNT team's competition flight, processing telemetry packets at 1 Hz throughout the descent phase.",
         "shortDescription": "CanSat ground station with real-time telemetry and GPS tracking"
       }
     }

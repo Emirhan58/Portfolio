@@ -134,32 +134,32 @@
     "items": {
       "microservices": {
         "name": "Microservices Java",
-        "description": "Spring Boot mikroservisler, olceklenebilir dagitik mimari. Servis kesfetme, API gateway, event-driven iletisim.",
+        "description": "Spring Boot ve Spring Cloud ile gelistirilmis uretim seviyesinde dagitik sistem. Eureka tabanli servis kesfetme, hiz sinirlamali merkezi API gateway, RabbitMQ uzerinden asenkron event-driven iletisim ve her servise ozel Flyway migrasyonlu PostgreSQL veritabanlari iceriyor. Her mikroservis Docker konteynerleriyle bagimsiz olarak dagitilabilir durumda. Resilience4j ile circuit breaker desenleri, ELK stack ile merkezi loglama ve servisler arasi tam gozlemlenebilirlik icin dagitik izleme uygulanmistir.",
         "shortDescription": "Servis kesfetme ve event-driven iletisimli Spring Boot mikroservisler"
       },
       "flappybird": {
         "name": "STM32 Flappy Bird",
-        "description": "STM32F429I-DISC0 uzerinde interaktif Flappy Bird. TouchGFX grafikleri, gercek zamanli oyun dongusu.",
+        "description": "STM32F429I-DISC0 kesfet kartinin dahili LCD dokunmatik ekraninda calisan tam oynanabilir bir Flappy Bird klonu. 60 FPS'de donanim hizlandirmali 2D grafik renderlamasi icin TouchGFX kullanilarak gelistirildi. Hassas carpisma algilama, yercekimi fizigi, kayan boru engelleri ve skor takibi ile gercek zamanli oyun dongusu iceriyor. Dokunmatik giris isleme, duyarli dokun-ve-uc kontrolleri sagliyor. Proje, kaynak kisitli ARM Cortex-M4 donanimi uzerinde gomulu sistem programlama, dogrudan donanim register manipulasyonu ve gercek zamanli kisitlama yonetimini sergilemektedir.",
         "shortDescription": "TouchGFX ile STM32 uzerinde gercek zamanli Flappy Bird"
       },
       "behaviorwatch": {
         "name": "BehaviorWatch AI",
-        "description": "YOLOv8 ve OpenCV ile gercek zamanli sigara tespit sistemi.",
+        "description": "YOLOv8 nesne algilama ve OpenCV video isleme kullanarak gercek zamanli sigara icme tespiti yapan yapay zeka destekli gozetleme sistemi. Model, farkli aydinlatma kosullari ve kamera acilarinda yuksek dogruluk elde ederek sigara icme davranisi uzerine etiketlenmis bir veri setiyle ozel olarak egitildi. Coklu kamera akisi destegi, yapilandirabilir tespit bolgesi, zaman damgali ekran goruntuleriyle otomatik uyari olusturma ve isaretlenen olaylari incelemek icin bir kontrol paneli iceriyor. Hastaneler, okullar ve toplu tasima istasyonlari gibi sigara icilmesi yasak alanlarda davranis izleme icin tasarlandi.",
         "shortDescription": "YOLOv8 ve OpenCV ile gercek zamanli sigara tespiti"
       },
       "bunqchat": {
         "name": "Bunq Chat Backend",
-        "description": "Bunq icin gercek zamanli sohbet uygulamasi, temiz mimari ve RESTful API tasarimi.",
+        "description": "Bunq kodlama challenge'i kapsaminda gelistirilen gercek zamanli mesajlasma backend'i. Temiz mimari prensipleri ve SOLID tasarim desenleri izlenerek PHP ile insa edildi. Kullanici yonetimi, konusma olusturma ve tam CRUD islemleriyle mesaj alim-verimi icin RESTful API endpoint'leri iceriyor. Sayfalama ile verimli mesaj getirme, konusma dizileri ve zaman damgasina gore siralama uygulanmistir. Kod tabani, kapsamli birim test kapsamiyla birlikte alan, uygulama ve altyapi katmanlarinin ayrimini vurgulamaktadir.",
         "shortDescription": "Temiz mimari ile gercek zamanli sohbet backend"
       },
       "allinpro": {
         "name": "AllInPro E-Ticaret",
-        "description": "Odeme entegrasyonlu, urun yonetimi ve siparis islemeli tam donanimli e-ticaret platformu.",
+        "description": "Online alisveris yasam dongusunun tamamini destekleyen kapsamli bir e-ticaret platformu. Kategori filtreleme ve aramali urun katalogu, oturum kaliciligi olan alisveris sepeti, odeme gecidi entegrasyonlu guvenli odeme akisi ve envanter ile siparis yonetimi icin admin paneli iceriyor. PHP ve MySQL ile gelistirilmis olup rol tabanli erisim kontrolu ile kullanici kimlik dogrulamasi, e-posta bildirimleriyle siparis durum takibi, urun gorsel yukleme ve galeri yonetimi ile mobil alisveris icin duyarli tasarim sunmaktadir.",
         "shortDescription": "Odeme entegrasyonlu tam donanimli e-ticaret platformu"
       },
       "cansat": {
         "name": "CanSat Yer Istasyonu",
-        "description": "NASA/Lockheed Martin koordinasyonunda CanSat yarismasi yer istasyonu. Gercek zamanli telemetri, GPS takip, irtifa izleme.",
+        "description": "NASA ve Lockheed Martin koordinasyonundaki CanSat yarismasi icin gelistirilen yer istasyonu yazilimi. Minyatur uydu yukunden inis sirasinda gercek zamanli telemetri verisi alir ve gorsellestirir. Python ve PyQt5 ile gelistirilmis olup irtifa, sicaklik, basinc ve GPS koordinatlari icin canli guncellenen grafikler iceriyor. 3D yol gorsellestirmesi, otomatik oturum yonetimiyle CSV'ye veri kaydi, hata kurtarmali seri port iletisim isleme ve yuk sagligi gostergelerini gosteren gorev kontrol paneli bulunmaktadir. Sistem, ST FOCOUNT takiminin yarisma ucusunu basariyla desteklemis ve inis fazinda 1 Hz'de telemetri paketlerini islenmistir.",
         "shortDescription": "Gercek zamanli telemetri ve GPS takipli CanSat yer istasyonu"
       }
     }
