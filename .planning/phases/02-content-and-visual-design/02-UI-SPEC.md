@@ -39,11 +39,11 @@ Declared values (must be multiples of 4):
 | lg | 24px | Card padding (large), section content gaps |
 | xl | 32px | Layout gaps between cards, timeline card margins |
 | 2xl | 48px (`--spacing-section-mobile`) | Section padding on mobile |
-| 3xl | 96px (`--spacing-section`) | Section padding on desktop |
 
 Exceptions:
 - 44px minimum touch target on all interactive elements (buttons, links, card hover zones)
 - 12px (`0.75rem`) used for button padding-y to maintain compact button profile
+- 96px (`--spacing-section`) used for desktop section padding to achieve viewport-aware breathing room in full-page portfolio layouts where 64px feels cramped and 48px is already the mobile value
 
 ---
 
@@ -51,15 +51,18 @@ Exceptions:
 
 | Role | Size | Weight | Line Height | Font Family |
 |------|------|--------|-------------|-------------|
-| Display | 4.5rem / 72px (`--text-display`) clamp(3rem, 5vw, 6rem) in Hero | 700 (bold) | 1.1 | `--font-heading` |
-| H1 | 3rem / 48px (`--text-h1`) | 700 (bold) | 1.2 | `--font-heading` |
-| H2 | 2.25rem / 36px (`--text-h2`) | 600 (semibold) | 1.2 | `--font-heading` |
-| H3 | 1.5rem / 24px (`--text-h3`) | 600 (semibold) | 1.3 | `--font-heading` |
+| Display | `clamp(3rem, 5vw, 6rem)` (`--text-display`) | 700 (bold) | 1.1 | `--font-heading` |
+| Heading | 2.25rem / 36px (`--text-heading`) | 700 (bold) | 1.2 | `--font-heading` |
+| Subheading | 1.5rem / 24px (`--text-subheading`) | 700 (bold) | 1.3 | `--font-heading` |
 | Body | 1rem / 16px (`--text-body`) | 400 (regular) | 1.6 | `--font-body` |
-| Small | 0.875rem / 14px (`--text-small`) | 400 (regular) | 1.5 | `--font-body` |
-| Kanji decorative | 8rem (mobile) / 12rem (desktop) | 400 | 1.0 | `--font-kanji` |
 
-Weights used in this phase: 400 (regular) and 700 (bold). 600 (semibold) allowed for H2/H3 subheadings only.
+Weights used in this phase: 400 (regular) and 700 (bold). No other weights.
+
+**Scale notes:**
+- Display is used exclusively for the hero name. The `clamp()` function provides responsive sizing from 48px to 96px.
+- Heading (36px) is used for all section titles (About, Skills, Experience, Projects, Achievements, Contact).
+- Subheading (24px) is used for card titles, company names, skill category headers, and achievement names.
+- Body (16px) is used for all body text, meta info, durations, labels, tech tags, and supporting copy. Where a smaller visual weight is needed, reduce opacity or use `--color-text-secondary` rather than a smaller font size.
 
 ---
 
@@ -99,7 +102,7 @@ Weights used in this phase: 400 (regular) and 700 (bold). 600 (semibold) allowed
 ### Hero Section
 - Layout: centered vertically and horizontally, 90vh height (from SectionShell)
 - Name: Playfair Display, `clamp(3rem, 5vw, 6rem)`, `--color-paper`, `font-weight: 700`
-- Role subtitle: `--text-h3`, `--color-text-secondary`, opacity 0.8
+- Role subtitle: `--text-subheading`, `--color-text-secondary`, opacity 0.8
 - Tagline: `--text-body`, `--color-text-secondary`, italic, "Crafting robust systems with precision and purpose"
 - CTA: `bg-accent-red text-paper`, padding `12px 24px`, `border-radius: 6px`, hover `bg-accent-red-bright` with `box-shadow: 0 0 20px rgba(192, 57, 43, 0.4)`
 - Scroll indicator: chevron at bottom center, CSS bounce animation (1.5s infinite), fades out after 100px scroll
@@ -110,9 +113,9 @@ Weights used in this phase: 400 (regular) and 700 (bold). 600 (semibold) allowed
 - Background: `--color-surface` (even section)
 - Photo: 200px circle on desktop, CSS mask with organic brush-stroke SVG clip-path for ink-wash frame
 - Layout: photo left + text right on desktop (grid 5/7 split), stacked on mobile (photo centered above text)
-- Stats: 3 counters in a row, each showing number (`--text-h2`, `--color-accent-red`, weight 700) + label (`--text-small`, `--color-text-secondary`)
+- Stats: 3 counters in a row, each showing number (`--text-heading`, `--color-accent-red`, weight 700) + label (`--text-body`, `--color-text-secondary`)
 - Stats values: "1+", "39+", "4" with labels "Years Experience", "Projects", "Companies"
-- Education: `--text-small`, `--color-text-secondary`, below bio text
+- Education: `--text-body`, `--color-text-secondary`, below bio text
 - Bio: `--text-body`, `--color-paper`, max-width 600px, `line-height: 1.6`
 
 ### Skills Section
@@ -123,8 +126,8 @@ Weights used in this phase: 400 (regular) and 700 (bold). 600 (semibold) allowed
   - Border: `1px solid rgba(212, 165, 116, 0.15)` (gold at 15% opacity)
   - Border-radius: `8px`
   - Padding: `24px`
-  - Card title: `--text-h3`, `--color-paper`, weight 600
-  - Skill items: `--text-small`, `--color-text-secondary`
+  - Card title: `--text-subheading`, `--color-paper`, weight 700
+  - Skill items: `--text-body`, `--color-text-secondary`
   - Proficiency bar: 6px height, `--color-surface` track (darker), `--color-accent-red` fill, `border-radius: 3px`
   - Rolled-edge CSS effect: `box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), inset 0 -2px 4px rgba(0,0,0,0.2)` on top/bottom edges
 
@@ -136,11 +139,11 @@ Weights used in this phase: 400 (regular) and 700 (bold). 600 (semibold) allowed
 - Card surface: `--color-bg` (contrast against section surface)
 - Card padding: `24px`, border-radius `8px`
 - Card border-left: `3px solid rgba(192, 57, 43, 0.5)` on mobile (no alternation)
-- Company name: `--text-h3`, `--color-paper`, weight 600
+- Company name: `--text-subheading`, `--color-paper`, weight 700
 - Role: `--text-body`, `--color-accent-gold`
-- Duration: `--text-small`, `--color-text-secondary`
-- Bullets: `--text-small`, `--color-text-secondary`, line-height 1.5
-- Tech tags: inline pills, `--text-small`, `--color-text-secondary`, `background: rgba(192, 57, 43, 0.1)`, `border: 1px solid rgba(192, 57, 43, 0.2)`, `border-radius: 4px`, padding `2px 8px`
+- Duration: `--text-body`, `--color-text-secondary`
+- Bullets: `--text-body`, `--color-text-secondary`, line-height 1.6
+- Tech tags: inline pills, `--text-body`, `--color-text-secondary`, `background: rgba(192, 57, 43, 0.1)`, `border: 1px solid rgba(192, 57, 43, 0.2)`, `border-radius: 4px`, padding `2px 8px`
 - All 5 positions, same card size, most recent first
 - Mobile: timeline collapses to left-aligned cards with left border, no center line
 
@@ -152,11 +155,11 @@ Weights used in this phase: 400 (regular) and 700 (bold). 600 (semibold) allowed
   - Border: `1px solid rgba(212, 165, 116, 0.1)`
   - Border-radius: `8px`
   - Padding: `24px`
-  - Project name: `--text-h3`, `--color-paper`, weight 600
-  - Description: `--text-small`, `--color-text-secondary`, max 3 lines with `line-clamp-3`
+  - Project name: `--text-subheading`, `--color-paper`, weight 700
+  - Description: `--text-body`, `--color-text-secondary`, max 3 lines with `line-clamp-3`
   - Tech tags: same pill style as Experience section
-  - GitHub link: `--text-small`, `--color-accent-red`, underline on hover
-  - Star count (where applicable): `--text-small`, `--color-accent-gold`, inline with GitHub link
+  - GitHub link: `--text-body`, `--color-accent-red`, underline on hover
+  - Star count (where applicable): `--text-body`, `--color-accent-gold`, inline with GitHub link
   - Hover: CSS-only ink-wash overlay, `background: linear-gradient(to bottom, transparent 0%, rgba(10, 10, 10, 0.85) 40%)` reveals full description (replaces line-clamp), transition `300ms`
 - Column gap: `24px`, row gap: `24px`
 
@@ -167,19 +170,19 @@ Weights used in this phase: 400 (regular) and 700 (bold). 600 (semibold) allowed
   - Circular top element: `120px` diameter, `border: 3px solid`, `border-image: linear-gradient(135deg, #d4a574, #c49a6c, #d4a574) 1` or solid gold border with metallic effect via `box-shadow`
   - Alternative: `border: 3px solid #d4a574` with `box-shadow: 0 0 15px rgba(212, 165, 116, 0.2), inset 0 0 15px rgba(212, 165, 116, 0.1)`
   - Card below medal: `--color-bg` surface, padding `24px`, border-radius `8px`
-  - Achievement name: `--text-h3`, `--color-paper`, weight 600
-  - Description: `--text-small`, `--color-text-secondary`
-  - Year/event: `--text-small`, `--color-accent-gold`
+  - Achievement name: `--text-subheading`, `--color-paper`, weight 700
+  - Description: `--text-body`, `--color-text-secondary`
+  - Year/event: `--text-body`, `--color-accent-gold`
 
 ### Contact Section
 - Background: `--color-bg` (odd section)
 - Layout: centered, max-width `600px`
-- Section heading: `--text-h1`, `--color-paper`, centered
+- Section heading: `--text-heading`, `--color-paper`, centered
 - 3 mon (crest) icons in a row, centered:
   - Container: `64px` circles, `border: 2px solid #d4a574`, `border-radius: 50%`
   - Icon inside: inline SVG (email, GitHub, LinkedIn), `--color-paper`, 24px size
   - Hover: `border-color: --color-accent-red`, `box-shadow: 0 0 20px rgba(192, 57, 43, 0.3)`, transition `300ms`
-  - Below each icon: label text, `--text-small`, `--color-text-secondary`
+  - Below each icon: label text, `--text-body`, `--color-text-secondary`
 - Links: `--color-paper`, hover `--color-accent-red`
 - Email: emirhan.kaya_58@hotmail.com
 - GitHub: github.com/Emirhan58
@@ -195,6 +198,7 @@ Weights used in this phase: 400 (regular) and 700 (bold). 600 (semibold) allowed
 - Alternating backgrounds: odd sections `--color-bg`, even sections `--color-surface`
 - Asanoha/seigaiha patterns: used ONLY as section divider strip decoration (not on cards or backgrounds), SVG pattern, 5-8% opacity
 - Ink-wash elements: limited to hero background, About photo frame, and card edge shadows
+- Decorative kanji characters (門, 道, 技, 戦, 作, 誉, 結): rendered at 8rem on mobile / 12rem on desktop, `--font-kanji` (Noto Serif JP), `--color-accent-gold` at 10% opacity, positioned top-right of each section. These are one-off decorative elements and do not participate in the typography scale. Already implemented in Phase 1 SectionShell with `aria-hidden="true"`.
 
 ---
 
