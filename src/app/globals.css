@@ -33,11 +33,24 @@
   --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
-  --z-base: 1;
-  --z-section: 10;
-  --z-navbar: 100;
-  --z-overlay: 200;
-  --z-modal: 300;
+}
+
+/* Z-index utilities — Tailwind CSS 4 @theme --z-* only generates numeric keys,
+   so we define named z-index layers as custom utilities */
+@utility z-base {
+  z-index: 1;
+}
+@utility z-section {
+  z-index: 10;
+}
+@utility z-navbar {
+  z-index: 100;
+}
+@utility z-overlay {
+  z-index: 200;
+}
+@utility z-modal {
+  z-index: 300;
 }
 
 @media (prefers-reduced-motion: reduce) {
