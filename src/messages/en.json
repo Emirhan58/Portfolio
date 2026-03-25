@@ -11,17 +11,17 @@
   "hero": {
     "name": "Emirhan Kaya",
     "role": "Full-Stack Developer",
-    "tagline": "Crafting robust systems with precision and purpose",
+    "tagline": "Systems that scale, code that lasts",
     "downloadCV": "Download CV",
     "scrollDown": "Scroll down"
   },
   "meta": {
     "title": "Emirhan Kaya - Portfolio",
-    "description": "Mid-Level Backend Developer specializing in Java/Spring Boot and .NET"
+    "description": "Backend Developer | Java/Spring Boot, .NET, distributed systems"
   },
   "about": {
     "heading": "About",
-    "bio": "Backend developer with a focus on Java/Kotlin Spring Boot and .NET/C#. I've spent the last few years working across distributed systems, designing event-driven architectures with Kafka and RabbitMQ, building microservices around 12/15-factor principles, and handling authentication with JWT and KeyCloak. I tend to think a lot about how systems behave under pressure, how easy they are to debug when something goes wrong, and how future teammates will read the code.",
+    "bio": "I'm a backend developer working mainly with Java/Kotlin Spring Boot and .NET/C#. Over the past few years I've been building distributed systems: event-driven architectures with Kafka and RabbitMQ, microservices following 12/15-factor principles, auth flows with JWT and KeyCloak. What I care about most is writing code that holds up under load, is easy to debug at 2 AM, and makes sense to whoever reads it next.",
     "photoAlt": "Emirhan Kaya profile photo",
     "location": "İstanbul, Türkiye",
     "stats": {
@@ -83,10 +83,10 @@
         "role": "Full-Stack Developer (Freelancer)",
         "period": "Jun 2025 - Present",
         "bullets": [
-          "Kotlin + Spring Boot microservices, 12/15-factor architecture",
-          "JWT auth, X-Service-Token API security",
-          "Redis caching, Flyway schema versioning",
-          "RabbitMQ & Kafka event-driven communication"
+          "Designing microservices with Kotlin + Spring Boot, following 12/15-factor principles",
+          "Implementing JWT authentication and inter-service security via X-Service-Token",
+          "Setting up Redis caching and managing database schemas with Flyway",
+          "Building event-driven pipelines with RabbitMQ and Kafka"
         ]
       },
       "planbanimation": {
@@ -95,9 +95,9 @@
         "period": "Jun 2025 - Feb 2026",
         "location": "Ankara",
         "bullets": [
-          "Backend infrastructure for multiple client projects",
-          "Production-ready services from design to deployment to monitoring",
-          "Led and mentored 3-person junior backend team"
+          "Owned backend infrastructure across multiple client-facing projects",
+          "Delivered production services end-to-end, from architecture to deployment and monitoring",
+          "Led and mentored a team of 3 junior backend developers"
         ]
       },
       "tenexy": {
@@ -105,9 +105,9 @@
         "role": "Backend Developer (Freelancer)",
         "period": "Jun 2022 - Jun 2025",
         "bullets": [
-          "E-commerce solutions, multi-language support, Stripe/Sellix payment",
-          "Authentication systems, advanced cart features",
-          "Database architecture and query optimization"
+          "Built e-commerce backends with multi-language support and Stripe/Sellix payment integration",
+          "Developed authentication flows and complex shopping cart logic",
+          "Designed database schemas and optimized slow-running queries"
         ]
       },
       "gesk": {
@@ -116,8 +116,8 @@
         "period": "Sep 2023 - Oct 2023",
         "location": "Istanbul",
         "bullets": [
-          "Flappy Bird game on STM32 (C/C++)",
-          "Real-time programming, hardware-software integration"
+          "Developed a playable Flappy Bird game on STM32 using C/C++",
+          "Worked with real-time embedded programming and direct hardware integration"
         ]
       },
       "kplus": {
@@ -126,8 +126,8 @@
         "period": "Jul 2023 - Aug 2023",
         "location": "Istanbul",
         "bullets": [
-          "UBER-like ride-sharing application (.NET)",
-          "Real-time features, geolocation, RESTful API"
+          "Built an Uber-style ride-sharing app backend with .NET",
+          "Implemented real-time features, geolocation services, and RESTful APIs"
         ]
       }
     }
@@ -137,48 +137,48 @@
     "items": {
       "microservices": {
         "name": "Microservices Java",
-        "description": "A production-grade distributed system built with Spring Boot and Spring Cloud. Features include Eureka-based service discovery, a centralized API gateway with rate limiting, asynchronous event-driven communication via RabbitMQ, and per-service PostgreSQL databases with Flyway migrations. Each microservice is independently deployable with Docker containers orchestrated through Docker Compose. Implements circuit breaker patterns with Resilience4j, centralized logging with ELK stack, and distributed tracing for full observability across services.",
-        "shortDescription": "Spring Boot microservices with service discovery and event-driven communication"
+        "description": "Distributed system built on Spring Boot and Spring Cloud. Services discover each other through Eureka, communicate asynchronously via RabbitMQ, and each own their PostgreSQL database with Flyway-managed migrations. A centralized API gateway handles rate limiting and routing. Everything runs in Docker containers with circuit breakers (Resilience4j), centralized logging (ELK), and distributed tracing for observability.",
+        "shortDescription": "Spring Boot microservices with service discovery and event-driven messaging"
       },
       "flappybird": {
         "name": "STM32 Flappy Bird",
-        "description": "A fully playable Flappy Bird clone running on the STM32F429I-DISC0 discovery board with its built-in LCD touchscreen. Built using TouchGFX for hardware-accelerated 2D graphics rendering at 60 FPS. Implements a real-time game loop with precise collision detection, gravity physics, scrolling pipe obstacles, and score tracking. Touch input handling provides responsive tap-to-flap controls. The project demonstrates embedded systems programming, direct hardware register manipulation, and real-time constraint management on resource-limited ARM Cortex-M4 hardware.",
-        "shortDescription": "Interactive Flappy Bird on STM32 with TouchGFX real-time game loop"
+        "description": "Fully playable Flappy Bird running on an STM32F429I-DISC0 board's built-in LCD touchscreen. Uses TouchGFX for hardware-accelerated 2D rendering at 60 FPS. The game loop handles collision detection, gravity physics, scrolling obstacles, and score tracking in real time. Built to explore embedded C/C++ programming and real-time constraints on an ARM Cortex-M4.",
+        "shortDescription": "Flappy Bird on STM32 | TouchGFX, 60 FPS, tap-to-play"
       },
       "behaviorwatch": {
         "name": "BehaviorWatch AI",
-        "description": "An AI-powered surveillance system that detects cigarette smoking in real-time using YOLOv8 object detection and OpenCV video processing. The model was custom-trained on an annotated dataset of smoking behavior, achieving high accuracy in varied lighting conditions and camera angles. Features include multi-camera stream support, configurable detection zones, automated alert generation with timestamped snapshots, and a dashboard for reviewing flagged incidents. Designed for behavioral monitoring in restricted smoking areas such as hospitals, schools, and public transport stations.",
-        "shortDescription": "Real-time cigarette detection with YOLOv8 and OpenCV"
+        "description": "Surveillance system that detects cigarette smoking in real time using a custom-trained YOLOv8 model and OpenCV. Handles multiple camera streams, configurable detection zones, and auto-generates timestamped alerts. Built for no-smoking areas like hospitals, schools, and transit stations. Includes a dashboard for reviewing flagged incidents.",
+        "shortDescription": "Real-time smoking detection with YOLOv8 and OpenCV"
       },
       "bunqchat": {
         "name": "Bunq Chat Backend",
-        "description": "A real-time messaging backend developed as part of the Bunq coding challenge. Built with PHP following clean architecture principles and SOLID design patterns. Features include RESTful API endpoints for user management, conversation creation, and message exchange with full CRUD operations. Implements efficient message retrieval with pagination, conversation threading, and timestamp-based ordering. The codebase emphasizes separation of concerns with distinct domain, application, and infrastructure layers, along with comprehensive unit test coverage.",
-        "shortDescription": "Real-time chat backend with clean architecture"
+        "description": "Messaging backend built for the Bunq coding challenge. PHP with clean architecture: domain, application, and infrastructure layers kept separate. RESTful API for user management, conversations, and messages with pagination and threading. Covered by unit tests throughout.",
+        "shortDescription": "Chat backend in PHP with clean architecture"
       },
       "allinpro": {
         "name": "AllInPro E-Commerce",
-        "description": "A comprehensive e-commerce platform supporting the full online shopping lifecycle. Includes a product catalog with category filtering and search, a shopping cart with session persistence, secure checkout flow with payment gateway integration, and an admin dashboard for inventory and order management. Built with PHP and MySQL, featuring user authentication with role-based access control, order status tracking with email notifications, product image upload and gallery management, and responsive design for mobile shopping. Handles concurrent transactions with proper database locking strategies.",
-        "shortDescription": "Full-featured e-commerce platform with payment integration"
+        "description": "End-to-end e-commerce platform built with PHP and MySQL. Covers the full flow: product catalog with filtering, persistent shopping cart, checkout with payment gateway, and an admin panel for inventory and orders. Includes role-based auth, email notifications, image uploads, and responsive mobile design. Handles concurrent checkouts with proper DB locking.",
+        "shortDescription": "E-commerce platform with payments, admin panel, and mobile support"
       },
       "cansat": {
         "name": "CanSat Ground Control",
-        "description": "Ground station software developed for the CanSat competition coordinated by NASA and Lockheed Martin. Receives and visualizes real-time telemetry data from a miniature satellite payload during its descent. Built with Python and PyQt5, featuring live-updating graphs for altitude, temperature, pressure, and GPS coordinates. Includes a 3D trajectory visualization, data logging to CSV with automatic session management, serial port communication handling with error recovery, and a mission control dashboard showing payload health indicators. The system successfully supported the ST FOCOUNT team's competition flight, processing telemetry packets at 1 Hz throughout the descent phase.",
-        "shortDescription": "CanSat ground station with real-time telemetry and GPS tracking"
+        "description": "Ground station for the CanSat competition (NASA / Lockheed Martin). Receives live telemetry from a miniature satellite during descent and displays it in real-time graphs: altitude, temperature, pressure, GPS. Built with Python and PyQt5. Includes 3D trajectory visualization, CSV logging, and serial port recovery. Successfully used during the ST FOCOUNT team's competition flight at 1 Hz telemetry.",
+        "shortDescription": "CanSat ground station | live telemetry, 3D trajectory, GPS tracking"
       },
       "farkle": {
         "name": "Farkle Dice Game",
-        "description": "A full-stack implementation of the classic Farkle dice game with a Kotlin/Spring Boot backend and Next.js/TypeScript frontend. The backend handles game state management, scoring logic, turn validation, and multiplayer session coordination via REST APIs, containerized with Docker Compose. The frontend delivers an interactive dice-rolling experience with real-time UI updates, score tracking, and responsive design. Players take turns rolling six dice, choosing which to keep based on scoring combinations, and deciding whether to bank points or risk it all — a clean separation of game logic on the server and presentation on the client.",
-        "shortDescription": "Full-stack Farkle dice game with Kotlin backend and Next.js frontend"
+        "description": "Full-stack Farkle dice game. Kotlin/Spring Boot backend manages game state, scoring, turn validation, and multiplayer sessions over REST. Next.js/TypeScript frontend handles the interactive dice-rolling UI with real-time updates. Containerized with Docker Compose. Players roll six dice, pick which to keep, and decide whether to bank or push their luck.",
+        "shortDescription": "Full-stack Farkle | Kotlin backend, Next.js frontend, multiplayer"
       },
       "facerecognition": {
         "name": "Face Recognition AI",
-        "description": "A facial recognition system built with ArcFace (ONNX) and YOLOv8-Face that operates without the InsightFace package, enabling compatibility with numpy 2.x. The pipeline detects faces via YOLOv8, normalizes crops to 112x112, generates 512-dimensional L2-normalized embeddings through ArcFace, and matches against an enrolled database with configurable confidence thresholds. Supports real-time recognition via webcam or IP camera streams, single-image analysis with output visualization, and dynamic enrollment of new individuals. Designed for practical deployment with minimal dependencies — just ONNXRuntime, OpenCV, and two model files.",
-        "shortDescription": "Real-time face recognition with ArcFace and YOLOv8 — no InsightFace dependency"
+        "description": "Face recognition pipeline using ArcFace (ONNX) and YOLOv8-Face, built without InsightFace for numpy 2.x compatibility. Detects faces, normalizes to 112x112, generates 512-dim embeddings, and matches against a database with configurable thresholds. Works with webcam, IP camera, or single images. Minimal dependencies: just ONNXRuntime, OpenCV, and two model files.",
+        "shortDescription": "Face recognition with ArcFace + YOLOv8, no InsightFace needed"
       },
       "patientdonation": {
         "name": "Patient Donation Platform",
-        "description": "A web application connecting patients in need with donors, powered by AI and data mining algorithms. Built with ASP.NET (C#) backend and a JavaScript/HTML/CSS frontend across 162 commits. The platform uses machine learning models to match donation requests with potential donors based on urgency, medical condition, and geographic proximity. Features include donor registration and profile management, patient request submission with medical verification, an intelligent matching engine, and a dashboard for tracking donation status and impact metrics.",
-        "shortDescription": "AI-powered patient donation platform with intelligent donor matching"
+        "description": "Web app that connects patients in need with donors using ML-based matching. Built with ASP.NET (C#) and JavaScript. The matching engine considers urgency, medical condition, and location to pair requests with the right donors. Includes donor registration, patient verification, and a dashboard for tracking donations and impact.",
+        "shortDescription": "Patient-donor matching platform powered by ML"
       }
     }
   },

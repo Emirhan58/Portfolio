@@ -1,37 +1,37 @@
 {
   "nav": {
-    "about": "Hakkimda",
+    "about": "Hakkımda",
     "skills": "Yetenekler",
     "experience": "Deneyim",
     "projects": "Projeler",
-    "achievements": "Basarilar",
-    "contact": "Iletisim",
-    "downloadCV": "CV Indir"
+    "achievements": "Başarılar",
+    "contact": "İletişim",
+    "downloadCV": "CV İndir"
   },
   "hero": {
     "name": "Emirhan Kaya",
     "role": "Full-Stack Developer",
-    "tagline": "Saglam sistemleri hassasiyet ve amacla insa etmek",
-    "downloadCV": "CV Indir",
-    "scrollDown": "Asagi kaydir"
+    "tagline": "Ölçeklenen sistemler, kalıcı kod",
+    "downloadCV": "CV İndir",
+    "scrollDown": "Aşağı kaydır"
   },
   "meta": {
     "title": "Emirhan Kaya - Portfolyo",
-    "description": "Java/Spring Boot ve .NET uzmani Mid-Level Backend Developer"
+    "description": "Backend Developer | Java/Spring Boot, .NET, dağıtık sistemler"
   },
   "about": {
-    "heading": "Hakkimda",
-    "bio": "Java/Kotlin Spring Boot ve .NET/C# ağırlıklı çalışan bir backend geliştiriciyim. Son birkaç yıldır dağıtık sistemler üzerinde çalışıyorum, Kafka ve RabbitMQ ile olay güdümlü mimariler kurdum, mikro servisleri 12/15-factor prensipleriyle tasarladım, JWT ve KeyCloak ile kimlik doğrulama akışları geliştirdim. Sistemlerin baskı altında nasıl davrandığını, bir şeyler ters gittiğinde ne kadar hızlı debug edilebildiğini ve kodu ilerleyen süreçte okuyacak kişilerin bunu ne kadar rahat anlayacağını önemserim.",
-    "photoAlt": "Emirhan Kaya profil fotografi",
-    "location": "Istanbul, Turkiye",
+    "heading": "Hakkımda",
+    "bio": "Ağırlıklı olarak Java/Kotlin Spring Boot ve .NET/C# ile çalışan bir backend geliştiriciyim. Son birkaç yıldır dağıtık sistemler üzerindeyim. Kafka ve RabbitMQ ile event-driven mimariler kurdum, 12/15-factor prensiplerine uygun mikroservisler tasarladım, JWT ve KeyCloak ile auth akışları geliştirdim. En çok önemsediğim şey: yük altında ayakta kalan, gece 2'de debug edilebilen ve bir sonraki kişinin rahatça okuyabileceği kod yazmak.",
+    "photoAlt": "Emirhan Kaya profil fotoğrafı",
+    "location": "İstanbul, Türkiye",
     "stats": {
-      "experience": "Yil Deneyim",
+      "experience": "Yıl Deneyim",
       "projects": "Proje",
-      "companies": "Sirket"
+      "companies": "Şirket"
     },
     "education": {
-      "degree": "Bilgisayar Muhendisligi",
-      "university": "Sakarya Universitesi",
+      "degree": "Bilgisayar Mühendisliği",
+      "university": "Sakarya Üniversitesi",
       "period": "2020 - 2024",
       "gpa": "GNO: 3.31"
     },
@@ -42,9 +42,9 @@
     "heading": "Yetenekler",
     "categories": {
       "languages": "Programlama Dilleri",
-      "frameworks": "Framework ve Kutuphaneler",
-      "infrastructure": "Altyapi ve DevOps",
-      "security": "Mesajlasma ve Guvenlik"
+      "frameworks": "Framework ve Kütüphaneler",
+      "infrastructure": "Altyapı ve DevOps",
+      "security": "Mesajlaşma ve Güvenlik"
     },
     "items": {
       "java": "Java",
@@ -83,21 +83,21 @@
         "role": "Full-Stack Developer (Serbest)",
         "period": "Haz 2025 - Devam Ediyor",
         "bullets": [
-          "Kotlin + Spring Boot mikroservisler, 12/15-factor mimarisi",
-          "JWT auth, X-Service-Token ile API guvenligi",
-          "Redis cache, Flyway sema versiyonlama",
-          "RabbitMQ ve Kafka event-driven iletisim"
+          "Kotlin + Spring Boot ile 12/15-factor prensiplerine uygun mikroservis mimarisi kurulumu",
+          "JWT tabanlı kimlik doğrulama ve X-Service-Token ile servisler arası güvenlik",
+          "Redis önbellekleme katmanı ve Flyway ile veritabanı versiyon yönetimi",
+          "RabbitMQ ve Kafka üzerinden event-driven mesajlaşma altyapısı"
         ]
       },
       "planbanimation": {
         "company": "Plan B Animation and Game Studio",
         "role": "Backend Developer",
-        "period": "Haz 2025 - Sub 2026",
+        "period": "Haz 2025 - Şub 2026",
         "location": "Ankara",
         "bullets": [
-          "Birden fazla musteri projesinde backend altyapisi",
-          "Tasarimdan deployment ve izlemeye uretim hazir servisler",
-          "3 kisilik junior backend takimina liderlik ve mentorluk"
+          "Birden fazla müşteri projesinin backend altyapısını baştan sona üstlendim",
+          "Mimari tasarımdan canlıya alma ve izlemeye kadar uçtan uca servis geliştirdim",
+          "3 kişilik junior backend ekibine teknik liderlik ve mentorluk yaptım"
         ]
       },
       "tenexy": {
@@ -105,29 +105,29 @@
         "role": "Backend Developer (Serbest)",
         "period": "Haz 2022 - Haz 2025",
         "bullets": [
-          "E-ticaret cozumleri, coklu dil destegi, Stripe/Sellix odeme",
-          "Kimlik dogrulama sistemleri, gelismis sepet ozellikleri",
-          "Veritabani mimarisi ve sorgu optimizasyonu"
+          "Çoklu dil desteği ve Stripe/Sellix ödeme entegrasyonlu e-ticaret sistemleri geliştirdim",
+          "Kimlik doğrulama akışları ve gelişmiş sepet mantığı kurdum",
+          "Veritabanı şeması tasarladım, yavaş sorguları optimize ettim"
         ]
       },
       "gesk": {
         "company": "GESK Technologies",
-        "role": "Stajyer, Gomulu Yazilim Gelistirici",
+        "role": "Stajyer, Gömülü Yazılım Geliştirici",
         "period": "Eyl 2023 - Eki 2023",
-        "location": "Istanbul",
+        "location": "İstanbul",
         "bullets": [
-          "STM32 uzerinde Flappy Bird oyunu (C/C++)",
-          "Gercek zamanli programlama, donanim-yazilim entegrasyonu"
+          "STM32 üzerinde C/C++ ile oynanabilir Flappy Bird oyunu geliştirdim",
+          "Gerçek zamanlı gömülü programlama ve donanım-yazılım entegrasyonu üzerinde çalıştım"
         ]
       },
       "kplus": {
         "company": "KPlus Bilgi Teknolojileri",
         "role": "Stajyer, Fullstack Developer",
-        "period": "Tem 2023 - Agu 2023",
-        "location": "Istanbul",
+        "period": "Tem 2023 - Ağu 2023",
+        "location": "İstanbul",
         "bullets": [
-          "UBER benzeri arac paylasim uygulamasi (.NET)",
-          "Gercek zamanli ozellikler, konum hizmetleri, RESTful API"
+          "Uber tarzı araç paylaşım uygulamasının backend'ini .NET ile geliştirdim",
+          "Anlık özellikler, konum servisleri ve RESTful API'ler üzerinde çalıştım"
         ]
       }
     }
@@ -137,53 +137,53 @@
     "items": {
       "microservices": {
         "name": "Microservices Java",
-        "description": "Spring Boot ve Spring Cloud ile gelistirilmis uretim seviyesinde dagitik sistem. Eureka tabanli servis kesfetme, hiz sinirlamali merkezi API gateway, RabbitMQ uzerinden asenkron event-driven iletisim ve her servise ozel Flyway migrasyonlu PostgreSQL veritabanlari iceriyor. Her mikroservis Docker konteynerleriyle bagimsiz olarak dagitilabilir durumda. Resilience4j ile circuit breaker desenleri, ELK stack ile merkezi loglama ve servisler arasi tam gozlemlenebilirlik icin dagitik izleme uygulanmistir.",
-        "shortDescription": "Servis kesfetme ve event-driven iletisimli Spring Boot mikroservisler"
+        "description": "Spring Boot ve Spring Cloud üzerine kurulu dağıtık sistem. Servisler Eureka ile birbirini buluyor, RabbitMQ üzerinden asenkron haberleşiyor ve her biri kendi PostgreSQL veritabanını Flyway ile yönetiyor. Merkezi API gateway rate limiting ve yönlendirme yapıyor. Her şey Docker container'larında çalışıyor; circuit breaker (Resilience4j), merkezi log (ELK) ve dağıtık tracing ile izleniyor.",
+        "shortDescription": "Servis keşfi ve event-driven mesajlaşmalı Spring Boot mikroservisler"
       },
       "flappybird": {
         "name": "STM32 Flappy Bird",
-        "description": "STM32F429I-DISC0 kesfet kartinin dahili LCD dokunmatik ekraninda calisan tam oynanabilir bir Flappy Bird klonu. 60 FPS'de donanim hizlandirmali 2D grafik renderlamasi icin TouchGFX kullanilarak gelistirildi. Hassas carpisma algilama, yercekimi fizigi, kayan boru engelleri ve skor takibi ile gercek zamanli oyun dongusu iceriyor. Dokunmatik giris isleme, duyarli dokun-ve-uc kontrolleri sagliyor. Proje, kaynak kisitli ARM Cortex-M4 donanimi uzerinde gomulu sistem programlama, dogrudan donanim register manipulasyonu ve gercek zamanli kisitlama yonetimini sergilemektedir.",
-        "shortDescription": "TouchGFX ile STM32 uzerinde gercek zamanli Flappy Bird"
+        "description": "STM32F429I-DISC0 kartının dahili LCD dokunmatik ekranında çalışan Flappy Bird. TouchGFX ile 60 FPS donanım hızlandırmalı 2D render. Gerçek zamanlı oyun döngüsü: çarpışma algılama, yerçekimi fiziği, kayan engeller ve skor takibi. ARM Cortex-M4 üzerinde gömülü C/C++ programlama ve gerçek zamanlı kısıtları keşfetmek için geliştirdim.",
+        "shortDescription": "STM32'de Flappy Bird | TouchGFX, 60 FPS, dokunmatik kontrol"
       },
       "behaviorwatch": {
         "name": "BehaviorWatch AI",
-        "description": "YOLOv8 nesne algilama ve OpenCV video isleme kullanarak gercek zamanli sigara icme tespiti yapan yapay zeka destekli gozetleme sistemi. Model, farkli aydinlatma kosullari ve kamera acilarinda yuksek dogruluk elde ederek sigara icme davranisi uzerine etiketlenmis bir veri setiyle ozel olarak egitildi. Coklu kamera akisi destegi, yapilandirabilir tespit bolgesi, zaman damgali ekran goruntuleriyle otomatik uyari olusturma ve isaretlenen olaylari incelemek icin bir kontrol paneli iceriyor. Hastaneler, okullar ve toplu tasima istasyonlari gibi sigara icilmesi yasak alanlarda davranis izleme icin tasarlandi.",
-        "shortDescription": "YOLOv8 ve OpenCV ile gercek zamanli sigara tespiti"
+        "description": "Özel eğitilmiş YOLOv8 modeli ve OpenCV ile gerçek zamanlı sigara içme tespiti yapan gözetleme sistemi. Birden fazla kamera akışı, ayarlanabilir tespit bölgeleri ve zaman damgalı otomatik uyarı üretimi destekliyor. Hastane, okul ve toplu taşıma gibi sigara yasağı olan alanlar için tasarlandı. Tespit edilen olayları incelemek için dashboard mevcut.",
+        "shortDescription": "YOLOv8 ve OpenCV ile gerçek zamanlı sigara tespiti"
       },
       "bunqchat": {
         "name": "Bunq Chat Backend",
-        "description": "Bunq kodlama challenge'i kapsaminda gelistirilen gercek zamanli mesajlasma backend'i. Temiz mimari prensipleri ve SOLID tasarim desenleri izlenerek PHP ile insa edildi. Kullanici yonetimi, konusma olusturma ve tam CRUD islemleriyle mesaj alim-verimi icin RESTful API endpoint'leri iceriyor. Sayfalama ile verimli mesaj getirme, konusma dizileri ve zaman damgasina gore siralama uygulanmistir. Kod tabani, kapsamli birim test kapsamiyla birlikte alan, uygulama ve altyapi katmanlarinin ayrimini vurgulamaktadir.",
-        "shortDescription": "Temiz mimari ile gercek zamanli sohbet backend"
+        "description": "Bunq kodlama challenge'ı için geliştirilen mesajlaşma backend'i. PHP ile clean architecture: domain, application ve infrastructure katmanları ayrı tutuldu. Kullanıcı yönetimi, konuşmalar ve mesajlar için sayfalama ve threading destekli RESTful API. Birim testlerle kaplı.",
+        "shortDescription": "Clean architecture ile PHP sohbet backend'i"
       },
       "allinpro": {
         "name": "AllInPro E-Ticaret",
-        "description": "Online alisveris yasam dongusunun tamamini destekleyen kapsamli bir e-ticaret platformu. Kategori filtreleme ve aramali urun katalogu, oturum kaliciligi olan alisveris sepeti, odeme gecidi entegrasyonlu guvenli odeme akisi ve envanter ile siparis yonetimi icin admin paneli iceriyor. PHP ve MySQL ile gelistirilmis olup rol tabanli erisim kontrolu ile kullanici kimlik dogrulamasi, e-posta bildirimleriyle siparis durum takibi, urun gorsel yukleme ve galeri yonetimi ile mobil alisveris icin duyarli tasarim sunmaktadir.",
-        "shortDescription": "Odeme entegrasyonlu tam donanimli e-ticaret platformu"
+        "description": "PHP ve MySQL ile uçtan uca e-ticaret platformu. Filtrelemeli ürün kataloğu, kalıcı sepet, ödeme gateway entegrasyonlu checkout ve stok/sipariş yönetimi için admin paneli. Rol tabanlı auth, e-posta bildirimleri, görsel yükleme ve mobil uyumlu tasarım dahil. Eşzamanlı siparişleri DB locking ile yönetiyor.",
+        "shortDescription": "Ödeme, admin paneli ve mobil destekli e-ticaret platformu"
       },
       "cansat": {
-        "name": "CanSat Yer Istasyonu",
-        "description": "NASA ve Lockheed Martin koordinasyonundaki CanSat yarismasi icin gelistirilen yer istasyonu yazilimi. Minyatur uydu yukunden inis sirasinda gercek zamanli telemetri verisi alir ve gorsellestirir. Python ve PyQt5 ile gelistirilmis olup irtifa, sicaklik, basinc ve GPS koordinatlari icin canli guncellenen grafikler iceriyor. 3D yol gorsellestirmesi, otomatik oturum yonetimiyle CSV'ye veri kaydi, hata kurtarmali seri port iletisim isleme ve yuk sagligi gostergelerini gosteren gorev kontrol paneli bulunmaktadir. Sistem, ST FOCOUNT takiminin yarisma ucusunu basariyla desteklemis ve inis fazinda 1 Hz'de telemetri paketlerini islenmistir.",
-        "shortDescription": "Gercek zamanli telemetri ve GPS takipli CanSat yer istasyonu"
+        "name": "CanSat Yer İstasyonu",
+        "description": "NASA / Lockheed Martin koordinasyonundaki CanSat yarışması için yer istasyonu. İniş sırasında minyatür uydudan canlı telemetri alıp grafiklere döküyor: irtifa, sıcaklık, basınç, GPS. Python ve PyQt5 ile geliştirildi. 3D yörünge görselleştirme, CSV loglama ve seri port hata kurtarma mevcut. ST FOCOUNT takımının yarışma uçuşunda 1 Hz telemetri ile başarıyla kullanıldı.",
+        "shortDescription": "CanSat yer istasyonu | canlı telemetri, 3D yörünge, GPS"
       },
       "farkle": {
         "name": "Farkle Zar Oyunu",
-        "description": "Klasik Farkle zar oyununun Kotlin/Spring Boot backend ve Next.js/TypeScript frontend ile full-stack uygulamasi. Backend; oyun durumu yonetimi, puanlama mantigi, tur dogrulamasi ve cok oyunculu oturum koordinasyonunu REST API'ler uzerinden yonetir, Docker Compose ile konteynerize edilmistir. Frontend; gercek zamanli UI guncellemeleri, skor takibi ve duyarli tasarimla interaktif bir zar atma deneyimi sunar. Oyuncular sirali olarak alti zar atar, puanlama kombinasyonlarina gore hangilerini tutacagina karar verir ve puanlari bankaya yatirma ya da risk alma secimini yapar.",
-        "shortDescription": "Kotlin backend ve Next.js frontend ile full-stack Farkle zar oyunu"
+        "description": "Full-stack Farkle zar oyunu. Kotlin/Spring Boot backend oyun durumu, puanlama, tur doğrulama ve çok oyunculu oturumları REST üzerinden yönetiyor. Next.js/TypeScript frontend ile anlık güncellenen interaktif zar atma arayüzü. Docker Compose ile ayağa kalkıyor. Altı zar at, hangilerini tutacağına karar ver, puanı bankala ya da riske gir.",
+        "shortDescription": "Full-stack Farkle | Kotlin backend, Next.js frontend, çok oyunculu"
       },
       "facerecognition": {
-        "name": "Yuz Tanima AI",
-        "description": "InsightFace paketi olmadan calisan, ArcFace (ONNX) ve YOLOv8-Face ile gelistirilmis yuz tanima sistemi. Pipeline YOLOv8 ile yuz tespit eder, kirpmalari 112x112'ye normalize eder, ArcFace uzerinden 512 boyutlu L2-normalize embedding'ler uretir ve yapilandirabilir guven esikleriyle kayitli veritabanina karsi eslestirir. Web kamerasi veya IP kamera akislari uzerinden gercek zamanli tanima, cikti gorsellestirmeli tekil goruntu analizi ve yeni kisilerin dinamik kaydini destekler. Minimum bagimlilikla pratik dagitim icin tasarlandi — sadece ONNXRuntime, OpenCV ve iki model dosyasi.",
-        "shortDescription": "ArcFace ve YOLOv8 ile gercek zamanli yuz tanima — InsightFace bagimliligi yok"
+        "name": "Yüz Tanıma AI",
+        "description": "InsightFace olmadan çalışan yüz tanıma pipeline'ı. ArcFace (ONNX) ve YOLOv8-Face ile numpy 2.x uyumlu. Yüzü tespit et, 112x112'ye normalize et, 512 boyutlu embedding üret, veritabanıyla eşleştir. Webcam, IP kamera veya tekil görüntü ile çalışıyor. Minimum bağımlılık: ONNXRuntime, OpenCV ve iki model dosyası.",
+        "shortDescription": "ArcFace + YOLOv8 ile yüz tanıma, InsightFace gerektirmiyor"
       },
       "patientdonation": {
-        "name": "Hasta Bagis Platformu",
-        "description": "Yapay zeka ve veri madenciligi algoritmalariyla desteklenen, ihtiyac sahibi hastalari bagiscilarla bulusturan web uygulamasi. ASP.NET (C#) backend ve JavaScript/HTML/CSS frontend ile 162 commit boyunca gelistirildi. Platform, aciliyet, tibbi durum ve cografi yakinliga gore bagis taleplerini potansiyel bagiscilarla eslestirmek icin makine ogrenmesi modelleri kullaniyor. Bagisci kaydi ve profil yonetimi, tibbi dogrulama ile hasta talep gonderimi, akilli eslestirme motoru ve bagis durumu ile etki metriklerini izlemek icin kontrol paneli iceriyor.",
-        "shortDescription": "Akilli bagisci eslestirmeli yapay zeka destekli hasta bagis platformu"
+        "name": "Hasta Bağış Platformu",
+        "description": "İhtiyaç sahibi hastaları bağışçılarla buluşturan, ML tabanlı eşleştirme yapan web uygulaması. ASP.NET (C#) ve JavaScript ile geliştirildi. Eşleştirme motoru aciliyet, tıbbi durum ve coğrafi yakınlığı değerlendiriyor. Bağışçı kaydı, hasta doğrulama ve bağış takibi için dashboard mevcut.",
+        "shortDescription": "ML destekli hasta-bağışçı eşleştirme platformu"
       }
     }
   },
   "achievements": {
-    "heading": "Basarilar",
+    "heading": "Başarılar",
     "items": {
       "fixedwing2021": {
         "name": "Sabit Kanat İHA 2021",
@@ -208,7 +208,7 @@
     }
   },
   "contact": {
-    "heading": "Iletisim",
+    "heading": "İletişim",
     "email": "E-posta",
     "github": "GitHub",
     "linkedin": "LinkedIn"

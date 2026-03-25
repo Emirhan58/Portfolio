@@ -47,7 +47,7 @@ export default async function HomePage({
           <div key={id}>
             <SectionShell
               id={id}
-              className={`${SECTION_BG[id]} ${id === "hero" ? "min-h-[90vh]" : ""}`}
+              className={`${SECTION_BG[id]} ${id === "hero" ? "min-h-[90vh]" : ""} ${id !== "hero" && id !== "skills" && id !== "experience" ? "flex flex-col justify-center" : ""}`}
             >
               <Component />
             </SectionShell>

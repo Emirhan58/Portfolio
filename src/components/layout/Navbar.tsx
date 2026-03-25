@@ -92,20 +92,35 @@ export function Navbar() {
           {/* Right side: Language toggle + CV download + Hamburger */}
           <div className="flex items-center gap-3">
             {/* Language Toggle */}
-            <div className="flex items-center gap-1">
-              <button
-                onClick={() => handleLanguageSwitch("en")}
-                className="text-lg hover:scale-110 transition-transform duration-fast"
-                aria-label="Switch to English"
-              >
-                &#x1F1EC;&#x1F1E7;
-              </button>
+            <div className="flex items-center gap-1.5">
               <button
                 onClick={() => handleLanguageSwitch("tr")}
-                className="text-lg hover:scale-110 transition-transform duration-fast"
-                aria-label="Switch to Turkish"
+                className="w-7 h-5 rounded-sm overflow-hidden hover:scale-110 transition-transform duration-fast shadow-sm"
+                aria-label="Türkçeye geç"
               >
-                &#x1F1F9;&#x1F1F7;
+                <svg viewBox="0 0 60 40" className="w-full h-full">
+                  <rect width="60" height="40" fill="#E30A17"/>
+                  <circle cx="23" cy="20" r="10" fill="#fff"/>
+                  <circle cx="26" cy="20" r="8" fill="#E30A17"/>
+                  <polygon points="35,20 30.5,22 31.5,17.5 28,14.5 32.5,14 35,10 37.5,14 42,14.5 38.5,17.5 39.5,22" fill="#fff" transform="scale(0.7) translate(17,10)"/>
+                </svg>
+              </button>
+              <button
+                onClick={() => handleLanguageSwitch("en")}
+                className="w-7 h-5 rounded-sm overflow-hidden hover:scale-110 transition-transform duration-fast shadow-sm"
+                aria-label="Switch to English"
+              >
+                <svg viewBox="0 0 60 30" className="w-full h-full">
+                  <clipPath id="gb-clip"><rect width="60" height="30"/></clipPath>
+                  <g clipPath="url(#gb-clip)">
+                    <rect width="60" height="30" fill="#012169"/>
+                    <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/>
+                    <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="4" clipPath="url(#gb-diag)"/>
+                    <clipPath id="gb-diag"><path d="M30,15 L60,30 L60,0 Z M30,15 L0,0 L0,30 Z"/></clipPath>
+                    <path d="M30,0 V30 M0,15 H60" stroke="#fff" strokeWidth="10"/>
+                    <path d="M30,0 V30 M0,15 H60" stroke="#C8102E" strokeWidth="6"/>
+                  </g>
+                </svg>
               </button>
             </div>
 
