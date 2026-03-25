@@ -21,8 +21,9 @@
   },
   "about": {
     "heading": "About",
-    "bio": "Back-End Developer specializing in high-performance and reliable systems with Java/Spring Boot and .NET. Crafting E-Commerce systems and event-driven architectures.",
+    "bio": "Mid-level Backend Developer specializing in backend architecture with Kotlin/Spring Boot and .NET/C#. Experienced in building scalable microservices following 12/15-factor architecture, event-driven systems with RabbitMQ and Kafka, and secure authentication with JWT and KeyCloak. Focused on delivering maintainable, high-performance backend services with a strong problem-solving mindset.",
     "photoAlt": "Emirhan Kaya profile photo",
+    "location": "İstanbul, Türkiye",
     "stats": {
       "experience": "Years Experience",
       "projects": "Projects",
@@ -33,7 +34,9 @@
       "university": "Sakarya University",
       "period": "2020 - 2024",
       "gpa": "GPA: 3.31"
-    }
+    },
+    "technologies": "Core Technologies",
+    "leetcode": "LeetCode Profile"
   },
   "skills": {
     "heading": "Skills",

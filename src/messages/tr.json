@@ -21,8 +21,9 @@
   },
   "about": {
     "heading": "Hakkimda",
-    "bio": "Java/Spring Boot ve .NET ile yuksek performansli ve guvenilir sistemler gelistiren Back-End Developer. E-Ticaret sistemleri ve event-driven mimariler olusturuyor.",
+    "bio": "Kotlin/Spring Boot ve .NET/C# ile backend mimarisi konusunda uzmanlasmis Mid-level Backend Developer. 12/15-faktor mimarisine uygun olceklenebilir mikroservisler, RabbitMQ ve Kafka ile event-driven sistemler ve JWT ile KeyCloak kullanarak guvenli kimlik dogrulama sistemleri gelistirme deneyimine sahip. Bakim yapilabilir, yuksek performansli backend servisleri sunmaya ve guclu problem cozme yaklasimina odaklanmis.",
     "photoAlt": "Emirhan Kaya profil fotografi",
+    "location": "Istanbul, Turkiye",
     "stats": {
       "experience": "Yil Deneyim",
       "projects": "Proje",
@@ -33,7 +34,9 @@
       "university": "Sakarya Universitesi",
       "period": "2020 - 2024",
       "gpa": "GNO: 3.31"
-    }
+    },
+    "technologies": "Temel Teknolojiler",
+    "leetcode": "LeetCode Profili"
   },
   "skills": {
     "heading": "Yetenekler",

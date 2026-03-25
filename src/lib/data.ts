@@ -114,7 +114,13 @@ export const CONTACT_LINKS = {
 } as const;
 
 export const STATS_DATA = [
-  { key: "experience", value: "1+" },
+  { key: "experience", value: "3+" },
   { key: "projects", value: "39+" },
   { key: "companies", value: "4" },
+] as const;
+
+export const CORE_TECHNOLOGIES = [
+  "Redis", "RabbitMQ", "Kafka", "Docker", "AWS S3",
+  "Flyway", "Kubernetes", "Helm", "mTLS", "KeyCloak",
+  "Prometheus", "Grafana", "CI/CD",
 ] as const;
