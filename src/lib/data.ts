@@ -122,8 +122,8 @@ export const PROJECTS_DATA = [
 ] as const;
 
 export const ACHIEVEMENTS_DATA = [
-  { key: "teknofest" },
-  { key: "cansat" },
+  { key: "teknofest", period: "2021 – 2022" },
+  { key: "cansat", period: "Jun 2022" },
 ] as const;
 
 export const CONTACT_LINKS = {

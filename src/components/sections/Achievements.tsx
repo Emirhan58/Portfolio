@@ -1,11 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import { ACHIEVEMENTS_DATA } from "@/lib/data";
-import { MedalBadge } from "@/components/ui/MedalBadge";
 
 const ACHIEVEMENT_ICONS: Record<string, React.ReactNode> = {
   teknofest: (
-    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      {/* Rocket icon */}
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
       <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
       <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 3 0 3 0" />
@@ -13,8 +11,7 @@ const ACHIEVEMENT_ICONS: Record<string, React.ReactNode> = {
     </svg>
   ),
   cansat: (
-    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      {/* Satellite icon */}
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <path d="M13 7L9 3 5 7l4 4" />
       <path d="M17 11l4 4-4 4-4-4" />
       <path d="M8 12l4 4" />
@@ -30,21 +27,42 @@ export async function Achievements() {
   const t = await getTranslations("achievements");
 
   return (
-    <div className="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 className="font-heading text-h2 text-paper text-center mb-12 font-bold">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <h2 className="font-heading text-h2 text-paper text-center mb-8 font-bold">
         {t("heading")}
       </h2>
 
-      <div className="flex flex-col sm:flex-row gap-8 justify-center">
+      <div className="flex flex-col gap-4">
         {ACHIEVEMENTS_DATA.map((achievement) => (
-          <MedalBadge
+          <div
             key={achievement.key}
-            name={t(`items.${achievement.key}.name`)}
-            subtitle={t(`items.${achievement.key}.subtitle`)}
-            description={t(`items.${achievement.key}.description`)}
-            icon={ACHIEVEMENT_ICONS[achievement.key]}
-            className="flex-1 max-w-[360px]"
-          />
+            className="flex items-center gap-5 bg-surface rounded-lg p-5 border border-accent-gold/10"
+          >
+            {/* Medal circle — compact */}
+            <div className="w-16 h-16 min-w-[64px] rounded-full border-2 border-accent-gold/40 flex items-center justify-center shadow-[0_0_10px_rgba(212,165,116,0.15)]">
+              {ACHIEVEMENT_ICONS[achievement.key]}
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 min-w-0">
+              <div className="flex items-baseline gap-3 flex-wrap">
+                <h3 className="font-heading text-h3 text-paper font-bold">
+                  {t(`items.${achievement.key}.name`)}
+                </h3>
+                <span className="text-small text-accent-gold font-medium">
+                  {t(`items.${achievement.key}.subtitle`)}
+                </span>
+              </div>
+              <p className="text-body text-text-secondary mt-1">
+                {t(`items.${achievement.key}.description`)}
+              </p>
+            </div>
+
+            {/* Date — right side */}
+            <span className="text-small text-text-secondary whitespace-nowrap hidden sm:block">
+              {achievement.period}
+            </span>
+          </div>
         ))}
       </div>
     </div>
