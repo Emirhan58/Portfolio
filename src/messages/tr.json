@@ -1,0 +1,21 @@
+{
+  "nav": {
+    "about": "Hakkimda",
+    "skills": "Yetenekler",
+    "experience": "Deneyim",
+    "projects": "Projeler",
+    "achievements": "Basarilar",
+    "contact": "Iletisim",
+    "downloadCV": "CV Indir"
+  },
+  "hero": {
+    "greeting": "Merhaba, ben",
+    "name": "Emirhan Kaya",
+    "role": "Mid-Level Backend Developer",
+    "tagline": "Saglam sistemleri hassasiyet ve amacla olusturuyorum"
+  },
+  "meta": {
+    "title": "Emirhan Kaya - Portfolyo",
+    "description": "Java/Spring Boot ve .NET uzmani Mid-Level Backend Developer"
+  }
+}

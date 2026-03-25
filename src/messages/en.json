@@ -1,0 +1,21 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "experience": "Experience",
+    "projects": "Projects",
+    "achievements": "Achievements",
+    "contact": "Contact",
+    "downloadCV": "Download CV"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "name": "Emirhan Kaya",
+    "role": "Mid-Level Backend Developer",
+    "tagline": "Crafting robust systems with precision and purpose"
+  },
+  "meta": {
+    "title": "Emirhan Kaya - Portfolio",
+    "description": "Mid-Level Backend Developer specializing in Java/Spring Boot and .NET"
+  }
+}
