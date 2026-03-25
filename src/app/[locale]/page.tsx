@@ -6,15 +6,10 @@ import { SectionDivider } from "@/components/layout/SectionDivider";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
-
-// Placeholder for sections not yet implemented (Plan 02-03 replaces these)
-function PlaceholderSection({ id }: { id: string }) {
-  return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center py-20">
-      <h2 className="font-heading text-h2 text-text-primary capitalize">{id}</h2>
-    </div>
-  );
-}
+import { Experience } from "@/components/sections/Experience";
+import { Projects } from "@/components/sections/Projects";
+import { Achievements } from "@/components/sections/Achievements";
+import { Contact } from "@/components/sections/Contact";
 
 const SECTION_BG: Record<SectionId, string> = {
   hero: "bg-bg",
@@ -26,12 +21,14 @@ const SECTION_BG: Record<SectionId, string> = {
   contact: "bg-bg",
 };
 
-const SECTION_COMPONENTS: Partial<
-  Record<SectionId, React.ComponentType>
-> = {
+const SECTION_COMPONENTS: Record<SectionId, React.ComponentType> = {
   hero: Hero as unknown as React.ComponentType,
   about: About as unknown as React.ComponentType,
   skills: Skills as unknown as React.ComponentType,
+  experience: Experience as unknown as React.ComponentType,
+  projects: Projects as unknown as React.ComponentType,
+  achievements: Achievements as unknown as React.ComponentType,
+  contact: Contact as unknown as React.ComponentType,
 };
 
 export default async function HomePage({
@@ -52,7 +49,7 @@ export default async function HomePage({
               id={id}
               className={`${SECTION_BG[id]} ${id === "hero" ? "min-h-[90vh]" : ""}`}
             >
-              {Component ? <Component /> : <PlaceholderSection id={id} />}
+              <Component />
             </SectionShell>
             {index < SECTION_IDS.length - 1 && <SectionDivider />}
           </div>
