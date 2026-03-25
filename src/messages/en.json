@@ -185,15 +185,25 @@
   "achievements": {
     "heading": "Achievements",
     "items": {
-      "teknofest": {
-        "name": "TEKNOFEST 2021 & 2022",
+      "fixedwing2021": {
+        "name": "Fixed-Wing UAV 2021",
         "subtitle": "Finalist",
-        "description": "Image processing, UAV autonomous flight, and rocket competition ground station design"
+        "description": "TEKNOFEST International Fixed-Wing UAV Competition. Handled the image processing and computer vision pipeline for the team."
+      },
+      "fixedwing2022": {
+        "name": "Fixed-Wing UAV 2022",
+        "subtitle": "Finalist",
+        "description": "TEKNOFEST International Fixed-Wing UAV Competition. Led the software unit, coordinating autonomous flight and mission planning systems."
+      },
+      "rocket": {
+        "name": "Rocket Competition",
+        "subtitle": "Finalist",
+        "description": "TEKNOFEST Rocket Competition. Designed the ground station used for real-time telemetry and flight tracking during the launch."
       },
       "cansat": {
         "name": "CanSat Competition",
         "subtitle": "Finalist",
-        "description": "ST FOCOUNT team ground station management, coordinated by NASA & Lockheed Martin"
+        "description": "Model satellite competition coordinated by NASA and Lockheed Martin. Managed the ground station for the ST FOCOUNT team."
       }
     }
   },

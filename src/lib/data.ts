@@ -122,8 +122,10 @@ export const PROJECTS_DATA = [
 ] as const;
 
 export const ACHIEVEMENTS_DATA = [
-  { key: "teknofest", period: "2021 – 2022" },
-  { key: "cansat", period: "Jun 2022" },
+  { key: "fixedwing2021", period: "2021" },
+  { key: "fixedwing2022", period: "2022" },
+  { key: "rocket", period: "2022" },
+  { key: "cansat", period: "2022" },
 ] as const;
 
 export const CONTACT_LINKS = {

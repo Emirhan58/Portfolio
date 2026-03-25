@@ -185,15 +185,25 @@
   "achievements": {
     "heading": "Basarilar",
     "items": {
-      "teknofest": {
-        "name": "TEKNOFEST 2021 ve 2022",
+      "fixedwing2021": {
+        "name": "Sabit Kanat İHA 2021",
         "subtitle": "Finalist",
-        "description": "Goruntu isleme, IHA otonom ucus ve roket yarismasinda yer istasyonu tasarimi"
+        "description": "TEKNOFEST Uluslararası Sabit Kanat İHA Yarışması. Takımda görüntü işleme ve bilgisayarlı görü tarafını yürüttüm."
+      },
+      "fixedwing2022": {
+        "name": "Sabit Kanat İHA 2022",
+        "subtitle": "Finalist",
+        "description": "TEKNOFEST Uluslararası Sabit Kanat İHA Yarışması. Yazılım birim lideri olarak otonom uçuş ve görev planlama sistemlerini koordine ettim."
+      },
+      "rocket": {
+        "name": "Roket Yarışması",
+        "subtitle": "Finalist",
+        "description": "TEKNOFEST Roket Yarışması. Fırlatma sırasında gerçek zamanlı telemetri ve uçuş takibi için yer istasyonunu tasarladım."
       },
       "cansat": {
-        "name": "CanSat Yarismasi",
+        "name": "CanSat Yarışması",
         "subtitle": "Finalist",
-        "description": "ST FOCOUNT takimi yer istasyonu yonetimi, NASA ve Lockheed Martin koordinasyonlu"
+        "description": "NASA ve Lockheed Martin koordinasyonundaki model uydu yarışması. ST FOCOUNT takımının yer istasyonunu yönettim."
       }
     }
   },
