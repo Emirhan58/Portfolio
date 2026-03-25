@@ -67,7 +67,8 @@ export function SakuraFall() {
         .sakura-petal {
           position: absolute;
           top: 0;
-          animation: sakura-fall var(--fall-duration) var(--fall-delay) ease-in-out infinite;
+          opacity: 0;
+          animation: sakura-fall var(--fall-duration) var(--fall-delay) ease-in-out infinite backwards;
           will-change: transform, opacity;
         }
       `}</style>
