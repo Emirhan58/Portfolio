@@ -9,13 +9,180 @@
     "downloadCV": "CV Indir"
   },
   "hero": {
-    "greeting": "Merhaba, ben",
     "name": "Emirhan Kaya",
-    "role": "Mid-Level Backend Developer",
-    "tagline": "Saglam sistemleri hassasiyet ve amacla olusturuyorum"
+    "role": "Full-Stack Developer",
+    "tagline": "Saglam sistemleri hassasiyet ve amacla insa etmek",
+    "downloadCV": "CV Indir",
+    "scrollDown": "Asagi kaydir"
   },
   "meta": {
     "title": "Emirhan Kaya - Portfolyo",
     "description": "Java/Spring Boot ve .NET uzmani Mid-Level Backend Developer"
+  },
+  "about": {
+    "heading": "Hakkimda",
+    "bio": "Java/Spring Boot ve .NET ile yuksek performansli ve guvenilir sistemler gelistiren Back-End Developer. E-Ticaret sistemleri ve event-driven mimariler olusturuyor.",
+    "photoAlt": "Emirhan Kaya profil fotografi",
+    "stats": {
+      "experience": "Yil Deneyim",
+      "projects": "Proje",
+      "companies": "Sirket"
+    },
+    "education": {
+      "degree": "Bilgisayar Muhendisligi",
+      "university": "Sakarya Universitesi",
+      "period": "2020 - 2024",
+      "gpa": "GNO: 3.31"
+    }
+  },
+  "skills": {
+    "heading": "Yetenekler",
+    "categories": {
+      "languages": "Programlama Dilleri",
+      "frameworks": "Framework ve Kutuphaneler",
+      "infrastructure": "Altyapi ve DevOps",
+      "security": "Mesajlasma ve Guvenlik"
+    },
+    "items": {
+      "java": "Java",
+      "kotlin": "Kotlin",
+      "csharp": "C#",
+      "php": "PHP",
+      "javascript": "JavaScript",
+      "python": "Python",
+      "cpp": "C/C++",
+      "springboot": "Spring Boot",
+      "dotnet": ".NET",
+      "react": "React",
+      "laravel": "Laravel",
+      "docker": "Docker",
+      "kubernetes": "Kubernetes",
+      "helm": "Helm",
+      "aws": "AWS S3",
+      "cicd": "CI/CD",
+      "flyway": "Flyway",
+      "prometheus": "Prometheus",
+      "grafana": "Grafana",
+      "rabbitmq": "RabbitMQ",
+      "kafka": "Kafka",
+      "redis": "Redis",
+      "jwt": "JWT",
+      "mtls": "mTLS",
+      "keycloak": "KeyCloak",
+      "oauth": "OAuth"
+    }
+  },
+  "experience": {
+    "heading": "Deneyim",
+    "positions": {
+      "seyfhnova": {
+        "company": "Seyfhnova",
+        "role": "Full-Stack Developer (Serbest)",
+        "period": "Haz 2025 - Devam Ediyor",
+        "bullets": [
+          "Kotlin + Spring Boot mikroservisler, 12/15-factor mimarisi",
+          "JWT auth, X-Service-Token ile API guvenligi",
+          "Redis cache, Flyway sema versiyonlama",
+          "RabbitMQ ve Kafka event-driven iletisim"
+        ]
+      },
+      "planbanimation": {
+        "company": "Plan B Animation and Game Studio",
+        "role": "Backend Developer",
+        "period": "Haz 2025 - Sub 2026",
+        "location": "Ankara",
+        "bullets": [
+          "Birden fazla musteri projesinde backend altyapisi",
+          "Tasarimdan deployment ve izlemeye uretim hazir servisler",
+          "3 kisilik junior backend takimina liderlik ve mentorluk"
+        ]
+      },
+      "tenexy": {
+        "company": "Tenexy",
+        "role": "Backend Developer (Serbest)",
+        "period": "Haz 2022 - Haz 2025",
+        "bullets": [
+          "E-ticaret cozumleri, coklu dil destegi, Stripe/Sellix odeme",
+          "Kimlik dogrulama sistemleri, gelismis sepet ozellikleri",
+          "Veritabani mimarisi ve sorgu optimizasyonu"
+        ]
+      },
+      "gesk": {
+        "company": "GESK Technologies",
+        "role": "Stajyer, Gomulu Yazilim Gelistirici",
+        "period": "Eyl 2023 - Eki 2023",
+        "location": "Istanbul",
+        "bullets": [
+          "STM32 uzerinde Flappy Bird oyunu (C/C++)",
+          "Gercek zamanli programlama, donanim-yazilim entegrasyonu"
+        ]
+      },
+      "kplus": {
+        "company": "KPlus Bilgi Teknolojileri",
+        "role": "Stajyer, Fullstack Developer",
+        "period": "Tem 2023 - Agu 2023",
+        "location": "Istanbul",
+        "bullets": [
+          "UBER benzeri arac paylasim uygulamasi (.NET)",
+          "Gercek zamanli ozellikler, konum hizmetleri, RESTful API"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "heading": "Projeler",
+    "items": {
+      "microservices": {
+        "name": "Microservices Java",
+        "description": "Spring Boot mikroservisler, olceklenebilir dagitik mimari. Servis kesfetme, API gateway, event-driven iletisim.",
+        "shortDescription": "Servis kesfetme ve event-driven iletisimli Spring Boot mikroservisler"
+      },
+      "flappybird": {
+        "name": "STM32 Flappy Bird",
+        "description": "STM32F429I-DISC0 uzerinde interaktif Flappy Bird. TouchGFX grafikleri, gercek zamanli oyun dongusu.",
+        "shortDescription": "TouchGFX ile STM32 uzerinde gercek zamanli Flappy Bird"
+      },
+      "behaviorwatch": {
+        "name": "BehaviorWatch AI",
+        "description": "YOLOv8 ve OpenCV ile gercek zamanli sigara tespit sistemi.",
+        "shortDescription": "YOLOv8 ve OpenCV ile gercek zamanli sigara tespiti"
+      },
+      "bunqchat": {
+        "name": "Bunq Chat Backend",
+        "description": "Bunq icin gercek zamanli sohbet uygulamasi, temiz mimari ve RESTful API tasarimi.",
+        "shortDescription": "Temiz mimari ile gercek zamanli sohbet backend"
+      },
+      "allinpro": {
+        "name": "AllInPro E-Ticaret",
+        "description": "Odeme entegrasyonlu, urun yonetimi ve siparis islemeli tam donanimli e-ticaret platformu.",
+        "shortDescription": "Odeme entegrasyonlu tam donanimli e-ticaret platformu"
+      },
+      "cansat": {
+        "name": "CanSat Yer Istasyonu",
+        "description": "NASA/Lockheed Martin koordinasyonunda CanSat yarismasi yer istasyonu. Gercek zamanli telemetri, GPS takip, irtifa izleme.",
+        "shortDescription": "Gercek zamanli telemetri ve GPS takipli CanSat yer istasyonu"
+      }
+    }
+  },
+  "achievements": {
+    "heading": "Basarilar",
+    "items": {
+      "teknofest": {
+        "name": "TEKNOFEST 2021 ve 2022",
+        "subtitle": "Finalist",
+        "description": "Goruntu isleme, IHA otonom ucus ve roket yarismasinda yer istasyonu tasarimi"
+      },
+      "cansat": {
+        "name": "CanSat Yarismasi",
+        "subtitle": "Finalist",
+        "description": "ST FOCOUNT takimi yer istasyonu yonetimi, NASA ve Lockheed Martin koordinasyonlu"
+      }
+    }
+  },
+  "contact": {
+    "heading": "Iletisim",
+    "email": "E-posta",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
   }
 }

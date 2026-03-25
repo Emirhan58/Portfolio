@@ -9,13 +9,180 @@
     "downloadCV": "Download CV"
   },
   "hero": {
-    "greeting": "Hello, I'm",
     "name": "Emirhan Kaya",
-    "role": "Mid-Level Backend Developer",
-    "tagline": "Crafting robust systems with precision and purpose"
+    "role": "Full-Stack Developer",
+    "tagline": "Crafting robust systems with precision and purpose",
+    "downloadCV": "Download CV",
+    "scrollDown": "Scroll down"
   },
   "meta": {
     "title": "Emirhan Kaya - Portfolio",
     "description": "Mid-Level Backend Developer specializing in Java/Spring Boot and .NET"
+  },
+  "about": {
+    "heading": "About",
+    "bio": "Back-End Developer specializing in high-performance and reliable systems with Java/Spring Boot and .NET. Crafting E-Commerce systems and event-driven architectures.",
+    "photoAlt": "Emirhan Kaya profile photo",
+    "stats": {
+      "experience": "Years Experience",
+      "projects": "Projects",
+      "companies": "Companies"
+    },
+    "education": {
+      "degree": "Computer Engineering",
+      "university": "Sakarya University",
+      "period": "2020 - 2024",
+      "gpa": "GPA: 3.31"
+    }
+  },
+  "skills": {
+    "heading": "Skills",
+    "categories": {
+      "languages": "Languages",
+      "frameworks": "Frameworks",
+      "infrastructure": "Infrastructure & DevOps",
+      "security": "Messaging & Security"
+    },
+    "items": {
+      "java": "Java",
+      "kotlin": "Kotlin",
+      "csharp": "C#",
+      "php": "PHP",
+      "javascript": "JavaScript",
+      "python": "Python",
+      "cpp": "C/C++",
+      "springboot": "Spring Boot",
+      "dotnet": ".NET",
+      "react": "React",
+      "laravel": "Laravel",
+      "docker": "Docker",
+      "kubernetes": "Kubernetes",
+      "helm": "Helm",
+      "aws": "AWS S3",
+      "cicd": "CI/CD",
+      "flyway": "Flyway",
+      "prometheus": "Prometheus",
+      "grafana": "Grafana",
+      "rabbitmq": "RabbitMQ",
+      "kafka": "Kafka",
+      "redis": "Redis",
+      "jwt": "JWT",
+      "mtls": "mTLS",
+      "keycloak": "KeyCloak",
+      "oauth": "OAuth"
+    }
+  },
+  "experience": {
+    "heading": "Experience",
+    "positions": {
+      "seyfhnova": {
+        "company": "Seyfhnova",
+        "role": "Full-Stack Developer (Freelancer)",
+        "period": "Jun 2025 - Present",
+        "bullets": [
+          "Kotlin + Spring Boot microservices, 12/15-factor architecture",
+          "JWT auth, X-Service-Token API security",
+          "Redis caching, Flyway schema versioning",
+          "RabbitMQ & Kafka event-driven communication"
+        ]
+      },
+      "planbanimation": {
+        "company": "Plan B Animation and Game Studio",
+        "role": "Backend Developer",
+        "period": "Jun 2025 - Feb 2026",
+        "location": "Ankara",
+        "bullets": [
+          "Backend infrastructure for multiple client projects",
+          "Production-ready services from design to deployment to monitoring",
+          "Led and mentored 3-person junior backend team"
+        ]
+      },
+      "tenexy": {
+        "company": "Tenexy",
+        "role": "Backend Developer (Freelancer)",
+        "period": "Jun 2022 - Jun 2025",
+        "bullets": [
+          "E-commerce solutions, multi-language support, Stripe/Sellix payment",
+          "Authentication systems, advanced cart features",
+          "Database architecture and query optimization"
+        ]
+      },
+      "gesk": {
+        "company": "GESK Technologies",
+        "role": "Intern, Embedded Software Developer",
+        "period": "Sep 2023 - Oct 2023",
+        "location": "Istanbul",
+        "bullets": [
+          "Flappy Bird game on STM32 (C/C++)",
+          "Real-time programming, hardware-software integration"
+        ]
+      },
+      "kplus": {
+        "company": "KPlus Information Technologies",
+        "role": "Intern, Fullstack Developer",
+        "period": "Jul 2023 - Aug 2023",
+        "location": "Istanbul",
+        "bullets": [
+          "UBER-like ride-sharing application (.NET)",
+          "Real-time features, geolocation, RESTful API"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "heading": "Projects",
+    "items": {
+      "microservices": {
+        "name": "Microservices Java",
+        "description": "Spring Boot microservices, scalable distributed architecture. Service discovery, API gateway, event-driven communication.",
+        "shortDescription": "Spring Boot microservices with service discovery and event-driven communication"
+      },
+      "flappybird": {
+        "name": "STM32 Flappy Bird",
+        "description": "Interactive Flappy Bird on STM32F429I-DISC0. TouchGFX graphics, real-time game loop with hardware integration.",
+        "shortDescription": "Interactive Flappy Bird on STM32 with TouchGFX real-time game loop"
+      },
+      "behaviorwatch": {
+        "name": "BehaviorWatch AI",
+        "description": "Real-time cigarette detection system using YOLOv8 and OpenCV for behavioral monitoring.",
+        "shortDescription": "Real-time cigarette detection with YOLOv8 and OpenCV"
+      },
+      "bunqchat": {
+        "name": "Bunq Chat Backend",
+        "description": "Real-time chat application for Bunq, built with clean architecture and RESTful API design.",
+        "shortDescription": "Real-time chat backend with clean architecture"
+      },
+      "allinpro": {
+        "name": "AllInPro E-Commerce",
+        "description": "Full-featured e-commerce platform with payment integration, product management, and order processing.",
+        "shortDescription": "Full-featured e-commerce platform with payment integration"
+      },
+      "cansat": {
+        "name": "CanSat Ground Control",
+        "description": "Ground station for NASA/Lockheed Martin coordinated CanSat competition. Real-time telemetry, GPS tracking, altitude monitoring.",
+        "shortDescription": "CanSat ground station with real-time telemetry and GPS tracking"
+      }
+    }
+  },
+  "achievements": {
+    "heading": "Achievements",
+    "items": {
+      "teknofest": {
+        "name": "TEKNOFEST 2021 & 2022",
+        "subtitle": "Finalist",
+        "description": "Image processing, UAV autonomous flight, and rocket competition ground station design"
+      },
+      "cansat": {
+        "name": "CanSat Competition",
+        "subtitle": "Finalist",
+        "description": "ST FOCOUNT team ground station management, coordinated by NASA & Lockheed Martin"
+      }
+    }
+  },
+  "contact": {
+    "heading": "Contact",
+    "email": "Email",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
   }
 }
