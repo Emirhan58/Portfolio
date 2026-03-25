@@ -21,7 +21,7 @@
   },
   "about": {
     "heading": "Hakkimda",
-    "bio": "Kotlin/Spring Boot ve .NET/C# uzmani backend developer. Gercek uretim yukunu karsilayan dagitik sistemler tasarlama deneyimine sahibim. 12/15-faktor prensiplerine dayanan mikroservisler gelistiriyor, RabbitMQ ve Kafka ile event-driven pipeline'lar kuruyor, JWT ve KeyCloak ile guvenli kimlik dogrulama akislari uyguluyorum. Gozlemlenebilir, bakimi kolay ve gece 3'te sizi uyandirmayacak sistemler olusturmaya onem veriyorum.",
+    "bio": "Java/Kotlin Spring Boot ve .NET/C# ağırlıklı çalışan bir backend geliştiriciyim. Son birkaç yıldır dağıtık sistemler üzerinde çalışıyorum, Kafka ve RabbitMQ ile olay güdümlü mimariler kurdum, mikro servisleri 12/15-factor prensipleriyle tasarladım, JWT ve KeyCloak ile kimlik doğrulama akışları geliştirdim. Sistemlerin baskı altında nasıl davrandığını, bir şeyler ters gittiğinde ne kadar hızlı debug edilebildiğini ve kodu ilerleyen süreçte okuyacak kişilerin bunu ne kadar rahat anlayacağını önemserim.",
     "photoAlt": "Emirhan Kaya profil fotografi",
     "location": "Istanbul, Turkiye",
     "stats": {
@@ -164,6 +164,21 @@
         "name": "CanSat Yer Istasyonu",
         "description": "NASA ve Lockheed Martin koordinasyonundaki CanSat yarismasi icin gelistirilen yer istasyonu yazilimi. Minyatur uydu yukunden inis sirasinda gercek zamanli telemetri verisi alir ve gorsellestirir. Python ve PyQt5 ile gelistirilmis olup irtifa, sicaklik, basinc ve GPS koordinatlari icin canli guncellenen grafikler iceriyor. 3D yol gorsellestirmesi, otomatik oturum yonetimiyle CSV'ye veri kaydi, hata kurtarmali seri port iletisim isleme ve yuk sagligi gostergelerini gosteren gorev kontrol paneli bulunmaktadir. Sistem, ST FOCOUNT takiminin yarisma ucusunu basariyla desteklemis ve inis fazinda 1 Hz'de telemetri paketlerini islenmistir.",
         "shortDescription": "Gercek zamanli telemetri ve GPS takipli CanSat yer istasyonu"
+      },
+      "farkle": {
+        "name": "Farkle Zar Oyunu",
+        "description": "Klasik Farkle zar oyununun Kotlin/Spring Boot backend ve Next.js/TypeScript frontend ile full-stack uygulamasi. Backend; oyun durumu yonetimi, puanlama mantigi, tur dogrulamasi ve cok oyunculu oturum koordinasyonunu REST API'ler uzerinden yonetir, Docker Compose ile konteynerize edilmistir. Frontend; gercek zamanli UI guncellemeleri, skor takibi ve duyarli tasarimla interaktif bir zar atma deneyimi sunar. Oyuncular sirali olarak alti zar atar, puanlama kombinasyonlarina gore hangilerini tutacagina karar verir ve puanlari bankaya yatirma ya da risk alma secimini yapar.",
+        "shortDescription": "Kotlin backend ve Next.js frontend ile full-stack Farkle zar oyunu"
+      },
+      "facerecognition": {
+        "name": "Yuz Tanima AI",
+        "description": "InsightFace paketi olmadan calisan, ArcFace (ONNX) ve YOLOv8-Face ile gelistirilmis yuz tanima sistemi. Pipeline YOLOv8 ile yuz tespit eder, kirpmalari 112x112'ye normalize eder, ArcFace uzerinden 512 boyutlu L2-normalize embedding'ler uretir ve yapilandirabilir guven esikleriyle kayitli veritabanina karsi eslestirir. Web kamerasi veya IP kamera akislari uzerinden gercek zamanli tanima, cikti gorsellestirmeli tekil goruntu analizi ve yeni kisilerin dinamik kaydini destekler. Minimum bagimlilikla pratik dagitim icin tasarlandi — sadece ONNXRuntime, OpenCV ve iki model dosyasi.",
+        "shortDescription": "ArcFace ve YOLOv8 ile gercek zamanli yuz tanima — InsightFace bagimliligi yok"
+      },
+      "patientdonation": {
+        "name": "Hasta Bagis Platformu",
+        "description": "Yapay zeka ve veri madenciligi algoritmalariyla desteklenen, ihtiyac sahibi hastalari bagiscilarla bulusturan web uygulamasi. ASP.NET (C#) backend ve JavaScript/HTML/CSS frontend ile 162 commit boyunca gelistirildi. Platform, aciliyet, tibbi durum ve cografi yakinliga gore bagis taleplerini potansiyel bagiscilarla eslestirmek icin makine ogrenmesi modelleri kullaniyor. Bagisci kaydi ve profil yonetimi, tibbi dogrulama ile hasta talep gonderimi, akilli eslestirme motoru ve bagis durumu ile etki metriklerini izlemek icin kontrol paneli iceriyor.",
+        "shortDescription": "Akilli bagisci eslestirmeli yapay zeka destekli hasta bagis platformu"
       }
     }
   },

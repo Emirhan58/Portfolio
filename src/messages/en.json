@@ -21,7 +21,7 @@
   },
   "about": {
     "heading": "About",
-    "bio": "Backend developer specializing in Kotlin/Spring Boot and .NET/C#, with hands-on experience designing distributed systems that handle real production load. I build microservices grounded in 12/15-factor principles, architect event-driven pipelines with RabbitMQ and Kafka, and implement secure authentication flows using JWT and KeyCloak. I care about systems that are observable, maintainable, and don't surprise you at 3am.",
+    "bio": "Backend developer with a focus on Java/Kotlin Spring Boot and .NET/C#. I've spent the last few years working across distributed systems, designing event-driven architectures with Kafka and RabbitMQ, building microservices around 12/15-factor principles, and handling authentication with JWT and KeyCloak. I tend to think a lot about how systems behave under pressure, how easy they are to debug when something goes wrong, and how future teammates will read the code.",
     "photoAlt": "Emirhan Kaya profile photo",
     "location": "İstanbul, Türkiye",
     "stats": {
@@ -164,6 +164,21 @@
         "name": "CanSat Ground Control",
         "description": "Ground station software developed for the CanSat competition coordinated by NASA and Lockheed Martin. Receives and visualizes real-time telemetry data from a miniature satellite payload during its descent. Built with Python and PyQt5, featuring live-updating graphs for altitude, temperature, pressure, and GPS coordinates. Includes a 3D trajectory visualization, data logging to CSV with automatic session management, serial port communication handling with error recovery, and a mission control dashboard showing payload health indicators. The system successfully supported the ST FOCOUNT team's competition flight, processing telemetry packets at 1 Hz throughout the descent phase.",
         "shortDescription": "CanSat ground station with real-time telemetry and GPS tracking"
+      },
+      "farkle": {
+        "name": "Farkle Dice Game",
+        "description": "A full-stack implementation of the classic Farkle dice game with a Kotlin/Spring Boot backend and Next.js/TypeScript frontend. The backend handles game state management, scoring logic, turn validation, and multiplayer session coordination via REST APIs, containerized with Docker Compose. The frontend delivers an interactive dice-rolling experience with real-time UI updates, score tracking, and responsive design. Players take turns rolling six dice, choosing which to keep based on scoring combinations, and deciding whether to bank points or risk it all — a clean separation of game logic on the server and presentation on the client.",
+        "shortDescription": "Full-stack Farkle dice game with Kotlin backend and Next.js frontend"
+      },
+      "facerecognition": {
+        "name": "Face Recognition AI",
+        "description": "A facial recognition system built with ArcFace (ONNX) and YOLOv8-Face that operates without the InsightFace package, enabling compatibility with numpy 2.x. The pipeline detects faces via YOLOv8, normalizes crops to 112x112, generates 512-dimensional L2-normalized embeddings through ArcFace, and matches against an enrolled database with configurable confidence thresholds. Supports real-time recognition via webcam or IP camera streams, single-image analysis with output visualization, and dynamic enrollment of new individuals. Designed for practical deployment with minimal dependencies — just ONNXRuntime, OpenCV, and two model files.",
+        "shortDescription": "Real-time face recognition with ArcFace and YOLOv8 — no InsightFace dependency"
+      },
+      "patientdonation": {
+        "name": "Patient Donation Platform",
+        "description": "A web application connecting patients in need with donors, powered by AI and data mining algorithms. Built with ASP.NET (C#) backend and a JavaScript/HTML/CSS frontend across 162 commits. The platform uses machine learning models to match donation requests with potential donors based on urgency, medical condition, and geographic proximity. Features include donor registration and profile management, patient request submission with medical verification, an intelligent matching engine, and a dashboard for tracking donation status and impact metrics.",
+        "shortDescription": "AI-powered patient donation platform with intelligent donor matching"
       }
     }
   },

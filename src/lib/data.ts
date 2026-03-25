@@ -100,6 +100,25 @@ export const PROJECTS_DATA = [
     stars: 0,
     tech: ["Python", "PyQt5", "Telemetry"],
   },
+  {
+    key: "farkle",
+    github: "https://github.com/Emirhan58/dice-game",
+    githubFrontend: "https://github.com/Emirhan58/dice-game-frontend",
+    stars: 0,
+    tech: ["Kotlin", "Spring Boot", "Next.js", "TypeScript", "Docker"],
+  },
+  {
+    key: "facerecognition",
+    github: "https://github.com/Emirhan58/face-recognize-ai",
+    stars: 0,
+    tech: ["Python", "YOLOv8", "ArcFace", "ONNX", "OpenCV"],
+  },
+  {
+    key: "patientdonation",
+    github: "https://github.com/Emirhan58/Patient-Donation-Website",
+    stars: 0,
+    tech: ["JavaScript", "C#", "ASP.NET", "AI", "Data Mining"],
+  },
 ] as const;
 
 export const ACHIEVEMENTS_DATA = [
@@ -114,7 +133,7 @@ export const CONTACT_LINKS = {
 } as const;
 
 export const STATS_DATA = [
-  { key: "experience", value: "3+" },
+  { key: "experience", value: "1+" },
   { key: "projects", value: "39+" },
   { key: "companies", value: "4" },
 ] as const;
