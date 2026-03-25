@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { useScrollContext } from "@/components/providers/ScrollProvider";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { NAV_LINKS, SECTION_KANJI } from "@/lib/constants";
@@ -13,6 +14,7 @@ export function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
   const { shouldAnimate } = useReducedMotion();
+  const t = useTranslations("nav");
 
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -79,7 +81,7 @@ export function Navbar() {
                     : "text-text-secondary hover:text-text-primary"
                 )}
               >
-                {link.label}
+                {t(link.id)}
                 {activeSection === link.id && (
                   <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-accent-red rounded-full" />
                 )}
@@ -109,11 +111,11 @@ export function Navbar() {
 
             {/* CV Download Button */}
             <a
-              href="/cv.pdf"
+              href="/Emirhan_Kaya_CV.pdf"
               download
               className="hidden sm:inline-flex bg-accent-red text-paper px-4 py-2 rounded text-sm font-medium hover:bg-accent-red-bright transition-colors duration-normal"
             >
-              Download CV
+              {t("downloadCV")}
             </a>
 
             {/* Hamburger (mobile) */}
@@ -191,16 +193,16 @@ export function Navbar() {
                       <span className="font-kanji text-h3 text-accent-gold/30">
                         {SECTION_KANJI[link.id]}
                       </span>
-                      <span className="font-heading text-h2">{link.label}</span>
+                      <span className="font-heading text-h2">{t(link.id)}</span>
                     </button>
                   ))}
                   {/* Mobile CV Download */}
                   <a
-                    href="/cv.pdf"
+                    href="/Emirhan_Kaya_CV.pdf"
                     download
                     className="mt-4 bg-accent-red text-paper px-6 py-3 rounded text-body font-medium hover:bg-accent-red-bright transition-colors duration-normal"
                   >
-                    Download CV
+                    {t("downloadCV")}
                   </a>
                 </motion.div>
               </>
@@ -221,15 +223,15 @@ export function Navbar() {
                     <span className="font-kanji text-h3 text-accent-gold/30">
                       {SECTION_KANJI[link.id]}
                     </span>
-                    <span className="font-heading text-h2">{link.label}</span>
+                    <span className="font-heading text-h2">{t(link.id)}</span>
                   </button>
                 ))}
                 <a
-                  href="/cv.pdf"
+                  href="/Emirhan_Kaya_CV.pdf"
                   download
                   className="mt-4 bg-accent-red text-paper px-6 py-3 rounded text-body font-medium"
                 >
-                  Download CV
+                  {t("downloadCV")}
                 </a>
               </div>
             )}
