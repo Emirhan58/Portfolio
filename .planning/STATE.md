@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Completed 02-00-PLAN.md
-last_updated: "2026-03-25T14:24:49.076Z"
+stopped_at: Completed 02-01-PLAN.md
+last_updated: "2026-03-25T14:28:15.813Z"
 progress:
   total_phases: 4
   completed_phases: 1
   total_plans: 6
-  completed_plans: 3
+  completed_plans: 4
 ---
 
 # Project State
@@ -24,7 +24,7 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 ## Current Position
 
 Phase: 02 (content-and-visual-design) — EXECUTING
-Plan: 2 of 4
+Plan: 2 of 4 (02-01 complete)
 
 ## Performance Metrics
 
@@ -47,6 +47,7 @@ Plan: 2 of 4
 
 *Updated after each plan completion*
 | Phase 02 P00 | 2min | 2 tasks | 9 files |
+| Phase 02 P01 | 5min | 3 tasks | 12 files |
 
 ## Accumulated Context
 
@@ -65,6 +66,8 @@ Recent decisions affecting current work:
 - [01-02]: SectionShell as Server Component; Navbar as Client Component inside Providers boundary
 - [02-00]: File-system read pattern for Server Component tests (no React rendering in jsdom)
 - [02-00]: safeRead helper returns empty string on missing files instead of crashing test suite
+- [Phase 02]: Noto Serif JP text param unavailable -- using preload:false + latin-ext for on-demand kanji via unicode-range
+- [Phase 02]: All shared UI components as Server Components (no use client) for zero client JS
 
 ### Pending Todos
 
@@ -77,6 +80,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T14:24:49.073Z
-Stopped at: Completed 02-00-PLAN.md
+Last session: 2026-03-25T14:28:15.810Z
+Stopped at: Completed 02-01-PLAN.md
 Resume file: None

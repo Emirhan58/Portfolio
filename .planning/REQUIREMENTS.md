@@ -39,10 +39,10 @@
 
 ### Visual
 
-- [ ] **VISL-01**: Site uses Japanese typography pairing (Noto Serif JP subset for 7 kanji + Inter body)
-- [ ] **VISL-02**: Site features ink-wash background textures and paper grain effects
-- [ ] **VISL-03**: Each section displays its decorative kanji character (門, 道, 技, 戦, 作, 誉, 結)
-- [ ] **VISL-04**: Subtle Japanese geometric patterns (asanoha, seigaiha) used as accents
+- [x] **VISL-01**: Site uses Japanese typography pairing (Noto Serif JP subset for 7 kanji + Inter body)
+- [x] **VISL-02**: Site features ink-wash background textures and paper grain effects
+- [x] **VISL-03**: Each section displays its decorative kanji character (門, 道, 技, 戦, 作, 誉, 結)
+- [x] **VISL-04**: Subtle Japanese geometric patterns (asanoha, seigaiha) used as accents
 
 ### Audio
 
@@ -109,10 +109,10 @@
 | ANIM-06 | Phase 3 | Pending |
 | ANIM-07 | Phase 3 | Pending |
 | ANIM-08 | Phase 3 | Pending |
-| VISL-01 | Phase 2 | Pending |
-| VISL-02 | Phase 2 | Pending |
-| VISL-03 | Phase 2 | Pending |
-| VISL-04 | Phase 2 | Pending |
+| VISL-01 | Phase 2 | Complete |
+| VISL-02 | Phase 2 | Complete |
+| VISL-03 | Phase 2 | Complete |
+| VISL-04 | Phase 2 | Complete |
 | AUDL-01 | Phase 4 | Pending |
 | AUDL-02 | Phase 4 | Pending |
 | AUDL-03 | Phase 4 | Pending |
