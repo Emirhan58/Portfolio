@@ -30,7 +30,7 @@ export function SakuraFall() {
   const [petals, setPetals] = useState<Petal[]>([]);
 
   useEffect(() => {
-    setPetals(generatePetals(20));
+    setPetals(generatePetals(50));
   }, []);
 
   if (petals.length === 0) return null;
