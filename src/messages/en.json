@@ -21,7 +21,7 @@
   },
   "about": {
     "heading": "About",
-    "bio": "Mid-level Backend Developer specializing in backend architecture with Kotlin/Spring Boot and .NET/C#. Experienced in building scalable microservices following 12/15-factor architecture, event-driven systems with RabbitMQ and Kafka, and secure authentication with JWT and KeyCloak. Focused on delivering maintainable, high-performance backend services with a strong problem-solving mindset.",
+    "bio": "Backend developer specializing in Kotlin/Spring Boot and .NET/C#, with hands-on experience designing distributed systems that handle real production load. I build microservices grounded in 12/15-factor principles, architect event-driven pipelines with RabbitMQ and Kafka, and implement secure authentication flows using JWT and KeyCloak. I care about systems that are observable, maintainable, and don't surprise you at 3am.",
     "photoAlt": "Emirhan Kaya profile photo",
     "location": "İstanbul, Türkiye",
     "stats": {

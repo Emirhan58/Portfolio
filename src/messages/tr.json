@@ -21,7 +21,7 @@
   },
   "about": {
     "heading": "Hakkimda",
-    "bio": "Kotlin/Spring Boot ve .NET/C# ile backend mimarisi konusunda uzmanlasmis Mid-level Backend Developer. 12/15-faktor mimarisine uygun olceklenebilir mikroservisler, RabbitMQ ve Kafka ile event-driven sistemler ve JWT ile KeyCloak kullanarak guvenli kimlik dogrulama sistemleri gelistirme deneyimine sahip. Bakim yapilabilir, yuksek performansli backend servisleri sunmaya ve guclu problem cozme yaklasimina odaklanmis.",
+    "bio": "Kotlin/Spring Boot ve .NET/C# uzmani backend developer. Gercek uretim yukunu karsilayan dagitik sistemler tasarlama deneyimine sahibim. 12/15-faktor prensiplerine dayanan mikroservisler gelistiriyor, RabbitMQ ve Kafka ile event-driven pipeline'lar kuruyor, JWT ve KeyCloak ile guvenli kimlik dogrulama akislari uyguluyorum. Gozlemlenebilir, bakimi kolay ve gece 3'te sizi uyandirmayacak sistemler olusturmaya onem veriyorum.",
     "photoAlt": "Emirhan Kaya profil fotografi",
     "location": "Istanbul, Turkiye",
     "stats": {
