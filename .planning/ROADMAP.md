@@ -29,11 +29,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. User sees a sticky navigation bar with section links that highlight the currently visible section on scroll
   4. User with prefers-reduced-motion enabled sees a fully functional site with zero animations
   5. GSAP plugins are registered once and Framer Motion is available — no hydration errors in console
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
+- [ ] 01-01-PLAN.md — Scaffold Next.js 15 with dependencies, fonts, design tokens, i18n routing (TR/EN)
+- [ ] 01-02-PLAN.md — Animation infrastructure, responsive layout shell with Navbar, scroll-spy, Lenis smooth scroll
 
 ### Phase 2: Content and Visual Design
 **Goal**: All 7 portfolio sections populated with real content from EMIRHAN_KAYA_DATA.md, styled with Japanese visual treatment — ink-wash textures, decorative kanji, Japanese typography, geometric patterns, and parchment-style cards — resulting in a complete, recruiter-usable static portfolio
@@ -91,7 +91,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/0 | Not started | - |
+| 1. Foundation | 0/2 | Planning complete | - |
 | 2. Content and Visual Design | 0/0 | Not started | - |
 | 3. Animations | 0/0 | Not started | - |
 | 4. Audio and Deploy | 0/0 | Not started | - |
