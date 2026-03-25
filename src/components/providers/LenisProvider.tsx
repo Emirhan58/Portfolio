@@ -29,7 +29,7 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
         type: "proximity",
         debounce: 300,
       });
-      const sections = document.querySelectorAll("[data-section]");
+      const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-section]"));
       snap.addElements(sections, { align: ["start"] });
     }
 

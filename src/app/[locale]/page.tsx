@@ -1,5 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
-import { SECTION_IDS, SECTION_KANJI } from "@/lib/constants";
+import { SECTION_IDS } from "@/lib/constants";
+import { SectionShell } from "@/components/layout/SectionShell";
 
 export default async function HomePage({
   params,
@@ -12,21 +13,17 @@ export default async function HomePage({
   return (
     <main>
       {SECTION_IDS.map((id) => (
-        <section
+        <SectionShell
           key={id}
           id={id}
-          data-section
-          className="min-h-screen flex items-center justify-center"
+          className={id === "hero" ? "min-h-[90vh]" : undefined}
         >
-          <div className="text-center">
-            <span className="font-kanji text-display text-accent-gold opacity-20">
-              {SECTION_KANJI[id]}
-            </span>
-            <h2 className="font-heading text-h2 text-text-primary mt-4 capitalize">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-screen">
+            <h2 className="font-heading text-h2 text-text-primary capitalize">
               {id}
             </h2>
           </div>
-        </section>
+        </SectionShell>
       ))}
     </main>
   );

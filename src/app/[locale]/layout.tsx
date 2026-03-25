@@ -5,6 +5,9 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
+import { Providers } from "@/components/providers/Providers";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -44,7 +47,11 @@ export default async function LocaleLayout({
     >
       <body className="bg-bg text-text-primary font-body antialiased">
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <Providers>
+            <Navbar />
+            {children}
+            <Footer />
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>
