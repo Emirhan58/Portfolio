@@ -155,7 +155,7 @@ export async function Hero() {
 
         {/* Sakura branch with flowers — right side */}
         <svg
-          className="absolute right-4 md:right-12 top-[8%] w-44 md:w-64 h-[75%] opacity-[0.09]"
+          className="absolute right-4 md:right-12 top-[25%] w-44 md:w-64 h-[70%] opacity-[0.09]"
           viewBox="0 0 220 600"
           preserveAspectRatio="xMidYMid slice"
         >
