@@ -17,14 +17,14 @@
 
 ### Content
 
-- [ ] **CONT-01**: User sees a full-screen hero with name and role in brush-style typography over animated ink splash
-- [ ] **CONT-02**: User sees About section with bio, profile photo in ink-wash frame, and animated stat counters
-- [ ] **CONT-03**: User sees Skills section with categorized skill display in scroll/tomar style with katana proficiency bars
-- [ ] **CONT-04**: User sees Experience timeline as vertical scroll with samurai journey metaphor and ink stamp logos
-- [ ] **CONT-05**: User sees Projects in masonry grid with parchment-style cards, hover ink reveal, and GitHub links
-- [ ] **CONT-06**: User sees Achievements section with TEKNOFEST/CanSat displayed as medals/badges
-- [ ] **CONT-07**: User sees Contact section with email, GitHub, LinkedIn links styled as mon (crest) icons
-- [ ] **CONT-08**: User can download PDF CV from a button in hero or navbar
+- [x] **CONT-01**: User sees a full-screen hero with name and role in brush-style typography over animated ink splash
+- [x] **CONT-02**: User sees About section with bio, profile photo in ink-wash frame, and animated stat counters
+- [x] **CONT-03**: User sees Skills section with categorized skill display in scroll/tomar style with katana proficiency bars
+- [x] **CONT-04**: User sees Experience timeline as vertical scroll with samurai journey metaphor and ink stamp logos
+- [x] **CONT-05**: User sees Projects in masonry grid with parchment-style cards, hover ink reveal, and GitHub links
+- [x] **CONT-06**: User sees Achievements section with TEKNOFEST/CanSat displayed as medals/badges
+- [x] **CONT-07**: User sees Contact section with email, GitHub, LinkedIn links styled as mon (crest) icons
+- [x] **CONT-08**: User can download PDF CV from a button in hero or navbar
 
 ### Animations
 
@@ -93,14 +93,14 @@
 | FOUND-05 | Phase 1 | Complete |
 | FOUND-06 | Phase 1 | Complete |
 | FOUND-07 | Phase 1 | Complete |
-| CONT-01 | Phase 2 | Pending |
-| CONT-02 | Phase 2 | Pending |
-| CONT-03 | Phase 2 | Pending |
-| CONT-04 | Phase 2 | Pending |
-| CONT-05 | Phase 2 | Pending |
-| CONT-06 | Phase 2 | Pending |
-| CONT-07 | Phase 2 | Pending |
-| CONT-08 | Phase 2 | Pending |
+| CONT-01 | Phase 2 | Complete |
+| CONT-02 | Phase 2 | Complete |
+| CONT-03 | Phase 2 | Complete |
+| CONT-04 | Phase 2 | Complete |
+| CONT-05 | Phase 2 | Complete |
+| CONT-06 | Phase 2 | Complete |
+| CONT-07 | Phase 2 | Complete |
+| CONT-08 | Phase 2 | Complete |
 | ANIM-01 | Phase 3 | Pending |
 | ANIM-02 | Phase 3 | Pending |
 | ANIM-03 | Phase 3 | Pending |
