@@ -10,7 +10,7 @@
   },
   "hero": {
     "name": "Emirhan Kaya",
-    "role": "Full-Stack Developer",
+    "role": "Backend Developer",
     "tagline": "Systems that scale, code that lasts",
     "downloadCV": "Download CV",
     "scrollDown": "Scroll down"
@@ -58,6 +58,7 @@
       "dotnet": ".NET",
       "react": "React",
       "laravel": "Laravel",
+      "django": "Django",
       "docker": "Docker",
       "kubernetes": "Kubernetes",
       "helm": "Helm",
@@ -80,8 +81,8 @@
     "positions": {
       "seyfhnova": {
         "company": "Seyfhnova",
-        "role": "Full-Stack Developer (Freelancer)",
-        "period": "Jun 2025 - Present",
+        "role": "Backend Developer (Freelancer)",
+        "period": "Jun 2025 - Feb 2026",
         "bullets": [
           "Designing microservices with Kotlin + Spring Boot, following 12/15-factor principles",
           "Implementing JWT authentication and inter-service security via X-Service-Token",
@@ -209,6 +210,7 @@
   },
   "contact": {
     "heading": "Contact",
+    "subtitle": "Have a project in mind or want to chat? Feel free to reach out.",
     "email": "Email",
     "github": "GitHub",
     "linkedin": "LinkedIn"

@@ -35,9 +35,12 @@ export async function Contact() {
 
   return (
     <div className="max-w-[600px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 className="font-heading text-h2 text-paper text-center mb-12 font-bold">
+      <h2 className="font-heading text-h2 text-paper text-center mb-4 font-bold">
         {t("heading")}
       </h2>
+      <p className="text-body text-text-secondary text-center mb-12">
+        {t("subtitle")}
+      </p>
 
       <div className="flex justify-center gap-12">
         <MonIcon href={CONTACT_LINKS.email.href} label={t("email")}>

@@ -16,6 +16,7 @@ export const SKILLS_DATA = {
     { key: "dotnet", proficiency: 75 },
     { key: "react", proficiency: 70 },
     { key: "laravel", proficiency: 65 },
+    { key: "django", proficiency: 60 },
   ],
   infrastructure: [
     { key: "docker", proficiency: 85 },

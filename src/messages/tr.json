@@ -10,7 +10,7 @@
   },
   "hero": {
     "name": "Emirhan Kaya",
-    "role": "Full-Stack Developer",
+    "role": "Backend Developer",
     "tagline": "Ölçeklenen sistemler, kalıcı kod",
     "downloadCV": "CV İndir",
     "scrollDown": "Aşağı kaydır"
@@ -58,6 +58,7 @@
       "dotnet": ".NET",
       "react": "React",
       "laravel": "Laravel",
+      "django": "Django",
       "docker": "Docker",
       "kubernetes": "Kubernetes",
       "helm": "Helm",
@@ -80,8 +81,8 @@
     "positions": {
       "seyfhnova": {
         "company": "Seyfhnova",
-        "role": "Full-Stack Developer (Serbest)",
-        "period": "Haz 2025 - Devam Ediyor",
+        "role": "Backend Developer (Serbest)",
+        "period": "Haz 2025 - Şub 2026",
         "bullets": [
           "Kotlin + Spring Boot ile 12/15-factor prensiplerine uygun mikroservis mimarisi kurulumu",
           "JWT tabanlı kimlik doğrulama ve X-Service-Token ile servisler arası güvenlik",
@@ -209,6 +210,7 @@
   },
   "contact": {
     "heading": "İletişim",
+    "subtitle": "Aklınızda bir proje mi var, sohbet mi etmek istiyorsunuz? Yazmaktan çekinmeyin.",
     "email": "E-posta",
     "github": "GitHub",
     "linkedin": "LinkedIn"

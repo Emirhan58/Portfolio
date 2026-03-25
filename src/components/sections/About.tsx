@@ -33,11 +33,35 @@ export async function About() {
                 WebkitMaskRepeat: "no-repeat",
               }}
             />
-            <div
-              className="absolute inset-[-8px] pointer-events-none"
-              style={{ borderRadius: "48% 52% 45% 55% / 52% 48% 52% 48%", border: "2px solid var(--color-accent-gold)", opacity: 0.2 }}
+            {/* Ink-wash brush stroke border */}
+            <svg
+              className="absolute inset-[-12px] w-[calc(100%+24px)] h-[calc(100%+24px)] pointer-events-none"
+              viewBox="0 0 200 200"
               aria-hidden="true"
-            />
+            >
+              <defs>
+                <filter id="ink-rough">
+                  <feTurbulence type="turbulence" baseFrequency="0.04" numOctaves="4" result="noise" />
+                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
+                </filter>
+              </defs>
+              <path
+                d="M100 8c25 -2 48 8 65 25s28 40 27 65c-1 25 -12 48 -30 63s-42 23 -65 22c-23 -1 -45 -10 -60 -27S12 116 13 93c1 -23 13 -45 32 -60S75 10 100 8z"
+                fill="none"
+                stroke="var(--color-accent-gold)"
+                strokeWidth="1.5"
+                opacity="0.35"
+                filter="url(#ink-rough)"
+              />
+              <path
+                d="M100 8c25 -2 48 8 65 25s28 40 27 65c-1 25 -12 48 -30 63s-42 23 -65 22c-23 -1 -45 -10 -60 -27S12 116 13 93c1 -23 13 -45 32 -60S75 10 100 8z"
+                fill="none"
+                stroke="var(--color-accent-gold)"
+                strokeWidth="0.8"
+                opacity="0.15"
+                strokeDasharray="4 6 12 4"
+              />
+            </svg>
           </div>
 
           {/* Location */}

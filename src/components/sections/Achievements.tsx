@@ -46,29 +46,35 @@ export async function Achievements() {
         {ACHIEVEMENTS_DATA.map((achievement) => (
           <div
             key={achievement.key}
-            className="flex items-center gap-5 bg-surface rounded-lg p-5 border border-accent-gold/10"
+            className="flex items-start sm:items-center gap-4 sm:gap-5 bg-surface rounded-lg p-4 sm:p-5 border border-accent-gold/10"
           >
-            {/* Medal circle — compact */}
-            <div className="w-16 h-16 min-w-[64px] rounded-full border-2 border-accent-gold/40 flex items-center justify-center shadow-[0_0_10px_rgba(212,165,116,0.15)]">
-              {ACHIEVEMENT_ICONS[achievement.key]}
+            {/* Medal circle */}
+            <div className="w-12 h-12 min-w-[48px] sm:w-16 sm:h-16 sm:min-w-[64px] rounded-full border-2 border-accent-gold/40 flex items-center justify-center shadow-[0_0_10px_rgba(212,165,116,0.15)] mt-1 sm:mt-0">
+              <div className="scale-75 sm:scale-100">
+                {ACHIEVEMENT_ICONS[achievement.key]}
+              </div>
             </div>
 
             {/* Content */}
             <div className="flex-1 min-w-0">
-              <div className="flex items-baseline gap-3 flex-wrap">
-                <h3 className="font-heading text-h3 text-paper font-bold">
+              <div className="flex items-baseline gap-2 sm:gap-3 flex-wrap">
+                <h3 className="font-heading text-base sm:text-h3 text-paper font-bold">
                   {t(`items.${achievement.key}.name`)}
                 </h3>
                 <span className="text-small text-accent-gold font-medium">
                   {t(`items.${achievement.key}.subtitle`)}
                 </span>
+                {/* Date — inline on mobile */}
+                <span className="text-small text-text-secondary sm:hidden">
+                  {achievement.period}
+                </span>
               </div>
-              <p className="text-body text-text-secondary mt-1">
+              <p className="text-sm sm:text-body text-text-secondary mt-1">
                 {t(`items.${achievement.key}.description`)}
               </p>
             </div>
 
-            {/* Date — right side */}
+            {/* Date — right side on desktop */}
             <span className="text-small text-text-secondary whitespace-nowrap hidden sm:block">
               {achievement.period}
             </span>
