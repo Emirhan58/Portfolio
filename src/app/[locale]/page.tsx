@@ -3,8 +3,11 @@ import { SECTION_IDS } from "@/lib/constants";
 import type { SectionId } from "@/lib/constants";
 import { SectionShell } from "@/components/layout/SectionShell";
 import { SectionDivider } from "@/components/layout/SectionDivider";
+import { Hero } from "@/components/sections/Hero";
+import { About } from "@/components/sections/About";
+import { Skills } from "@/components/sections/Skills";
 
-// Placeholder components — replaced by real sections in Plans 02-02 and 02-03
+// Placeholder for sections not yet implemented (Plan 02-03 replaces these)
 function PlaceholderSection({ id }: { id: string }) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center py-20">
@@ -23,6 +26,14 @@ const SECTION_BG: Record<SectionId, string> = {
   contact: "bg-bg",
 };
 
+const SECTION_COMPONENTS: Partial<
+  Record<SectionId, React.ComponentType>
+> = {
+  hero: Hero as unknown as React.ComponentType,
+  about: About as unknown as React.ComponentType,
+  skills: Skills as unknown as React.ComponentType,
+};
+
 export default async function HomePage({
   params,
 }: {
@@ -33,17 +44,20 @@ export default async function HomePage({
 
   return (
     <main>
-      {SECTION_IDS.map((id, index) => (
-        <div key={id}>
-          <SectionShell
-            id={id}
-            className={`${SECTION_BG[id]} ${id === "hero" ? "min-h-[90vh]" : ""}`}
-          >
-            <PlaceholderSection id={id} />
-          </SectionShell>
-          {index < SECTION_IDS.length - 1 && <SectionDivider />}
-        </div>
-      ))}
+      {SECTION_IDS.map((id, index) => {
+        const Component = SECTION_COMPONENTS[id];
+        return (
+          <div key={id}>
+            <SectionShell
+              id={id}
+              className={`${SECTION_BG[id]} ${id === "hero" ? "min-h-[90vh]" : ""}`}
+            >
+              {Component ? <Component /> : <PlaceholderSection id={id} />}
+            </SectionShell>
+            {index < SECTION_IDS.length - 1 && <SectionDivider />}
+          </div>
+        );
+      })}
     </main>
   );
 }
