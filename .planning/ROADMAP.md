@@ -45,9 +45,10 @@ Plans:
   3. User sees categorized skills with proficiency indicators, a vertical experience timeline, masonry project cards with GitHub links, and medal-style achievements
   4. User can download a PDF CV from the hero or navbar
   5. User on mobile sees the same content in a properly adapted responsive layout
-**Plans**: 3 plans
+**Plans**: 4 plans
 
 Plans:
+- [ ] 02-00-PLAN.md — Wave 0: Test stubs for all section components and i18n parity (Nyquist compliance)
 - [ ] 02-01-PLAN.md — Foundation: i18n content, data module, font fix, shared UI components, section dividers, page.tsx rewire
 - [ ] 02-02-PLAN.md — Hero, About, and Skills sections with ink-wash background, photo frame, parchment cards
 - [ ] 02-03-PLAN.md — Experience timeline, Projects masonry, Achievements medals, Contact mon icons, final wiring
@@ -92,6 +93,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete | 2026-03-25 |
-| 2. Content and Visual Design | 0/3 | Not started | - |
+| 2. Content and Visual Design | 0/4 | Not started | - |
 | 3. Animations | 0/0 | Not started | - |
 | 4. Audio and Deploy | 0/0 | Not started | - |
