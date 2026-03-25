@@ -9,10 +9,10 @@
 
 - [ ] **FOUND-01**: User sees a responsive, mobile-first layout that adapts seamlessly to all screen sizes
 - [ ] **FOUND-02**: User sees active section highlighted in scroll-spy navigation and can jump to any section
-- [ ] **FOUND-03**: User can switch between Turkish and English with all content translated (next-intl)
-- [ ] **FOUND-04**: Site uses consistent dark theme design tokens (colors, typography, spacing as CSS custom properties)
+- [x] **FOUND-03**: User can switch between Turkish and English with all content translated (next-intl)
+- [x] **FOUND-04**: Site uses consistent dark theme design tokens (colors, typography, spacing as CSS custom properties)
 - [ ] **FOUND-05**: User with `prefers-reduced-motion` sees a functional site with all animations disabled
-- [ ] **FOUND-06**: Site built on Next.js 15 App Router with TypeScript
+- [x] **FOUND-06**: Site built on Next.js 15 App Router with TypeScript
 - [ ] **FOUND-07**: Animation infrastructure established with Framer Motion + GSAP (clear ownership split)
 
 ### Content
@@ -88,10 +88,10 @@
 |-------------|-------|--------|
 | FOUND-01 | Phase 1 | Pending |
 | FOUND-02 | Phase 1 | Pending |
-| FOUND-03 | Phase 1 | Pending |
-| FOUND-04 | Phase 1 | Pending |
+| FOUND-03 | Phase 1 | Complete |
+| FOUND-04 | Phase 1 | Complete |
 | FOUND-05 | Phase 1 | Pending |
-| FOUND-06 | Phase 1 | Pending |
+| FOUND-06 | Phase 1 | Complete |
 | FOUND-07 | Phase 1 | Pending |
 | CONT-01 | Phase 2 | Pending |
 | CONT-02 | Phase 2 | Pending |
