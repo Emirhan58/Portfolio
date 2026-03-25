@@ -14,9 +14,8 @@ export const playfair = Playfair_Display({
 
 export const notoSerifJP = Noto_Serif_JP({
   weight: ["400", "700"],
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   display: "swap",
   variable: "--font-noto-serif-jp",
   preload: false,
-  text: "\u9580\u9053\u6280\u6226\u4F5C\u8A89\u7D50",
 });
