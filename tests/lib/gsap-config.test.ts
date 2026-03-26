@@ -14,7 +14,17 @@ describe("gsap-config.ts", () => {
     expect(content).toContain("gsap.registerPlugin");
   });
 
-  it("exports gsap, ScrollTrigger, and useGSAP", () => {
-    expect(content).toContain("export { gsap, ScrollTrigger, useGSAP }");
+  it("exports gsap, ScrollTrigger, DrawSVGPlugin, CustomEase, and useGSAP", () => {
+    expect(content).toContain(
+      "export { gsap, ScrollTrigger, DrawSVGPlugin, CustomEase, useGSAP }"
+    );
+  });
+
+  it("imports DrawSVGPlugin from gsap/DrawSVGPlugin", () => {
+    expect(content).toContain('import { DrawSVGPlugin } from "gsap/DrawSVGPlugin"');
+  });
+
+  it("imports CustomEase from gsap/CustomEase", () => {
+    expect(content).toContain('import { CustomEase } from "gsap/CustomEase"');
   });
 });
