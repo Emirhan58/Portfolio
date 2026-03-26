@@ -12,6 +12,8 @@
     "name": "Emirhan Kaya",
     "role": "Backend Developer",
     "tagline": "Systems that scale, code that lasts",
+    "jpTagline": "精密と目的を持って構築する",
+    "resolving": "decode --target=en",
     "downloadCV": "Download CV",
     "scrollDown": "Scroll down"
   },

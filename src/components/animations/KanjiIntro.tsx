@@ -4,36 +4,68 @@ import { useGSAP } from "@gsap/react";
 import { gsap, DrawSVGPlugin, CustomEase } from "@/lib/gsap-config";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
-// KanjiVG-derived stroke paths for 侍 (samurai) — 8 strokes
-// viewBox="0 0 109 109" per KanjiVG standard dimensions
+// Stroke paths for 鍛冶 (Kaji — blacksmith/forge)
 const KANJI_STROKES = [
-  // Stroke 1: left vertical radical イ top
-  "M30.5,16.5 C30.5,16.5 31.25,20.25 28,27.5",
-  // Stroke 2: left diagonal radical イ bottom
-  "M29.25,24.75 C29.25,24.75 15.5,55.25 13.75,73",
-  // Stroke 3: top horizontal 士
-  "M43,22.5 C43,22.5 62,21.5 75.25,22",
-  // Stroke 4: vertical center 士
-  "M57.75,22 C57.75,22 57.75,38.25 57.75,43.5",
-  // Stroke 5: bottom horizontal 士
-  "M38.25,43 C38.25,43 57.5,42 78.75,43.5",
-  // Stroke 6: horizontal under 寸
-  "M43.5,56.25 C43.5,56.25 70.25,55 82.75,56.5",
-  // Stroke 7: vertical 寸
-  "M63,56.25 C63,56.25 64,72.25 64.75,88.5",
-  // Stroke 8: dot 寸
-  "M79.75,65 C79.75,65 81.5,68.25 80.75,72",
+  // ===== 鍛 (forge/temper) =====
+  // 金 radical
+  "M25,12 C25,12 26,16 26,20",
+  "M26,20 C26,20 18,30 10,38",
+  "M26,20 C26,20 34,30 42,38",
+  "M12,44 C12,44 26,43 40,44",
+  "M20,44 C20,44 19,56 18,64",
+  "M32,44 C32,44 33,56 34,64",
+  "M10,68 C10,68 26,67 42,68",
+  "M18,72 C18,72 14,80 12,85",
+  "M34,72 C34,72 38,80 40,85",
+  // 段
+  "M54,16 C54,16 54,32 54,45",
+  "M62,20 C62,20 78,19 94,20",
+  "M62,34 C62,34 78,33 94,34",
+  "M62,48 C62,48 78,47 94,48",
+  "M88,20 C88,20 90,42 86,60 C86,60 82,72 74,82",
+  "M72,60 C72,60 82,72 98,88",
+  // ===== 冶 (smelt/cast) =====
+  // 冫radical
+  "M130,28 C130,28 132,34 131,38",
+  "M128,48 C128,48 132,56 134,62",
+  // 台
+  "M148,22 C148,22 156,18 164,22",
+  "M152,22 C152,22 144,38 142,48",
+  "M162,22 C162,22 162,36 158,48",
+  "M138,52 C138,52 158,51 178,52",
+  "M142,52 C142,52 142,68 142,80",
+  "M174,52 C174,52 174,68 174,80",
+  "M142,80 C142,80 158,79 174,80",
 ];
 
-// Extract endpoint from SVG path string (last coordinate pair)
+const VIEWBOX = "0 0 195 109";
+const VIEWBOX_WIDTH = 195;
+const SECOND_CHAR_START = 15;
+
 function getStrokeEndpoint(d: string): { x: number; y: number } {
   const nums = d.match(/-?\d+(\.\d+)?/g);
-  if (!nums || nums.length < 2) return { x: 54.5, y: 54.5 };
+  if (!nums || nums.length < 2) return { x: 97, y: 54 };
   return {
     x: parseFloat(nums[nums.length - 2]),
     y: parseFloat(nums[nums.length - 1]),
   };
 }
+
+const KanjiSvg = ({ className = "" }: { className?: string }) => (
+  <svg className={className} viewBox={VIEWBOX}>
+    {KANJI_STROKES.map((d, i) => (
+      <path
+        key={i}
+        className={i < KANJI_STROKES.length ? "kanji-stroke-clone" : ""}
+        d={d}
+        stroke="#f5f0e8"
+        strokeWidth="2.5"
+        fill="none"
+        strokeLinecap="round"
+      />
+    ))}
+  </svg>
+);
 
 export function KanjiIntro() {
   const container = useRef<HTMLDivElement>(null);
@@ -44,93 +76,122 @@ export function KanjiIntro() {
   const skip = useCallback(() => {
     sessionStorage.setItem("kanji-intro-seen", "true");
     setVisible(false);
+    window.dispatchEvent(new Event("kanji-intro-done"));
   }, []);
 
-  // SessionStorage check + reduced motion gate
   useEffect(() => {
-    if (sessionStorage.getItem("kanji-intro-seen") || !shouldAnimate) {
-      setVisible(false);
-    }
+    if (!shouldAnimate) setVisible(false);
   }, [shouldAnimate]);
 
   useGSAP(
     () => {
       if (!visible || !container.current) return;
 
-      // Register brush easing for organic calligraphy feel
       CustomEase.create(
         "brush",
         "M0,0 C0.14,0.18 0.25,1 0.5,1 0.7,1 0.86,0.82 1,1"
       );
 
-      const strokes = container.current.querySelectorAll(".kanji-stroke");
-      const slashLine = container.current.querySelector(".slash-line");
+      // Only animate strokes in the main scene SVG (not the split clones)
+      const mainScene = container.current.querySelector(".intro-scene");
+      if (!mainScene) return;
+      const strokes = mainScene.querySelectorAll(".kanji-stroke-clone");
+
+      const strokeDuration = 0.125;
+      const strokeStagger = 0.11;
 
       const tl = gsap.timeline({
         onComplete: () => {
-          // Katana slash transition
           const splitTl = gsap.timeline();
+          const scene = container.current!.querySelector(".intro-scene") as HTMLElement;
+          const slashTrail = container.current!.querySelector(".slash-trail") as HTMLElement;
+          const slashGlow = container.current!.querySelector(".slash-glow") as HTMLElement;
+          const topHalf = container.current!.querySelector(".intro-top") as HTMLElement;
+          const bottomHalf = container.current!.querySelector(".intro-bottom") as HTMLElement;
 
-          // Red slash line flash
+          // Tension pause
+          splitTl.to({}, { duration: 0.35 });
+
+          // Slash sweeps left→right
           splitTl.fromTo(
-            slashLine,
-            { opacity: 0 },
-            { opacity: 1, duration: 0.1, ease: "power2.in" }
+            slashTrail,
+            { opacity: 1, scaleX: 0, transformOrigin: "left center" },
+            { scaleX: 1, duration: 0.12, ease: "power4.in" }
           );
-          splitTl.to(slashLine, { opacity: 0, duration: 0.1 });
 
-          // Split screen halves apart
-          splitTl.to(
-            ".intro-top",
-            {
-              yPercent: -100,
-              duration: 0.6,
-              ease: "power3.inOut",
-            },
-            "-=0.05"
+          // Red glow flash
+          splitTl.fromTo(
+            slashGlow,
+            { opacity: 0 },
+            { opacity: 1, duration: 0.05 },
+            "-=0.04"
           );
-          splitTl.to(
-            ".intro-bottom",
-            {
-              yPercent: 100,
-              duration: 0.6,
-              ease: "power3.inOut",
-              onComplete: () => {
-                sessionStorage.setItem("kanji-intro-seen", "true");
-                setVisible(false);
-              },
+
+          // Impact shake
+          splitTl.to(container.current, {
+            x: () => (Math.random() - 0.5) * 20,
+            y: () => (Math.random() - 0.5) * 12,
+            duration: 0.04,
+            repeat: 6,
+            yoyo: true,
+            onComplete: () => gsap.set(container.current, { x: 0, y: 0 }),
+          }, "-=0.03");
+
+          // Swap: hide full scene, show split halves
+          splitTl.call(() => {
+            scene.style.display = "none";
+            topHalf.style.display = "block";
+            bottomHalf.style.display = "block";
+          });
+
+          // Fade slash effects
+          splitTl.to(slashGlow, { opacity: 0, duration: 0.2 });
+          splitTl.to(slashTrail, { opacity: 0, duration: 0.2 }, "<");
+
+          // Halves separate — kanji tears apart
+          splitTl.to(topHalf, {
+            yPercent: -100,
+            duration: 0.65,
+            ease: "power2.in",
+          }, "-=0.1");
+          splitTl.to(bottomHalf, {
+            yPercent: 100,
+            duration: 0.65,
+            ease: "power2.in",
+            onComplete: () => {
+              sessionStorage.setItem("kanji-intro-seen", "true");
+              setVisible(false);
+              window.dispatchEvent(new Event("kanji-intro-done"));
             },
-            "<"
-          );
+          }, "<");
         },
       });
 
-      // Animate each stroke sequentially with DrawSVGPlugin
       strokes.forEach((stroke, i) => {
-        tl.from(
-          stroke,
-          {
-            drawSVG: "0%",
-            duration: 0.4,
-            ease: "brush",
-          },
-          i * 0.4
-        );
+        if (i >= KANJI_STROKES.length) return;
 
-        // Ink particle scatter at stroke endpoint
+        const offset =
+          i < SECOND_CHAR_START
+            ? i * strokeStagger
+            : SECOND_CHAR_START * strokeStagger + 0.15 + (i - SECOND_CHAR_START) * strokeStagger;
+
+        tl.from(stroke, {
+          drawSVG: "0%",
+          duration: strokeDuration,
+          ease: "brush",
+        }, offset);
+
         if (shouldParticle && particlesRef.current) {
           const endpoint = getStrokeEndpoint(KANJI_STROKES[i]);
-          const particleCount = 3 + Math.floor(Math.random() * 3); // 3-5 particles
+          const particleCount = 2 + Math.floor(Math.random() * 2);
 
           for (let p = 0; p < particleCount; p++) {
             const dot = document.createElement("div");
             dot.className = "ink-dot";
-            // Position relative to SVG center mapping
-            // SVG is 256px (w-64) centered, viewBox 0-109
-            const svgEl = container.current!.querySelector("svg");
+            const svgEl = mainScene.querySelector("svg");
             if (!svgEl) continue;
             const svgRect = svgEl.getBoundingClientRect();
-            const scaleX = svgRect.width / 109;
+            const scaleX = svgRect.width / VIEWBOX_WIDTH;
             const scaleY = svgRect.height / 109;
             const dotX = svgRect.left + endpoint.x * scaleX;
             const dotY = svgRect.top + endpoint.y * scaleY;
@@ -148,18 +209,14 @@ export function KanjiIntro() {
             `;
             particlesRef.current.appendChild(dot);
 
-            tl.to(
-              dot,
-              {
-                x: (Math.random() - 0.5) * 60,
-                y: (Math.random() - 0.5) * 60,
-                opacity: 0,
-                duration: 0.3,
-                ease: "power2.out",
-                onComplete: () => dot.remove(),
-              },
-              i * 0.4 + 0.2
-            );
+            tl.to(dot, {
+              x: (Math.random() - 0.5) * 50,
+              y: (Math.random() - 0.5) * 50,
+              opacity: 0,
+              duration: 0.25,
+              ease: "power2.out",
+              onComplete: () => dot.remove(),
+            }, offset + 0.15);
           }
         }
       });
@@ -169,46 +226,62 @@ export function KanjiIntro() {
 
   if (!visible) return null;
 
-  return (
-    <div
-      ref={container}
-      className="fixed inset-0 z-50 bg-[#0a0a0a]"
-      aria-hidden="true"
-    >
-      {/* Split halves for katana slash transition */}
-      <div className="intro-top absolute top-0 left-0 w-full h-1/2 bg-[#0a0a0a] z-[1]" />
-      <div className="intro-bottom absolute bottom-0 left-0 w-full h-1/2 bg-[#0a0a0a] z-[1]" />
+  // Shared SVG sizing — must match exactly between scene and split halves
+  const svgClass = "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-52";
 
-      {/* Red slash line */}
+  return (
+    <div ref={container} className="fixed inset-0 z-50" aria-hidden="true">
+      {/* Main scene — kanji draws here, hidden at cut */}
+      <div className="intro-scene absolute inset-0 bg-[#0a0a0a] z-[3]">
+        <KanjiSvg className={svgClass} />
+      </div>
+
+      {/* Top half — clips top 50% of screen, slides up */}
       <div
-        className="slash-line absolute left-0 top-1/2 w-full h-[2px] bg-[#c0392b] z-[2] opacity-0 -translate-y-1/2"
+        className="intro-top absolute top-0 left-0 w-full h-[50vh] bg-[#0a0a0a] overflow-hidden z-[3]"
+        style={{ display: "none" }}
+      >
+        {/* Full-height inner positions SVG at screen center; overflow clips bottom */}
+        <div className="relative w-full" style={{ height: "100vh" }}>
+          <KanjiSvg className={svgClass} />
+        </div>
+      </div>
+
+      {/* Bottom half — clips bottom 50% of screen, slides down */}
+      <div
+        className="intro-bottom absolute bottom-0 left-0 w-full h-[50vh] bg-[#0a0a0a] overflow-hidden z-[3]"
+        style={{ display: "none" }}
+      >
+        {/* Shift inner up by 50vh so the bottom half of the kanji is visible */}
+        <div className="relative w-full" style={{ height: "100vh", top: "-50vh" }}>
+          <KanjiSvg className={svgClass} />
+        </div>
+      </div>
+
+      {/* Katana slash trail — hidden until cut animation */}
+      <div
+        className="slash-trail absolute left-0 top-1/2 w-full h-[3px] -translate-y-1/2 z-[6] opacity-0"
+        style={{
+          background: "linear-gradient(90deg, transparent 0%, #f5f0e8 20%, #ffffff 50%, #f5f0e8 80%, transparent 100%)",
+        }}
       />
 
-      {/* Kanji SVG */}
-      <svg
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 z-10"
-        viewBox="0 0 109 109"
-      >
-        {KANJI_STROKES.map((d, i) => (
-          <path
-            key={i}
-            className="kanji-stroke"
-            d={d}
-            stroke="#f5f0e8"
-            strokeWidth="3"
-            fill="none"
-            strokeLinecap="round"
-          />
-        ))}
-      </svg>
+      {/* Red glow along the cut */}
+      <div
+        className="slash-glow absolute left-0 top-1/2 w-full -translate-y-1/2 z-[6] opacity-0"
+        style={{
+          height: "20px",
+          background: "radial-gradient(ellipse at center, rgba(192,57,43,0.8) 0%, rgba(192,57,43,0.3) 40%, transparent 70%)",
+          filter: "blur(4px)",
+        }}
+      />
 
-      {/* Ink particle container */}
+      {/* Ink particles */}
       <div
         ref={particlesRef}
-        className="ink-particles absolute inset-0 z-10 pointer-events-none"
+        className="ink-particles absolute inset-0 z-[7] pointer-events-none"
       />
 
-      {/* Skip button */}
       <button
         onClick={skip}
         className="absolute bottom-6 right-6 text-sm text-white/40 hover:text-white/70 z-20 transition-colors"

@@ -1,100 +1,162 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface TypingEffectProps {
   jpText: string;
-  enText: string;
-  /** Delay before starting in ms -- allows hero stagger to complete first */
-  startDelay?: number;
+  finalText: string;
+  statusText: string;
 }
 
-type Phase = "waiting" | "jp-type" | "jp-pause" | "jp-delete" | "en-type" | "done";
+const JP_CHARS =
+  "侍刀剣道武士忍風雷火水木金土月日天地精密構築技術戦略ァアィイゥウェエォオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
 
-export function TypingEffect({ jpText, enText, startDelay = 0 }: TypingEffectProps) {
-  const [display, setDisplay] = useState("");
-  const [phase, setPhase] = useState<Phase>("waiting");
-  const [cursorVisible, setCursorVisible] = useState(true);
+/**
+ * blocked   → kanji intro oynamaya devam ediyor
+ * jp        → Japonca tagline gösteriliyor
+ * cmd-type  → "$ decoding..." harf harf yazılıyor
+ * cmd-pause → kısa bekleme, sonra scramble
+ * scramble  → JP karakterler → final text
+ * done      → son hali
+ */
+type Phase = "blocked" | "jp" | "cmd-type" | "cmd-pause" | "scramble" | "done";
+
+export function TypingEffect({ jpText, finalText, statusText }: TypingEffectProps) {
+  const [phase, setPhase] = useState<Phase>("blocked");
+  const [mainText, setMainText] = useState("");
+  const [cmdText, setCmdText] = useState("");
+  const [showCursor, setShowCursor] = useState(false);
   const { shouldAnimate } = useReducedMotion();
-  const indexRef = useRef(0);
+  const rafRef = useRef<number>(0);
+  const startTimeRef = useRef(0);
 
-  // If no animation, show final English text immediately
-  // Start delay
+  const randomJP = useCallback((len: number) => {
+    let s = "";
+    for (let i = 0; i < len; i++) {
+      s += JP_CHARS[Math.floor(Math.random() * JP_CHARS.length)];
+    }
+    return s;
+  }, []);
+
+  // Kanji intro bitene kadar bekle
   useEffect(() => {
     if (!shouldAnimate) return;
-    const timer = setTimeout(() => setPhase("jp-type"), startDelay);
-    return () => clearTimeout(timer);
-  }, [startDelay, shouldAnimate]);
+    const handler = () => setPhase("jp");
+    window.addEventListener("kanji-intro-done", handler);
+    return () => window.removeEventListener("kanji-intro-done", handler);
+  }, [shouldAnimate]);
 
-  // Typing logic
+  // JP phase: Japonca tagline göster, 800ms sonra cmd-type'a geç
   useEffect(() => {
-    if (!shouldAnimate || phase === "waiting") return;
+    if (phase !== "jp") return;
+    setMainText(jpText);
+    const timer = setTimeout(() => setPhase("cmd-type"), 800);
+    return () => clearTimeout(timer);
+  }, [phase, jpText]);
 
-    let interval: ReturnType<typeof setInterval> | ReturnType<typeof setTimeout>;
+  // CMD-TYPE: "$ decoding..." harf harf yazılıyor
+  useEffect(() => {
+    if (phase !== "cmd-type") return;
 
-    switch (phase) {
-      case "jp-type":
-        indexRef.current = 0;
-        interval = setInterval(() => {
-          indexRef.current++;
-          setDisplay(jpText.slice(0, indexRef.current));
-          if (indexRef.current >= jpText.length) {
-            clearInterval(interval as ReturnType<typeof setInterval>);
-            setTimeout(() => setPhase("jp-pause"), 100);
-          }
-        }, 60); // 60ms per JP char
-        break;
+    const full = "$ " + statusText;
+    let i = 0;
+    setCmdText("");
+    setShowCursor(true);
 
-      case "jp-pause":
-        interval = setTimeout(() => setPhase("jp-delete"), 800);
-        break;
+    const interval = setInterval(() => {
+      i++;
+      setCmdText(full.slice(0, i));
+      if (i >= full.length) {
+        clearInterval(interval);
+        setPhase("cmd-pause");
+      }
+    }, 65);
 
-      case "jp-delete":
-        indexRef.current = jpText.length;
-        interval = setInterval(() => {
-          indexRef.current--;
-          setDisplay(jpText.slice(0, indexRef.current));
-          if (indexRef.current <= 0) {
-            clearInterval(interval as ReturnType<typeof setInterval>);
-            setPhase("en-type");
-          }
-        }, 35); // 35ms per char delete
-        break;
+    return () => clearInterval(interval);
+  }, [phase, statusText]);
 
-      case "en-type":
-        indexRef.current = 0;
-        interval = setInterval(() => {
-          indexRef.current++;
-          setDisplay(enText.slice(0, indexRef.current));
-          if (indexRef.current >= enText.length) {
-            clearInterval(interval as ReturnType<typeof setInterval>);
-            setPhase("done");
-          }
-        }, 70); // 70ms per EN char
-        break;
+  // CMD-PAUSE: kısa bekleme sonra scramble başla
+  useEffect(() => {
+    if (phase !== "cmd-pause") return;
+    const timer = setTimeout(() => setPhase("scramble"), 600);
+    return () => clearTimeout(timer);
+  }, [phase]);
 
-      case "done":
-        // Hide cursor after 1s
-        interval = setTimeout(() => setCursorVisible(false), 1000);
-        break;
-    }
+  // SCRAMBLE: JP karakterler kaos → soldan sağa çözümlenme
+  useEffect(() => {
+    if (phase !== "scramble") return;
 
-    return () => {
-      clearInterval(interval as ReturnType<typeof setInterval>);
-      clearTimeout(interval as ReturnType<typeof setTimeout>);
+    const len = finalText.length;
+    const scrambleDuration = 800;
+    startTimeRef.current = performance.now();
+    let resolved = 0;
+    let resolving = false;
+
+    const tick = () => {
+      const elapsed = performance.now() - startTimeRef.current;
+
+      if (!resolving && elapsed >= scrambleDuration) {
+        resolving = true;
+        startTimeRef.current = performance.now();
+      }
+
+      if (resolving) {
+        const resolveElapsed = performance.now() - startTimeRef.current;
+        const newResolved = Math.min(len, Math.floor(resolveElapsed / 45));
+        if (newResolved > resolved) resolved = newResolved;
+
+        const left = finalText.slice(0, resolved);
+        const right = randomJP(Math.max(0, len - resolved));
+        setMainText(left + right);
+
+        if (resolved >= len) {
+          setMainText(finalText);
+          setCmdText("");
+          setShowCursor(false);
+          setPhase("done");
+          return;
+        }
+      } else {
+        const lenVariance = Math.floor(Math.sin(elapsed / 80) * 2);
+        setMainText(randomJP(Math.max(3, len + lenVariance)));
+      }
+
+      rafRef.current = requestAnimationFrame(tick);
     };
-  }, [phase, jpText, enText, shouldAnimate]);
+
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [phase, finalText, randomJP]);
 
   if (!shouldAnimate) {
-    return <span>{enText}</span>;
+    return <span>{finalText}</span>;
   }
 
+  const cursor = (
+    <span
+      className="inline-block w-[2px] h-[1em] bg-accent-red ml-0.5 align-middle"
+      style={{ animation: "pulse 530ms steps(1) infinite" }}
+    />
+  );
+
   return (
-    <span>
-      {display}
-      {cursorVisible && phase !== "waiting" && (
-        <span className="animate-pulse inline-block ml-0.5 text-accent-red">|</span>
+    <span className="inline-flex flex-col items-center gap-1.5">
+      <span>
+        {phase === "blocked" ? "\u00A0" : mainText}
+        {phase !== "blocked" && phase !== "done" && phase !== "cmd-type" && phase !== "cmd-pause" && showCursor && cursor}
+      </span>
+      {(phase === "cmd-type" || phase === "cmd-pause" || phase === "scramble") && (
+        <span className="text-xs font-mono text-accent-gold/70 tracking-wider">
+          {cmdText}
+          {(phase === "cmd-type" || phase === "cmd-pause") && cursor}
+        </span>
       )}
+      <style>{`
+        @keyframes pulse {
+          0%, 49% { opacity: 1; }
+          50%, 100% { opacity: 0; }
+        }
+      `}</style>
     </span>
   );
 }
