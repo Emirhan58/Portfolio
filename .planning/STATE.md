@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Completed 03-02-PLAN.md
-last_updated: "2026-03-26T11:51:05.549Z"
+stopped_at: Completed 03-03-PLAN.md
+last_updated: "2026-03-26T11:51:31.545Z"
 progress:
   total_phases: 4
   completed_phases: 2
@@ -24,7 +24,7 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 ## Current Position
 
 Phase: 03 (animations) — EXECUTING
-Plan: 3 of 4
+Plan: 4 of 4
 
 ## Performance Metrics
 
@@ -52,6 +52,7 @@ Plan: 3 of 4
 | Phase 02 P03 | 4min | 3 tasks | 5 files |
 | Phase 03 P01 | 2min | 2 tasks | 9 files |
 | Phase 03 P02 | 2min | 2 tasks | 2 files |
+| Phase 03 P03 | 3min | 3 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -77,6 +78,8 @@ Recent decisions affecting current work:
 - [Phase 02]: Inline SVG for contact icons -- only 3 icons needed, no icon library dependency
 - [Phase 03-01]: Updated existing gsap-config test to verify DrawSVGPlugin and CustomEase exports
 - [Phase 03]: KanjiVG approximate paths for 侍 with 8 strokes for brush calligraphy effect
+- [Phase 03-03]: Hero section skipped in ScrollReveal -- has own mount animation from Plan 04
+- [Phase 03-03]: ParallaxLayers returns null on non-full tier -- zero DOM on mobile
 
 ### Pending Todos
 
@@ -89,6 +92,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-26T11:50:51.375Z
-Stopped at: Completed 03-02-PLAN.md
+Last session: 2026-03-26T11:51:31.542Z
+Stopped at: Completed 03-03-PLAN.md
 Resume file: None
