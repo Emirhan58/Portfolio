@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState, useEffect, useCallback } from "react";
 import { useGSAP } from "@gsap/react";
-import { gsap, DrawSVGPlugin, CustomEase } from "@/lib/gsap-config";
+import { gsap } from "@/lib/gsap-config";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 // Stroke paths for 鍛冶 (Kaji — blacksmith/forge)
@@ -39,17 +39,6 @@ const KANJI_STROKES = [
 ];
 
 const VIEWBOX = "0 0 195 109";
-const VIEWBOX_WIDTH = 195;
-const SECOND_CHAR_START = 15;
-
-function getStrokeEndpoint(d: string): { x: number; y: number } {
-  const nums = d.match(/-?\d+(\.\d+)?/g);
-  if (!nums || nums.length < 2) return { x: 97, y: 54 };
-  return {
-    x: parseFloat(nums[nums.length - 2]),
-    y: parseFloat(nums[nums.length - 1]),
-  };
-}
 
 const KanjiSvg = ({ className = "" }: { className?: string }) => (
   <svg className={className} viewBox={VIEWBOX}>
@@ -69,9 +58,8 @@ const KanjiSvg = ({ className = "" }: { className?: string }) => (
 
 export function KanjiIntro() {
   const container = useRef<HTMLDivElement>(null);
-  const particlesRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(true);
-  const { shouldAnimate, shouldParticle } = useReducedMotion();
+  const { shouldAnimate } = useReducedMotion();
 
   const skip = useCallback(() => {
     sessionStorage.setItem("kanji-intro-seen", "true");
@@ -87,18 +75,9 @@ export function KanjiIntro() {
     () => {
       if (!visible || !container.current) return;
 
-      CustomEase.create(
-        "brush",
-        "M0,0 C0.14,0.18 0.25,1 0.5,1 0.7,1 0.86,0.82 1,1"
-      );
-
-      // Only animate strokes in the main scene SVG (not the split clones)
       const mainScene = container.current.querySelector(".intro-scene");
       if (!mainScene) return;
-      const strokes = mainScene.querySelectorAll(".kanji-stroke-clone");
-
-      const strokeDuration = 0.125;
-      const strokeStagger = 0.11;
+      const kanjiSvg = mainScene.querySelector("svg");
 
       const tl = gsap.timeline({
         onComplete: () => {
@@ -167,59 +146,15 @@ export function KanjiIntro() {
         },
       });
 
-      strokes.forEach((stroke, i) => {
-        if (i >= KANJI_STROKES.length) return;
+      // Fade in kanji gradually
+      tl.fromTo(
+        kanjiSvg,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.8, ease: "power1.inOut" }
+      );
 
-        const offset =
-          i < SECOND_CHAR_START
-            ? i * strokeStagger
-            : SECOND_CHAR_START * strokeStagger + 0.15 + (i - SECOND_CHAR_START) * strokeStagger;
-
-        tl.from(stroke, {
-          drawSVG: "0%",
-          duration: strokeDuration,
-          ease: "brush",
-        }, offset);
-
-        if (shouldParticle && particlesRef.current) {
-          const endpoint = getStrokeEndpoint(KANJI_STROKES[i]);
-          const particleCount = 2 + Math.floor(Math.random() * 2);
-
-          for (let p = 0; p < particleCount; p++) {
-            const dot = document.createElement("div");
-            dot.className = "ink-dot";
-            const svgEl = mainScene.querySelector("svg");
-            if (!svgEl) continue;
-            const svgRect = svgEl.getBoundingClientRect();
-            const scaleX = svgRect.width / VIEWBOX_WIDTH;
-            const scaleY = svgRect.height / 109;
-            const dotX = svgRect.left + endpoint.x * scaleX;
-            const dotY = svgRect.top + endpoint.y * scaleY;
-
-            dot.style.cssText = `
-              position: fixed;
-              left: ${dotX}px;
-              top: ${dotY}px;
-              width: ${2 + Math.random() * 3}px;
-              height: ${2 + Math.random() * 3}px;
-              border-radius: 50%;
-              background: #f5f0e8;
-              pointer-events: none;
-              z-index: 15;
-            `;
-            particlesRef.current.appendChild(dot);
-
-            tl.to(dot, {
-              x: (Math.random() - 0.5) * 50,
-              y: (Math.random() - 0.5) * 50,
-              opacity: 0,
-              duration: 0.25,
-              ease: "power2.out",
-              onComplete: () => dot.remove(),
-            }, offset + 0.15);
-          }
-        }
-      });
+      // Brief hold before the cut
+      tl.to({}, { duration: 0 });
     },
     { scope: container, dependencies: [visible] }
   );
@@ -228,12 +163,13 @@ export function KanjiIntro() {
 
   // Shared SVG sizing — must match exactly between scene and split halves
   const svgClass = "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-52";
+  const svgClassHidden = svgClass + " opacity-0";
 
   return (
     <div ref={container} className="fixed inset-0 z-50" aria-hidden="true">
       {/* Main scene — kanji draws here, hidden at cut */}
       <div className="intro-scene absolute inset-0 bg-[#0a0a0a] z-[3]">
-        <KanjiSvg className={svgClass} />
+        <KanjiSvg className={svgClassHidden} />
       </div>
 
       {/* Top half — clips top 50% of screen, slides up */}
@@ -274,12 +210,6 @@ export function KanjiIntro() {
           background: "radial-gradient(ellipse at center, rgba(192,57,43,0.8) 0%, rgba(192,57,43,0.3) 40%, transparent 70%)",
           filter: "blur(4px)",
         }}
-      />
-
-      {/* Ink particles */}
-      <div
-        ref={particlesRef}
-        className="ink-particles absolute inset-0 z-[7] pointer-events-none"
       />
 
       <button

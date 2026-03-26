@@ -34,16 +34,15 @@ Declared values (must be multiples of 4):
 | Token | Value | Usage |
 |-------|-------|-------|
 | xs | 4px | Icon gaps, inline element margins, tag pill padding-y |
-| sm | 8px | Compact element spacing, tag pill padding-x, card inner gaps |
+| sm | 8px | Compact element spacing, tag pill padding-x, card inner gaps, button padding-y |
 | md | 16px | Default element spacing, card padding, button padding-x |
 | lg | 24px | Card padding (large), section content gaps |
 | xl | 32px | Layout gaps between cards, timeline card margins |
 | 2xl | 48px (`--spacing-section-mobile`) | Section padding on mobile |
+| 3xl | 64px (`--spacing-section`) | Section padding on desktop |
 
 Exceptions:
-- 44px minimum touch target on all interactive elements (buttons, links, card hover zones)
-- 12px (`0.75rem`) used for button padding-y to maintain compact button profile
-- 96px (`--spacing-section`) used for desktop section padding to achieve viewport-aware breathing room in full-page portfolio layouts where 64px feels cramped and 48px is already the mobile value
+- 44px minimum touch target on all interactive elements (buttons, links, card hover zones) — accessibility standard, not a spacing token
 
 ---
 
@@ -104,7 +103,7 @@ Weights used in this phase: 400 (regular) and 700 (bold). No other weights.
 - Name: Playfair Display, `clamp(3rem, 5vw, 6rem)`, `--color-paper`, `font-weight: 700`
 - Role subtitle: `--text-subheading`, `--color-text-secondary`, opacity 0.8
 - Tagline: `--text-body`, `--color-text-secondary`, italic, "Crafting robust systems with precision and purpose"
-- CTA: `bg-accent-red text-paper`, padding `12px 24px`, `border-radius: 6px`, hover `bg-accent-red-bright` with `box-shadow: 0 0 20px rgba(192, 57, 43, 0.4)`
+- CTA: `bg-accent-red text-paper`, padding `8px 24px`, `border-radius: 6px`, hover `bg-accent-red-bright` with `box-shadow: 0 0 20px rgba(192, 57, 43, 0.4)`
 - Scroll indicator: chevron at bottom center, CSS bounce animation (1.5s infinite), fades out after 100px scroll
 - Background: faint sumi-e radial texture from center, 5-8% opacity over `--color-bg`
 - No profile photo in hero
@@ -143,7 +142,7 @@ Weights used in this phase: 400 (regular) and 700 (bold). No other weights.
 - Role: `--text-body`, `--color-accent-gold`
 - Duration: `--text-body`, `--color-text-secondary`
 - Bullets: `--text-body`, `--color-text-secondary`, line-height 1.6
-- Tech tags: inline pills, `--text-body`, `--color-text-secondary`, `background: rgba(192, 57, 43, 0.1)`, `border: 1px solid rgba(192, 57, 43, 0.2)`, `border-radius: 4px`, padding `2px 8px`
+- Tech tags: inline pills, `--text-body`, `--color-text-secondary`, `background: rgba(192, 57, 43, 0.1)`, `border: 1px solid rgba(192, 57, 43, 0.2)`, `border-radius: 4px`, padding `4px 8px`
 - All 5 positions, same card size, most recent first
 - Mobile: timeline collapses to left-aligned cards with left border, no center line
 
