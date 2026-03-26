@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-03-26T23:50:45.072Z",
+  "phase": "3",
+  "phase_name": "Animations",
+  "phase_dir": ".planning/phases/03-animations",
+  "plan": 4,
+  "task": 3,
+  "total_tasks": 3,
+  "status": "paused",
+  "completed_tasks": [
+    {"id": 1, "name": "03-01: GSAP plugin registration + test stubs", "status": "done", "commit": "9bc824d"},
+    {"id": 2, "name": "03-02: Kanji intro overlay", "status": "done", "commit": "a1c8b4d"},
+    {"id": 3, "name": "03-03: Scroll-driven animations", "status": "done", "commit": "e24f826"},
+    {"id": 4, "name": "03-04 Task 1: TypingEffect and StatCounter components", "status": "done", "commit": "c93a35d"},
+    {"id": 5, "name": "03-04 Task 2: Wire animations into sections", "status": "done", "commit": "8707da8"}
+  ],
+  "remaining_tasks": [
+    {"id": 6, "name": "03-04 Task 3: Visual verification checkpoint", "status": "in_progress", "progress": "Checkpoint reached. Kanji intro reworked to fade-in with 鍛冶 kanji. Tagline decode effect reworked. Katana slash attempted but reverted. Needs fresh visual verification."}
+  ],
+  "blockers": [],
+  "human_actions_pending": [
+    {"action": "Visual verification of complete animation system (desktop, mobile, reduced-motion)", "context": "03-04 checkpoint - animations modified during session, need fresh verification", "blocking": false}
+  ],
+  "decisions": [
+    {"decision": "Replace 侍 with 鍛冶 (blacksmith/forge) kanji for intro", "rationale": "Personal branding - samurai sword maker, thematically tied to user's name", "phase": "3"},
+    {"decision": "Kanji intro uses fade-in instead of stroke-by-stroke drawing", "rationale": "User preference for cleaner appearance", "phase": "3"},
+    {"decision": "Tagline: JP text → CLI '$ decode --target=tr/en' typed letter-by-letter → scramble-resolve to final text", "rationale": "More thematic than simple type-delete-retype", "phase": "3"},
+    {"decision": "TypingEffect waits for kanji-intro-done event", "rationale": "Prevents tagline animation overlapping with intro", "phase": "3"},
+    {"decision": "Removed --turbopack from dev script", "rationale": "Turbopack HMR bug causing React Client Manifest errors on file changes", "phase": "3"},
+    {"decision": "Katana slash visual effect reverted to simple trail+glow+split", "rationale": "SVG/PNG katana attempts all failed. Keep simple for now.", "phase": "3"}
+  ],
+  "uncommitted_files": ["public/images/"],
+  "next_action": "Complete 03-04 visual checkpoint, then run phase verification.",
+  "context_notes": "Phase 3 is 95% done. Plans 01-03 fully complete. Plan 04 has 2/3 tasks committed. Current state: fade-in 鍛冶 kanji (0.8s), slash trail+glow+shake+split (no katana blade), tagline decode with CLI '$ decode --target=xx' effect. Intro plays every reload (sessionStorage check removed). public/images/ has katana.svg and katana.png from slash attempts (untracked)."
+}
