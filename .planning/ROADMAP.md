@@ -63,12 +63,13 @@ Plans:
   3. User sees sakura particles floating on desktop, stat numbers counting up in the About section, and a JP-to-EN typing effect on the hero tagline
   4. Mobile user sees simplified animations only — no parallax, no particles, basic scroll reveals preserved
   5. The kanji intro does not block LCP — hero content is pre-rendered beneath the intro overlay
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
-- [ ] 03-03: TBD
+- [ ] 03-01-PLAN.md — Test stubs for all animation components + GSAP DrawSVGPlugin/CustomEase registration
+- [ ] 03-02-PLAN.md — Kanji intro overlay (侍 brush stroke animation, katana slash transition, skip, sessionStorage)
+- [ ] 03-03-PLAN.md — Scroll-driven animations (ink splash reveals, katana slash dividers, parallax layers, sakura refinement)
+- [ ] 03-04-PLAN.md — Section animations (typing effect, stat counters, proficiency bars, timeline) + visual checkpoint
 
 ### Phase 4: Audio and Deploy
 **Goal**: The portfolio experience is completed with ambient Japanese music and interaction sound effects, and the site is deployed live on Vercel
@@ -94,5 +95,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete | 2026-03-25 |
 | 2. Content and Visual Design | 0/4 | Not started | - |
-| 3. Animations | 0/0 | Not started | - |
+| 3. Animations | 1/4 | In Progress|  |
 | 4. Audio and Deploy | 0/0 | Not started | - |

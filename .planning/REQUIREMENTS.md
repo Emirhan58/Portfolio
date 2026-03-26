@@ -28,14 +28,14 @@
 
 ### Animations
 
-- [ ] **ANIM-01**: User sees kanji intro animation (侍 brush stroke, 2-3s, skip button, sessionStorage first-visit only)
-- [ ] **ANIM-02**: User sees scroll-triggered ink splash / brush stroke reveals as sections enter viewport
-- [ ] **ANIM-03**: User sees katana slash animation as section transition dividers
-- [ ] **ANIM-04**: User sees parallax mountain/cloud background layers that move at different scroll speeds
-- [ ] **ANIM-05**: User sees subtle sakura particles floating on Canvas (disabled on mobile)
-- [ ] **ANIM-06**: User sees stat numbers count up when About section scrolls into view
-- [ ] **ANIM-07**: User sees JP to EN typing effect on hero tagline
-- [ ] **ANIM-08**: Mobile users see reduced animations (no parallax/particles, basic reveals only)
+- [x] **ANIM-01**: User sees kanji intro animation (侍 brush stroke, 2-3s, skip button, sessionStorage first-visit only)
+- [x] **ANIM-02**: User sees scroll-triggered ink splash / brush stroke reveals as sections enter viewport
+- [x] **ANIM-03**: User sees katana slash animation as section transition dividers
+- [x] **ANIM-04**: User sees parallax mountain/cloud background layers that move at different scroll speeds
+- [x] **ANIM-05**: User sees subtle sakura particles floating on Canvas (disabled on mobile)
+- [x] **ANIM-06**: User sees stat numbers count up when About section scrolls into view
+- [x] **ANIM-07**: User sees JP to EN typing effect on hero tagline
+- [x] **ANIM-08**: Mobile users see reduced animations (no parallax/particles, basic reveals only)
 
 ### Visual
 
@@ -101,14 +101,14 @@
 | CONT-06 | Phase 2 | Complete |
 | CONT-07 | Phase 2 | Complete |
 | CONT-08 | Phase 2 | Complete |
-| ANIM-01 | Phase 3 | Pending |
-| ANIM-02 | Phase 3 | Pending |
-| ANIM-03 | Phase 3 | Pending |
-| ANIM-04 | Phase 3 | Pending |
-| ANIM-05 | Phase 3 | Pending |
-| ANIM-06 | Phase 3 | Pending |
-| ANIM-07 | Phase 3 | Pending |
-| ANIM-08 | Phase 3 | Pending |
+| ANIM-01 | Phase 3 | Complete |
+| ANIM-02 | Phase 3 | Complete |
+| ANIM-03 | Phase 3 | Complete |
+| ANIM-04 | Phase 3 | Complete |
+| ANIM-05 | Phase 3 | Complete |
+| ANIM-06 | Phase 3 | Complete |
+| ANIM-07 | Phase 3 | Complete |
+| ANIM-08 | Phase 3 | Complete |
 | VISL-01 | Phase 2 | Complete |
 | VISL-02 | Phase 2 | Complete |
 | VISL-03 | Phase 2 | Complete |
