@@ -10,6 +10,9 @@ import { Experience } from "@/components/sections/Experience";
 import { Projects } from "@/components/sections/Projects";
 import { Achievements } from "@/components/sections/Achievements";
 import { Contact } from "@/components/sections/Contact";
+import { KanjiIntro } from "@/components/animations/KanjiIntro";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { ParallaxLayers } from "@/components/animations/ParallaxLayers";
 
 const SECTION_BG: Record<SectionId, string> = {
   hero: "bg-bg",
@@ -41,20 +44,24 @@ export default async function HomePage({
 
   return (
     <main>
-      {SECTION_IDS.map((id, index) => {
-        const Component = SECTION_COMPONENTS[id];
-        return (
-          <div key={id}>
-            <SectionShell
-              id={id}
-              className={`${SECTION_BG[id]} ${id === "hero" ? "min-h-[90vh]" : ""} ${id !== "hero" && id !== "skills" && id !== "experience" ? "flex flex-col justify-center" : ""}`}
-            >
-              <Component />
-            </SectionShell>
-            {index < SECTION_IDS.length - 1 && <SectionDivider />}
-          </div>
-        );
-      })}
+      <KanjiIntro />
+      <ParallaxLayers />
+      <ScrollReveal>
+        {SECTION_IDS.map((id, index) => {
+          const Component = SECTION_COMPONENTS[id];
+          return (
+            <div key={id}>
+              <SectionShell
+                id={id}
+                className={`${SECTION_BG[id]} ${id === "hero" ? "min-h-[90vh]" : ""} ${id !== "hero" && id !== "skills" && id !== "experience" ? "flex flex-col justify-center" : ""}`}
+              >
+                <Component />
+              </SectionShell>
+              {index < SECTION_IDS.length - 1 && <SectionDivider />}
+            </div>
+          );
+        })}
+      </ScrollReveal>
     </main>
   );
 }
