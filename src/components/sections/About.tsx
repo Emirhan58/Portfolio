@@ -1,7 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
-import { STATS_DATA, CORE_TECHNOLOGIES } from "@/lib/data";
+import { CORE_TECHNOLOGIES } from "@/lib/data";
 import { TechTag } from "@/components/ui/TechTag";
+import { StatGrid } from "@/components/animations/StatGrid";
 
 export async function About() {
   const t = await getTranslations("about");
@@ -91,18 +92,7 @@ export async function About() {
           </div>
 
           {/* Stat counters */}
-          <div className="grid grid-cols-3 gap-6 w-full max-w-xs text-center mt-2">
-            {STATS_DATA.map((stat) => (
-              <div key={stat.key}>
-                <span className="block font-heading text-h2 text-accent-red font-bold">
-                  {stat.value}
-                </span>
-                <span className="text-small text-text-secondary">
-                  {t(`stats.${stat.key}`)}
-                </span>
-              </div>
-            ))}
-          </div>
+          <StatGrid />
         </div>
 
         {/* Right column: Bio + Technologies + Links */}

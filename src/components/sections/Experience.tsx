@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { EXPERIENCE_DATA } from "@/lib/data";
 import { TechTag } from "@/components/ui/TechTag";
 import { cn } from "@/lib/cn";
+import { TimelineLine } from "@/components/animations/TimelineLine";
 
 export async function Experience() {
   const t = await getTranslations("experience");
@@ -14,15 +15,8 @@ export async function Experience() {
 
       {/* Timeline container */}
       <div className="relative">
-        {/* Vertical dashed line — desktop only */}
-        <div
-          className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(to bottom, rgba(160, 160, 160, 0.3) 0px, rgba(160, 160, 160, 0.3) 6px, transparent 6px, transparent 12px)",
-          }}
-          aria-hidden="true"
-        />
+        {/* Vertical dashed line — desktop only, animated on scroll */}
+        <TimelineLine />
 
         {/* Timeline entries */}
         <div className="flex flex-col gap-12">

@@ -30,8 +30,8 @@ describe("About Section (CONT-02)", () => {
     expect(aboutSrc).toContain("maskImage");
   });
 
-  it("imports and uses STATS_DATA for stat counters", () => {
-    expect(aboutSrc).toContain("STATS_DATA");
+  it("uses StatGrid for animated stat counters", () => {
+    expect(aboutSrc).toContain("StatGrid");
   });
 
   it("renders education info", () => {

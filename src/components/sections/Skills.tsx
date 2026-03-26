@@ -26,11 +26,12 @@ export async function Skills() {
               {t(`categories.${category}`)}
             </h3>
             <div className="flex flex-col gap-4">
-              {SKILLS_DATA[category].map((skill) => (
+              {SKILLS_DATA[category].map((skill, index) => (
                 <ProficiencyBar
                   key={skill.key}
                   label={t(`items.${skill.key}`)}
                   percentage={skill.proficiency}
+                  delay={index * 0.1}
                 />
               ))}
             </div>

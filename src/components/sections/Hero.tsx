@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { SakuraFall } from "@/components/ui/SakuraFall";
+import { HeroTagline } from "@/components/animations/HeroTagline";
 
 export async function Hero() {
   const t = await getTranslations("hero");
@@ -266,7 +267,7 @@ export async function Hero() {
           {t("role")}
         </p>
         <p className="text-body text-text-secondary italic mt-3 max-w-[600px] mx-auto">
-          {t("tagline")}
+          <HeroTagline />
         </p>
         <a
           href="/Emirhan_Kaya_CV.pdf"
