@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface Petal {
   id: number;
@@ -22,18 +23,21 @@ function generatePetals(count: number): Petal[] {
     size: 0.5 + Math.random() * 0.7,
     drift: 40 + Math.random() * 80,
     rotation: Math.random() * 360,
-    opacity: 0.06 + Math.random() * 0.09,
+    opacity: 0.15 + Math.random() * 0.10,
   }));
 }
 
 export function SakuraFall() {
   const [petals, setPetals] = useState<Petal[]>([]);
+  const { shouldParticle } = useReducedMotion();
 
   useEffect(() => {
-    setPetals(generatePetals(50));
-  }, []);
+    if (shouldParticle) {
+      setPetals(generatePetals(22));
+    }
+  }, [shouldParticle]);
 
-  if (petals.length === 0) return null;
+  if (!shouldParticle || petals.length === 0) return null;
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">

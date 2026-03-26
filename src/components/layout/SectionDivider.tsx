@@ -1,9 +1,37 @@
+"use client";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap, ScrollTrigger } from "@/lib/gsap-config";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+
 export function SectionDivider() {
+  const container = useRef<HTMLDivElement>(null);
+  const { shouldAnimate } = useReducedMotion();
+
+  useGSAP(() => {
+    if (!shouldAnimate || !container.current) return;
+
+    const slashLine = container.current.querySelector(".katana-slash");
+    if (!slashLine) return;
+
+    gsap.from(slashLine, {
+      scaleX: 0,
+      transformOrigin: "left center",
+      duration: 0.4,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top 85%",
+        once: true,
+      },
+    });
+  }, { scope: container, dependencies: [shouldAnimate] });
+
   return (
-    <div className="relative w-full h-8 overflow-hidden">
-      {/* Katana slash line */}
+    <div ref={container} className="relative w-full h-8 overflow-hidden">
+      {/* Katana slash line — animated left-to-right */}
       <div
-        className="absolute top-1/2 left-[-5%] w-[110%] h-[2px] -translate-y-1/2 -rotate-2"
+        className="katana-slash absolute top-1/2 left-[-5%] w-[110%] h-[2px] -translate-y-1/2 -rotate-2"
         style={{ background: "rgba(192, 57, 43, 0.25)" }}
       />
       {/* Asanoha geometric pattern strip */}
