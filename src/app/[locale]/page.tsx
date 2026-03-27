@@ -2,7 +2,6 @@ import { setRequestLocale } from "next-intl/server";
 import { SECTION_IDS } from "@/lib/constants";
 import type { SectionId } from "@/lib/constants";
 import { SectionShell } from "@/components/layout/SectionShell";
-import { SectionDivider } from "@/components/layout/SectionDivider";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
@@ -11,8 +10,8 @@ import { Projects } from "@/components/sections/Projects";
 import { Achievements } from "@/components/sections/Achievements";
 import { Contact } from "@/components/sections/Contact";
 import { KanjiIntro } from "@/components/animations/KanjiIntro";
-import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { ParallaxLayers } from "@/components/animations/ParallaxLayers";
+import { SectionSlash } from "@/components/animations/SectionSlash";
 
 const SECTION_BG: Record<SectionId, string> = {
   hero: "bg-bg",
@@ -46,22 +45,20 @@ export default async function HomePage({
     <main>
       <KanjiIntro />
       <ParallaxLayers />
-      <ScrollReveal>
-        {SECTION_IDS.map((id, index) => {
-          const Component = SECTION_COMPONENTS[id];
-          return (
-            <div key={id}>
-              <SectionShell
-                id={id}
-                className={`${SECTION_BG[id]} ${id === "hero" ? "min-h-[90vh]" : ""} ${id !== "hero" && id !== "skills" && id !== "experience" ? "flex flex-col justify-center" : ""}`}
-              >
-                <Component />
-              </SectionShell>
-              {index < SECTION_IDS.length - 1 && <SectionDivider />}
-            </div>
-          );
-        })}
-      </ScrollReveal>
+      {SECTION_IDS.map((id, index) => {
+        const Component = SECTION_COMPONENTS[id];
+        return (
+          <div key={id}>
+            <SectionShell
+              id={id}
+              className={`${SECTION_BG[id]} ${id === "hero" ? "min-h-[90vh]" : ""} ${id !== "hero" && id !== "skills" && id !== "experience" ? "flex flex-col justify-center" : ""}`}
+            >
+              <Component />
+            </SectionShell>
+            {index < SECTION_IDS.length - 1 && <SectionSlash prevSectionId={id} />}
+          </div>
+        );
+      })}
     </main>
   );
 }
