@@ -63,6 +63,26 @@ export function SectionSlash({ prevSectionId }: SectionSlashProps) {
     tl.to(glow, { opacity: 0, duration: 0.3 }, "-=0.8");
     tl.to(slash, { opacity: 0, duration: 0.4 }, "<");
 
+    // 5. Click to bring fallen section to front (only one at a time)
+    const onClick = () => {
+      // Reset any previously raised section
+      document.querySelectorAll("[data-raised]").forEach((el) => {
+        if (el !== prevSection) {
+          gsap.set(el, { zIndex: "" });
+          el.removeAttribute("data-raised");
+        }
+      });
+
+      if (prevSection.hasAttribute("data-raised")) {
+        gsap.set(prevSection, { zIndex: "" });
+        prevSection.removeAttribute("data-raised");
+      } else {
+        gsap.set(prevSection, { zIndex: 20 });
+        prevSection.setAttribute("data-raised", "true");
+      }
+    };
+    prevSection.addEventListener("click", onClick);
+
   }, { scope: container, dependencies: [shouldAnimate] });
 
   return (
