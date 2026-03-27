@@ -1,6 +1,9 @@
+import { getTranslations } from "next-intl/server";
 import { cn } from "@/lib/cn";
+import { CONTACT_LINKS } from "@/lib/data";
 
-export function Footer() {
+export async function Footer() {
+  const t = await getTranslations("footer");
   const currentYear = new Date().getFullYear();
 
   return (
@@ -22,13 +25,13 @@ export function Footer() {
 
         {/* Tagline */}
         <p className="text-text-secondary text-small italic">
-          Crafted with the spirit of Bushido
+          {t("tagline")}
         </p>
 
         {/* Social Links */}
         <div className="flex items-center gap-6 text-text-secondary text-small">
           <a
-            href="https://github.com"
+            href={CONTACT_LINKS.github.href}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-text-primary transition-colors duration-normal"
@@ -36,7 +39,7 @@ export function Footer() {
             GitHub
           </a>
           <a
-            href="https://linkedin.com"
+            href={CONTACT_LINKS.linkedin.href}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-text-primary transition-colors duration-normal"
@@ -44,7 +47,7 @@ export function Footer() {
             LinkedIn
           </a>
           <a
-            href="mailto:hello@emirhankaya.dev"
+            href={CONTACT_LINKS.email.href}
             className="hover:text-text-primary transition-colors duration-normal"
           >
             Email
@@ -53,7 +56,7 @@ export function Footer() {
 
         {/* Copyright */}
         <p className="text-text-secondary text-small">
-          &copy; {currentYear} Emirhan Kaya. All rights reserved.
+          &copy; {currentYear} Emirhan Kaya. {t("rights")}
         </p>
       </div>
     </footer>

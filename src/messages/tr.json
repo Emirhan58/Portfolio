@@ -216,5 +216,9 @@
     "email": "E-posta",
     "github": "GitHub",
     "linkedin": "LinkedIn"
+  },
+  "footer": {
+    "tagline": "Bushido ruhuyla inşa edildi",
+    "rights": "Tüm hakları saklıdır."
   }
 }

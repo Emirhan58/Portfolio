@@ -216,5 +216,9 @@
     "email": "Email",
     "github": "GitHub",
     "linkedin": "LinkedIn"
+  },
+  "footer": {
+    "tagline": "Crafted with the spirit of Bushido",
+    "rights": "All rights reserved."
   }
 }
