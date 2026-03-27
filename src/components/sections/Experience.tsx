@@ -30,7 +30,7 @@ export async function Experience() {
             >
               {/* Timeline dot */}
               <div
-                className="hidden lg:flex absolute left-1/2 top-6 -translate-x-1/2 w-3 h-3 rounded-full bg-accent-red z-10"
+                className="timeline-dot hidden lg:flex absolute left-1/2 top-6 -translate-x-1/2 w-3 h-3 rounded-full bg-accent-red z-10"
                 aria-hidden="true"
               />
 
