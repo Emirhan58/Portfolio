@@ -7,9 +7,10 @@ interface SectionShellProps {
   children: React.ReactNode;
   className?: string;
   showKanji?: boolean;
+  bgImage?: string;
 }
 
-export function SectionShell({ id, children, className, showKanji = true }: SectionShellProps) {
+export function SectionShell({ id, children, className, showKanji = true, bgImage }: SectionShellProps) {
   return (
     <section
       id={id}
@@ -19,15 +20,31 @@ export function SectionShell({ id, children, className, showKanji = true }: Sect
         className
       )}
     >
+      {bgImage && (
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url(${bgImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: 0.12,
+          }}
+        />
+      )}
+      {bgImage && (
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-bg via-bg/80 to-bg/60" />
+      )}
       {showKanji && (
         <span
-          className="absolute top-8 right-8 font-kanji text-[8rem] lg:text-[12rem] text-accent-gold/10 select-none pointer-events-none"
+          className="absolute top-8 right-8 font-kanji text-[8rem] lg:text-[12rem] text-accent-gold/10 select-none pointer-events-none z-[1]"
           aria-hidden="true"
         >
           {SECTION_KANJI[id]}
         </span>
       )}
-      {children}
+      <div className={bgImage ? "relative z-[1]" : undefined}>
+        {children}
+      </div>
     </section>
   );
 }

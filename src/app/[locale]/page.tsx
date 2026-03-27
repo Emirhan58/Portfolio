@@ -52,6 +52,7 @@ export default async function HomePage({
             <SectionShell
               id={id}
               className={`${SECTION_BG[id]} ${id === "hero" ? "min-h-[90vh]" : ""} ${id !== "hero" && id !== "skills" && id !== "experience" ? "flex flex-col justify-center" : ""}`}
+              bgImage={id === "contact" ? "/images/contact-bg.jpg" : undefined}
             >
               <Component />
             </SectionShell>

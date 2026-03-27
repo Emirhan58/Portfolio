@@ -58,10 +58,12 @@ const KanjiSvg = ({ className = "" }: { className?: string }) => (
 
 export function KanjiIntro() {
   const container = useRef<HTMLDivElement>(null);
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
   const [visible, setVisible] = useState(true);
   const { shouldAnimate } = useReducedMotion();
 
   const skip = useCallback(() => {
+    if (tlRef.current) tlRef.current.kill();
     sessionStorage.setItem("kanji-intro-seen", "true");
     setVisible(false);
     window.dispatchEvent(new Event("kanji-intro-done"));
@@ -81,6 +83,7 @@ export function KanjiIntro() {
 
       const tl = gsap.timeline({
         onComplete: () => {
+          if (!container.current) return;
           const splitTl = gsap.timeline();
           const scene = container.current!.querySelector(".intro-scene") as HTMLElement;
           const slashTrail = container.current!.querySelector(".slash-trail") as HTMLElement;
@@ -116,11 +119,12 @@ export function KanjiIntro() {
             onComplete: () => gsap.set(container.current, { x: 0, y: 0 }),
           }, "-=0.03");
 
-          // Swap: hide full scene, show split halves
+          // Swap: hide full scene, show split halves — hero becomes visible here
           splitTl.call(() => {
             scene.style.display = "none";
             topHalf.style.display = "block";
             bottomHalf.style.display = "block";
+            window.dispatchEvent(new Event("kanji-intro-done"));
           });
 
           // Fade slash effects
@@ -140,7 +144,6 @@ export function KanjiIntro() {
             onComplete: () => {
               sessionStorage.setItem("kanji-intro-seen", "true");
               setVisible(false);
-              window.dispatchEvent(new Event("kanji-intro-done"));
             },
           }, "<");
         },
@@ -155,6 +158,8 @@ export function KanjiIntro() {
 
       // Brief hold before the cut
       tl.to({}, { duration: 0 });
+
+      tlRef.current = tl;
     },
     { scope: container, dependencies: [visible] }
   );

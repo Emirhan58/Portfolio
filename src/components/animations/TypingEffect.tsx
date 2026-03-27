@@ -41,7 +41,7 @@ export function TypingEffect({ jpText, finalText, statusText }: TypingEffectProp
   // Kanji intro bitene kadar bekle
   useEffect(() => {
     if (!shouldAnimate) return;
-    const handler = () => setPhase("jp");
+    const handler = () => setPhase((p) => p === "blocked" ? "jp" : p);
     window.addEventListener("kanji-intro-done", handler);
     return () => window.removeEventListener("kanji-intro-done", handler);
   }, [shouldAnimate]);
@@ -50,7 +50,7 @@ export function TypingEffect({ jpText, finalText, statusText }: TypingEffectProp
   useEffect(() => {
     if (phase !== "jp") return;
     setMainText(jpText);
-    const timer = setTimeout(() => setPhase("cmd-type"), 800);
+    const timer = setTimeout(() => setPhase((p) => p === "jp" ? "cmd-type" : p), 800);
     return () => clearTimeout(timer);
   }, [phase, jpText]);
 
@@ -68,7 +68,7 @@ export function TypingEffect({ jpText, finalText, statusText }: TypingEffectProp
       setCmdText(full.slice(0, i));
       if (i >= full.length) {
         clearInterval(interval);
-        setPhase("cmd-pause");
+        setPhase((p) => p === "cmd-type" ? "cmd-pause" : p);
       }
     }, 65);
 
@@ -78,7 +78,7 @@ export function TypingEffect({ jpText, finalText, statusText }: TypingEffectProp
   // CMD-PAUSE: kısa bekleme sonra scramble başla
   useEffect(() => {
     if (phase !== "cmd-pause") return;
-    const timer = setTimeout(() => setPhase("scramble"), 600);
+    const timer = setTimeout(() => setPhase((p) => p === "cmd-pause" ? "scramble" : p), 600);
     return () => clearTimeout(timer);
   }, [phase]);
 
