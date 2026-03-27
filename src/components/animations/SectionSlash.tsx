@@ -23,8 +23,8 @@ export function SectionSlash({ prevSectionId }: SectionSlashProps) {
     if (!prevSection) return;
 
     // Random values for parchment fall
-    const randomRot = (Math.random() - 0.5) * 16;
-    const randomX = (Math.random() - 0.5) * 40;
+    const randomRot = (Math.random() - 0.5) * 4;
+    const randomX = (Math.random() - 0.5) * 20;
     const randomOrigin = Math.random() > 0.5 ? "top left" : "top right";
 
     const tl = gsap.timeline({
