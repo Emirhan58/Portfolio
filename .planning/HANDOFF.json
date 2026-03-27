@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "timestamp": "2026-03-26T23:50:45.072Z",
+  "timestamp": "2026-03-27T23:11:24.017Z",
   "phase": "3",
   "phase_name": "Animations",
   "phase_dir": ".planning/phases/03-animations",
@@ -12,25 +12,27 @@
     {"id": 1, "name": "03-01: GSAP plugin registration + test stubs", "status": "done", "commit": "9bc824d"},
     {"id": 2, "name": "03-02: Kanji intro overlay", "status": "done", "commit": "a1c8b4d"},
     {"id": 3, "name": "03-03: Scroll-driven animations", "status": "done", "commit": "e24f826"},
-    {"id": 4, "name": "03-04 Task 1: TypingEffect and StatCounter components", "status": "done", "commit": "c93a35d"},
-    {"id": 5, "name": "03-04 Task 2: Wire animations into sections", "status": "done", "commit": "8707da8"}
+    {"id": 4, "name": "03-04 Task 1: TypingEffect and StatCounter", "status": "done", "commit": "c93a35d"},
+    {"id": 5, "name": "03-04 Task 2: Wire animations into sections", "status": "done", "commit": "8707da8"},
+    {"id": 6, "name": "03-04 Task 3: Visual verification + polish", "status": "done", "commit": "3548644"}
   ],
-  "remaining_tasks": [
-    {"id": 6, "name": "03-04 Task 3: Visual verification checkpoint", "status": "in_progress", "progress": "Checkpoint reached. Kanji intro reworked to fade-in with 鍛冶 kanji. Tagline decode effect reworked. Katana slash attempted but reverted. Needs fresh visual verification."}
-  ],
+  "remaining_tasks": [],
   "blockers": [],
-  "human_actions_pending": [
-    {"action": "Visual verification of complete animation system (desktop, mobile, reduced-motion)", "context": "03-04 checkpoint - animations modified during session, need fresh verification", "blocking": false}
-  ],
+  "human_actions_pending": [],
   "decisions": [
-    {"decision": "Replace 侍 with 鍛冶 (blacksmith/forge) kanji for intro", "rationale": "Personal branding - samurai sword maker, thematically tied to user's name", "phase": "3"},
-    {"decision": "Kanji intro uses fade-in instead of stroke-by-stroke drawing", "rationale": "User preference for cleaner appearance", "phase": "3"},
-    {"decision": "Tagline: JP text → CLI '$ decode --target=tr/en' typed letter-by-letter → scramble-resolve to final text", "rationale": "More thematic than simple type-delete-retype", "phase": "3"},
-    {"decision": "TypingEffect waits for kanji-intro-done event", "rationale": "Prevents tagline animation overlapping with intro", "phase": "3"},
-    {"decision": "Removed --turbopack from dev script", "rationale": "Turbopack HMR bug causing React Client Manifest errors on file changes", "phase": "3"},
-    {"decision": "Katana slash visual effect reverted to simple trail+glow+split", "rationale": "SVG/PNG katana attempts all failed. Keep simple for now.", "phase": "3"}
+    {"decision": "Replace ink splash scroll reveal with katana slash section transitions", "rationale": "User didn't like circle clip-path reveal. Katana cuts, section falls like parchment", "phase": "3"},
+    {"decision": "Replace SVG parallax layers with japan-bg.jpg fixed background", "rationale": "Real image better than CSS-drawn SVGs, background-attachment:fixed for parallax feel", "phase": "3"},
+    {"decision": "JP tagline corrected to 規模を広げるシステム、永続するコード", "rationale": "Must match EN/TR meaning since animation is a decode effect", "phase": "3"},
+    {"decision": "Scramble animation gradually expands from jpText to finalText length", "rationale": "Prevents sudden character count jump", "phase": "3"},
+    {"decision": "Fallen sections clickable to bring to front (one at a time)", "rationale": "Sections overlap after falling, click-to-raise for accessibility", "phase": "3"},
+    {"decision": "Section fall rotation ±2°, drift ±10px", "rationale": "User wanted subtler parchment movement", "phase": "3"},
+    {"decision": "Contact section has contact-bg.jpg with dark overlay", "rationale": "Fuji/pagoda/sakura image as closing atmosphere", "phase": "3"},
+    {"decision": "Timeline line grows dot-to-dot with elastic pulse on arrival", "rationale": "Progressive reveal instead of full scrub animation", "phase": "3"},
+    {"decision": "Proficiency bars trigger individually per bar viewport entry", "rationale": "Instead of all bars filling when section appears", "phase": "3"},
+    {"decision": "Footer i18n + real CONTACT_LINKS", "rationale": "Was hardcoded English with placeholder URLs", "phase": "2"},
+    {"decision": "Fire kanji-intro-done when halves split, not after", "rationale": "Hero visible before overlay gone, tagline must start immediately", "phase": "3"}
   ],
-  "uncommitted_files": ["public/images/"],
-  "next_action": "Complete 03-04 visual checkpoint, then run phase verification.",
-  "context_notes": "Phase 3 is 95% done. Plans 01-03 fully complete. Plan 04 has 2/3 tasks committed. Current state: fade-in 鍛冶 kanji (0.8s), slash trail+glow+shake+split (no katana blade), tagline decode with CLI '$ decode --target=xx' effect. Intro plays every reload (sessionStorage check removed). public/images/ has katana.svg and katana.png from slash attempts (untracked)."
+  "uncommitted_files": ["public/images/contact-bg.jpg", "public/images/emirhan-3.jpg", "public/images/katana.png", "public/images/katana.svg"],
+  "next_action": "Phase 3 complete. Run phase verification, then advance to Phase 4 (Audio & Deploy).",
+  "context_notes": "Phase 3 fully polished through iterative user feedback. All animation features done + extras (section slash, japan-bg, contact bg, footer i18n). Untracked images: contact-bg.jpg (used), katana.png/svg (leftovers from slash attempts), emirhan-3.jpg (profile photo). Ready to close Phase 3 and plan Phase 4."
 }
