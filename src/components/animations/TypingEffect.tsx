@@ -86,7 +86,8 @@ export function TypingEffect({ jpText, finalText, statusText }: TypingEffectProp
   useEffect(() => {
     if (phase !== "scramble") return;
 
-    const len = finalText.length;
+    const startLen = jpText.length;
+    const endLen = finalText.length;
     const scrambleDuration = 800;
     startTimeRef.current = performance.now();
     let resolved = 0;
@@ -102,14 +103,14 @@ export function TypingEffect({ jpText, finalText, statusText }: TypingEffectProp
 
       if (resolving) {
         const resolveElapsed = performance.now() - startTimeRef.current;
-        const newResolved = Math.min(len, Math.floor(resolveElapsed / 45));
+        const newResolved = Math.min(endLen, Math.floor(resolveElapsed / 45));
         if (newResolved > resolved) resolved = newResolved;
 
         const left = finalText.slice(0, resolved);
-        const right = randomJP(Math.max(0, len - resolved));
-        setMainText(left + right);
+        const remaining = Math.max(0, endLen - resolved);
+        setMainText(left + randomJP(remaining));
 
-        if (resolved >= len) {
+        if (resolved >= endLen) {
           setMainText(finalText);
           setCmdText("");
           setShowCursor(false);
@@ -117,8 +118,10 @@ export function TypingEffect({ jpText, finalText, statusText }: TypingEffectProp
           return;
         }
       } else {
-        const lenVariance = Math.floor(Math.sin(elapsed / 80) * 2);
-        setMainText(randomJP(Math.max(3, len + lenVariance)));
+        // Kademeli genişleme: jpText uzunluğundan finalText uzunluğuna
+        const progress = Math.min(1, elapsed / scrambleDuration);
+        const currentLen = Math.round(startLen + (endLen - startLen) * progress);
+        setMainText(randomJP(currentLen));
       }
 
       rafRef.current = requestAnimationFrame(tick);
@@ -126,7 +129,7 @@ export function TypingEffect({ jpText, finalText, statusText }: TypingEffectProp
 
     rafRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafRef.current);
-  }, [phase, finalText, randomJP]);
+  }, [phase, jpText, finalText, randomJP]);
 
   if (!shouldAnimate) {
     return <span>{finalText}</span>;
