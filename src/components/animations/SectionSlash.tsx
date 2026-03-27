@@ -66,7 +66,7 @@ export function SectionSlash({ prevSectionId }: SectionSlashProps) {
   }, { scope: container, dependencies: [shouldAnimate] });
 
   return (
-    <div ref={container} className="relative w-full h-4 overflow-visible z-10">
+    <div ref={container} className="relative w-full h-0 overflow-visible z-10">
       {/* Katana slash line */}
       <div
         className="slash-line absolute top-1/2 left-[-2%] w-[104%] h-[2px] -translate-y-1/2"
