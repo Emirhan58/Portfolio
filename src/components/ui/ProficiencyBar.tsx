@@ -23,15 +23,15 @@ export function ProficiencyBar({ label, percentage, delay = 0 }: ProficiencyBarP
     // Start with width 0
     gsap.set(fillRef.current, { width: "0%" });
 
-    // Fill animation
+    // Fill animation — triggers when this specific bar enters viewport
     gsap.to(fillRef.current, {
       width: `${percentage}%`,
-      duration: 0.8,
-      delay: delay,
+      duration: 1,
+      delay: 0.2,
       ease: "power2.out",
       scrollTrigger: {
         trigger: barRef.current,
-        start: "top 85%",
+        start: "top 95%",
         once: true,
       },
       onComplete: () => {
