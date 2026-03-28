@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap, ScrollTrigger } from "@/lib/gsap-config";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useAudio } from "@/components/providers/AudioProvider";
 
 interface SectionSlashProps {
   prevSectionId: string;
@@ -11,6 +12,9 @@ interface SectionSlashProps {
 export function SectionSlash({ prevSectionId }: SectionSlashProps) {
   const container = useRef<HTMLDivElement>(null);
   const { shouldAnimate } = useReducedMotion();
+  const { playSfx } = useAudio();
+  const playSfxRef = useRef(playSfx);
+  playSfxRef.current = playSfx;
 
   useGSAP(() => {
     if (!shouldAnimate || !container.current) return;
@@ -34,6 +38,9 @@ export function SectionSlash({ prevSectionId }: SectionSlashProps) {
         once: true,
       },
     });
+
+    // SFX: katana slash sound on enter
+    tl.call(() => playSfxRef.current("slash2"));
 
     // 1. Katana slash sweeps left → right
     tl.fromTo(slash,

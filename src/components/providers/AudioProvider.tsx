@@ -19,18 +19,15 @@ interface AudioState {
 
 const AudioCtx = createContext<AudioState | null>(null);
 
-const TRACKS: [string, string][] = [
-  ["/audio/music/ambient-01.ogg", "/audio/music/ambient-01.mp3"],
-  ["/audio/music/ambient-02.ogg", "/audio/music/ambient-02.mp3"],
+const TRACKS: string[][] = [
+  ["/audio/music/river-flows-in-you.mp3"],
 ];
 
-const SFX_NAMES = [
-  "brush-stroke",
-  "ink-drop",
-  "katana-slash",
-  "swoosh",
-  "tink",
-];
+const SFX_MAP: Record<string, string> = {
+  "slash1": "/audio/sfx/slash1.mp3",
+  "slash2": "/audio/sfx/slash2.mp3",
+  "tink": "/audio/sfx/tink.wav",
+};
 
 export function AudioProvider({ children }: { children: React.ReactNode }) {
   const [enabled, setEnabled] = useState(false);
@@ -43,21 +40,30 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
   const introListenerRef = useRef<(() => void) | null>(null);
 
   // Helper: start music only after kanji intro completes
+  // Cleans up any previous listener before adding a new one to prevent duplicates
   const startMusicIfReady = useCallback(() => {
     if (!musicRef.current) return;
 
+    // If already playing, don't restart
+    if (musicRef.current.playing()) return;
+
+    // Remove any previous intro listener to prevent duplicates
+    if (introListenerRef.current) {
+      window.removeEventListener("kanji-intro-done", introListenerRef.current);
+      introListenerRef.current = null;
+    }
+
     const introSeen = sessionStorage.getItem("kanji-intro-seen");
     if (introSeen === "true") {
-      // Intro already done -- start music immediately with fade-in
       musicRef.current.play();
-      musicRef.current.fade(0, volume, 1500);
+      musicRef.current.fade(0, volume, 800);
     } else {
-      // Intro still in progress -- listen once for completion, then start music
       const onIntroDone = () => {
         if (musicRef.current) {
           musicRef.current.play();
-          musicRef.current.fade(0, volume, 1500);
+          musicRef.current.fade(0, volume, 800);
         }
+        introListenerRef.current = null;
       };
       introListenerRef.current = onIntroDone;
       window.addEventListener("kanji-intro-done", onIntroDone, { once: true });
@@ -72,12 +78,14 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
         const { enabled: wasEnabled, volume: v } = JSON.parse(saved);
         if (typeof v === "number") setVolumeState(v);
 
-        // If user previously had audio enabled, auto-enable on first click
+        // If user previously had audio enabled, restore UI + preload sounds
+        // Music starts on first user gesture (browser autoplay policy)
         if (wasEnabled) {
+          setEnabled(true);
+          initAudio();
+          Howler.volume(v ?? 0.5);
+
           const handler = () => {
-            initAudio();
-            setEnabled(true);
-            Howler.volume(v ?? 0.5);
             startMusicIfReady();
             document.removeEventListener("click", handler);
             document.removeEventListener("touchstart", handler);
@@ -102,19 +110,27 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     initialized.current = true;
 
     // Create SFX Howl instances
-    for (const name of SFX_NAMES) {
+    for (const [name, src] of Object.entries(SFX_MAP)) {
       sfxRef.current[name] = new Howl({
-        src: [`/audio/sfx/${name}.ogg`, `/audio/sfx/${name}.mp3`],
+        src: [src],
+        onloaderror: (_id: number, err: unknown) =>
+          console.warn(`[Audio] SFX load error (${name}):`, err),
+        onplayerror: (_id: number, err: unknown) =>
+          console.warn(`[Audio] SFX play error (${name}):`, err),
       });
     }
 
-    // Create music Howl with html5 streaming
+    // Create music Howl (Web Audio API — fully preloads for instant playback)
     const trackSrc = TRACKS[currentTrackIndex.current];
     musicRef.current = new Howl({
       src: trackSrc,
-      html5: true,
       loop: true,
       volume: 0,
+      preload: true,
+      onloaderror: (_id: number, err: unknown) =>
+        console.warn("[Audio] Music load error:", err),
+      onplayerror: (_id: number, err: unknown) =>
+        console.warn("[Audio] Music play error:", err),
     });
 
     // On track end, advance to next track
@@ -126,12 +142,12 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
         musicRef.current.unload();
         musicRef.current = new Howl({
           src: nextSrc,
-          html5: true,
           loop: true,
           volume: 0,
+          preload: true,
         });
         musicRef.current.play();
-        musicRef.current.fade(0, Howler.volume(), 1500);
+        musicRef.current.fade(0, Howler.volume(), 800);
       }
     });
   }, []);

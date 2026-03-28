@@ -71,11 +71,11 @@ export function AudioToggle() {
       <AnimatePresence>
         {showSlider && (
           <motion.div
-            initial={{ opacity: 0, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 5 }}
+            initial={{ opacity: 0, x: -5 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -5 }}
             transition={{ duration: 0.15 }}
-            className="absolute bottom-full left-1/2 mb-3 -translate-x-1/2 rounded-lg border border-white/10 bg-bg/95 p-3 shadow-lg backdrop-blur-md"
+            className="absolute left-full top-1/2 ml-2 -translate-y-1/2 rounded-lg border border-white/10 bg-bg/95 px-3 py-2 shadow-lg backdrop-blur-md"
           >
             <input
               type="range"
@@ -86,10 +86,8 @@ export function AudioToggle() {
               onInput={handleVolumeChange}
               className="audio-slider"
               style={{
-                writingMode: "vertical-lr",
-                direction: "rtl",
-                height: "80px",
-                width: "4px",
+                width: "80px",
+                height: "4px",
               }}
               aria-label="Volume"
             />

@@ -9,6 +9,8 @@ export function SectionDivider() {
   const container = useRef<HTMLDivElement>(null);
   const { shouldAnimate } = useReducedMotion();
   const { playSfx } = useAudio();
+  const playSfxRef = useRef(playSfx);
+  playSfxRef.current = playSfx;
 
   useGSAP(() => {
     if (!shouldAnimate || !container.current) return;
@@ -25,10 +27,13 @@ export function SectionDivider() {
         trigger: container.current,
         start: "top 85%",
         once: true,
-        onEnter: () => playSfx("swoosh"),
+        onEnter: () => {
+          console.log("[SectionDivider] onEnter triggered, calling playSfx('slash2')");
+          playSfxRef.current("slash2");
+        },
       },
     });
-  }, { scope: container, dependencies: [shouldAnimate, playSfx] });
+  }, { scope: container, dependencies: [shouldAnimate] });
 
   return (
     <div ref={container} className="relative w-full h-8 overflow-hidden">
