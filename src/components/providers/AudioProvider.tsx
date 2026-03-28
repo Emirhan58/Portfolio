@@ -20,8 +20,10 @@ interface AudioState {
 const AudioCtx = createContext<AudioState | null>(null);
 
 const TRACKS: string[][] = [
-  ["/audio/music/river-flows-in-you.mp3"],
+  ["/audio/music/green.mp3"],
 ];
+
+const MUSIC_VOLUME_SCALE = 0.5; // music plays at half of slider volume
 
 const SFX_MAP: Record<string, string> = {
   "slash1": "/audio/sfx/slash1.mp3",
@@ -56,12 +58,12 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     const introSeen = sessionStorage.getItem("kanji-intro-seen");
     if (introSeen === "true") {
       musicRef.current.play();
-      musicRef.current.fade(0, volume, 800);
+      musicRef.current.fade(0, volume * MUSIC_VOLUME_SCALE, 800);
     } else {
       const onIntroDone = () => {
         if (musicRef.current) {
           musicRef.current.play();
-          musicRef.current.fade(0, volume, 800);
+          musicRef.current.fade(0, volume * MUSIC_VOLUME_SCALE, 800);
         }
         introListenerRef.current = null;
       };
@@ -147,7 +149,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
           preload: true,
         });
         musicRef.current.play();
-        musicRef.current.fade(0, Howler.volume(), 800);
+        musicRef.current.fade(0, Howler.volume() * MUSIC_VOLUME_SCALE, 800);
       }
     });
   }, []);
@@ -163,7 +165,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
         startMusicIfReady();
       } else {
         // Disable: fade out music then pause
-        musicRef.current?.fade(volume, 0, 1000);
+        musicRef.current?.fade(volume * MUSIC_VOLUME_SCALE, 0, 1000);
         setTimeout(() => musicRef.current?.pause(), 1000);
       }
       try {
