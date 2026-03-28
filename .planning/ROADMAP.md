@@ -80,11 +80,11 @@ Plans:
   2. User hears interaction sound effects (katana draw, brush stroke) on section transitions when audio is enabled
   3. AudioContext is created lazily on first user click — no autoplay policy violations in any browser
   4. Site is live on Vercel at a public URL with zero-config deployment
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
+- [ ] 04-01-PLAN.md — AudioProvider (Howler.js), AudioToggle with volume slider, Navbar integration, i18n keys, test stubs
+- [ ] 04-02-PLAN.md — SFX integration into KanjiIntro and SectionDivider, package rename, build verification, audio checkpoint
 
 ## Progress
 
@@ -96,4 +96,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Foundation | 2/2 | Complete | 2026-03-25 |
 | 2. Content and Visual Design | 0/4 | Not started | - |
 | 3. Animations | 1/4 | In Progress|  |
-| 4. Audio and Deploy | 0/0 | Not started | - |
+| 4. Audio and Deploy | 0/2 | Not started | - |
