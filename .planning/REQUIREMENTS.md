@@ -46,9 +46,9 @@
 
 ### Audio
 
-- [ ] **AUDL-01**: User can toggle ambient Japanese background music (default muted)
+- [x] **AUDL-01**: User can toggle ambient Japanese background music (default muted)
 - [ ] **AUDL-02**: User hears interaction sound effects on transitions (katana draw, brush stroke)
-- [ ] **AUDL-03**: Audio toggle is always visible, AudioContext created lazily on first user click
+- [x] **AUDL-03**: Audio toggle is always visible, AudioContext created lazily on first user click
 
 ### Deploy
 
@@ -113,9 +113,9 @@
 | VISL-02 | Phase 2 | Complete |
 | VISL-03 | Phase 2 | Complete |
 | VISL-04 | Phase 2 | Complete |
-| AUDL-01 | Phase 4 | Pending |
+| AUDL-01 | Phase 4 | Complete |
 | AUDL-02 | Phase 4 | Pending |
-| AUDL-03 | Phase 4 | Pending |
+| AUDL-03 | Phase 4 | Complete |
 | DEPL-01 | Phase 4 | Pending |
 
 **Coverage:**
