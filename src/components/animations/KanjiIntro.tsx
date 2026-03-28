@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap-config";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useAudio } from "@/components/providers/AudioProvider";
+import { useLocale } from "next-intl";
 
 // Stroke paths for 鍛冶 (Kaji — blacksmith/forge)
 const KANJI_STROKES = [
@@ -61,7 +62,9 @@ export function KanjiIntro() {
   const container = useRef<HTMLDivElement>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const [visible, setVisible] = useState(true);
+  const [waitingForClick, setWaitingForClick] = useState(false);
   const { shouldAnimate } = useReducedMotion();
+  const locale = useLocale();
   const { playSfx } = useAudio();
 
   const skip = useCallback(() => {
@@ -70,6 +73,78 @@ export function KanjiIntro() {
     setVisible(false);
     window.dispatchEvent(new Event("kanji-intro-done"));
   }, []);
+
+  const triggerSlash = useCallback(() => {
+    if (!container.current || !waitingForClick) return;
+    setWaitingForClick(false);
+
+    const scene = container.current.querySelector(".intro-scene") as HTMLElement;
+    const slashTrail = container.current.querySelector(".slash-trail") as HTMLElement;
+    const slashGlow = container.current.querySelector(".slash-glow") as HTMLElement;
+    const topHalf = container.current.querySelector(".intro-top") as HTMLElement;
+    const bottomHalf = container.current.querySelector(".intro-bottom") as HTMLElement;
+
+    // Signal intro done early so music starts fading in during slash
+    window.dispatchEvent(new Event("kanji-intro-done"));
+
+    const splitTl = gsap.timeline();
+
+    // Katana-slash SFX — fires immediately (user gesture guarantees AudioContext)
+    splitTl.call(() => playSfx("slash1"));
+
+    // Slash sweeps left→right
+    splitTl.fromTo(
+      slashTrail,
+      { opacity: 1, scaleX: 0, transformOrigin: "left center" },
+      { scaleX: 1, duration: 0.12, ease: "power4.in" },
+      "<"
+    );
+
+    // Red glow flash
+    splitTl.fromTo(
+      slashGlow,
+      { opacity: 0 },
+      { opacity: 1, duration: 0.05 },
+      "-=0.04"
+    );
+
+    // Impact shake
+    splitTl.to(container.current, {
+      x: () => (Math.random() - 0.5) * 20,
+      y: () => (Math.random() - 0.5) * 12,
+      duration: 0.04,
+      repeat: 6,
+      yoyo: true,
+      onComplete: () => { gsap.set(container.current, { x: 0, y: 0 }); },
+    }, "-=0.03");
+
+    // Swap: hide full scene, show split halves
+    splitTl.call(() => {
+      scene.style.display = "none";
+      topHalf.style.display = "block";
+      bottomHalf.style.display = "block";
+    });
+
+    // Fade slash effects
+    splitTl.to(slashGlow, { opacity: 0, duration: 0.2 });
+    splitTl.to(slashTrail, { opacity: 0, duration: 0.2 }, "<");
+
+    // Halves separate
+    splitTl.to(topHalf, {
+      yPercent: -100,
+      duration: 0.65,
+      ease: "power2.in",
+    }, "-=0.1");
+    splitTl.to(bottomHalf, {
+      yPercent: 100,
+      duration: 0.65,
+      ease: "power2.in",
+      onComplete: () => {
+        sessionStorage.setItem("kanji-intro-seen", "true");
+        setVisible(false);
+      },
+    }, "<");
+  }, [waitingForClick, playSfx]);
 
   useEffect(() => {
     if (!shouldAnimate) setVisible(false);
@@ -84,75 +159,7 @@ export function KanjiIntro() {
       const kanjiSvg = mainScene.querySelector("svg");
 
       const tl = gsap.timeline({
-        onComplete: () => {
-          if (!container.current) return;
-          const splitTl = gsap.timeline();
-          const scene = container.current!.querySelector(".intro-scene") as HTMLElement;
-          const slashTrail = container.current!.querySelector(".slash-trail") as HTMLElement;
-          const slashGlow = container.current!.querySelector(".slash-glow") as HTMLElement;
-          const topHalf = container.current!.querySelector(".intro-top") as HTMLElement;
-          const bottomHalf = container.current!.querySelector(".intro-bottom") as HTMLElement;
-
-          // Tension pause
-          splitTl.to({}, { duration: 0.35 });
-
-          // Katana-slash SFX — fires at slash start
-          splitTl.call(() => playSfx("slash1"));
-
-          // Slash sweeps left→right
-          splitTl.fromTo(
-            slashTrail,
-            { opacity: 1, scaleX: 0, transformOrigin: "left center" },
-            { scaleX: 1, duration: 0.12, ease: "power4.in" },
-            "<"
-          );
-
-          // Red glow flash
-          splitTl.fromTo(
-            slashGlow,
-            { opacity: 0 },
-            { opacity: 1, duration: 0.05 },
-            "-=0.04"
-          );
-
-          // Impact shake
-          splitTl.to(container.current, {
-            x: () => (Math.random() - 0.5) * 20,
-            y: () => (Math.random() - 0.5) * 12,
-            duration: 0.04,
-            repeat: 6,
-            yoyo: true,
-            onComplete: () => { gsap.set(container.current, { x: 0, y: 0 }); },
-          }, "-=0.03");
-
-          // Swap: hide full scene, show split halves — hero becomes visible here
-          splitTl.call(() => {
-            scene.style.display = "none";
-            topHalf.style.display = "block";
-            bottomHalf.style.display = "block";
-            window.dispatchEvent(new Event("kanji-intro-done"));
-          });
-
-          // Fade slash effects
-          splitTl.to(slashGlow, { opacity: 0, duration: 0.2 });
-          splitTl.to(slashTrail, { opacity: 0, duration: 0.2 }, "<");
-
-          // Halves separate — kanji tears apart
-          splitTl.to(topHalf, {
-            yPercent: -100,
-            duration: 0.65,
-            ease: "power2.in",
-          }, "-=0.1");
-          splitTl.to(bottomHalf, {
-            yPercent: 100,
-            duration: 0.65,
-            ease: "power2.in",
-            onComplete: () => {
-              sessionStorage.setItem("kanji-intro-seen", "true");
-              setVisible(false);
-            },
-          }, "<");
-        },
+        onComplete: () => setWaitingForClick(true),
       });
 
       // Fade in kanji gradually
@@ -162,14 +169,9 @@ export function KanjiIntro() {
         { opacity: 1, duration: 0.8, ease: "power1.inOut" }
       );
 
-
-
-      // Brief hold before the cut
-      tl.to({}, { duration: 0 });
-
       tlRef.current = tl;
     },
-    { scope: container, dependencies: [visible, playSfx] }
+    { scope: container, dependencies: [visible] }
   );
 
   if (!visible) return null;
@@ -179,10 +181,21 @@ export function KanjiIntro() {
   const svgClassHidden = svgClass + " opacity-0";
 
   return (
-    <div ref={container} className="fixed inset-0 z-50" aria-hidden="true">
+    <div
+      ref={container}
+      className="fixed inset-0 z-50 cursor-pointer"
+      onClick={triggerSlash}
+      aria-hidden="true"
+    >
       {/* Main scene — kanji draws here, hidden at cut */}
       <div className="intro-scene absolute inset-0 bg-[#0a0a0a] z-[3]">
         <KanjiSvg className={svgClassHidden} />
+        {/* Click prompt — appears after kanji fade-in */}
+        {waitingForClick && (
+          <div className="absolute top-[62%] left-1/2 -translate-x-1/2 text-white/50 text-base tracking-[0.25em] animate-pulse font-light">
+            {locale === "tr" ? "Ekrana tıklayın" : "Click anywhere"}
+          </div>
+        )}
       </div>
 
       {/* Top half — clips top 50% of screen, slides up */}

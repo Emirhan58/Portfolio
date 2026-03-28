@@ -23,7 +23,7 @@ const TRACKS: string[][] = [
   ["/audio/music/green.mp3"],
 ];
 
-const MUSIC_VOLUME_SCALE = 0.5; // music plays at half of slider volume
+const MUSIC_VOLUME_SCALE = 0.5;
 
 const SFX_MAP: Record<string, string> = {
   "slash1": "/audio/sfx/slash1.mp3",
@@ -31,25 +31,65 @@ const SFX_MAP: Record<string, string> = {
   "tink": "/audio/sfx/tink.wav",
 };
 
+// Module-level audio state — survives component remounts (locale switch etc.)
+let audioInitialized = false;
+let sfxInstances: Record<string, Howl> = {};
+let musicInstance: Howl | null = null;
+let currentTrackIdx = 0;
+
+function initAudioOnce() {
+  if (audioInitialized) return;
+  audioInitialized = true;
+
+  for (const [name, src] of Object.entries(SFX_MAP)) {
+    sfxInstances[name] = new Howl({
+      src: [src],
+      onloaderror: (_id: number, err: unknown) =>
+        console.warn(`[Audio] SFX load error (${name}):`, err),
+      onplayerror: (_id: number, err: unknown) =>
+        console.warn(`[Audio] SFX play error (${name}):`, err),
+    });
+  }
+
+  const trackSrc = TRACKS[currentTrackIdx];
+  musicInstance = new Howl({
+    src: trackSrc,
+    loop: true,
+    volume: 0,
+    preload: true,
+    onloaderror: (_id: number, err: unknown) =>
+      console.warn("[Audio] Music load error:", err),
+    onplayerror: (_id: number, err: unknown) =>
+      console.warn("[Audio] Music play error:", err),
+  });
+
+  musicInstance.on("end", () => {
+    currentTrackIdx = (currentTrackIdx + 1) % TRACKS.length;
+    const nextSrc = TRACKS[currentTrackIdx];
+    if (musicInstance) {
+      musicInstance.unload();
+      musicInstance = new Howl({
+        src: nextSrc,
+        loop: true,
+        volume: 0,
+        preload: true,
+      });
+      musicInstance.play();
+      musicInstance.fade(0, Howler.volume() * MUSIC_VOLUME_SCALE, 800);
+    }
+  });
+}
+
 export function AudioProvider({ children }: { children: React.ReactNode }) {
   const [enabled, setEnabled] = useState(false);
   const [volume, setVolumeState] = useState(0.5);
-  const initialized = useRef(false);
-  const musicRef = useRef<Howl | null>(null);
-  const sfxRef = useRef<Record<string, Howl>>({});
-  const currentTrackIndex = useRef(0);
   const sfxLastPlayed = useRef<Record<string, number>>({});
   const introListenerRef = useRef<(() => void) | null>(null);
 
-  // Helper: start music only after kanji intro completes
-  // Cleans up any previous listener before adding a new one to prevent duplicates
   const startMusicIfReady = useCallback(() => {
-    if (!musicRef.current) return;
+    if (!musicInstance) return;
+    if (musicInstance.playing()) return;
 
-    // If already playing, don't restart
-    if (musicRef.current.playing()) return;
-
-    // Remove any previous intro listener to prevent duplicates
     if (introListenerRef.current) {
       window.removeEventListener("kanji-intro-done", introListenerRef.current);
       introListenerRef.current = null;
@@ -57,13 +97,13 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
 
     const introSeen = sessionStorage.getItem("kanji-intro-seen");
     if (introSeen === "true") {
-      musicRef.current.play();
-      musicRef.current.fade(0, volume * MUSIC_VOLUME_SCALE, 800);
+      musicInstance.play();
+      musicInstance.fade(0, volume * MUSIC_VOLUME_SCALE, 800);
     } else {
       const onIntroDone = () => {
-        if (musicRef.current) {
-          musicRef.current.play();
-          musicRef.current.fade(0, volume * MUSIC_VOLUME_SCALE, 800);
+        if (musicInstance) {
+          musicInstance.play();
+          musicInstance.fade(0, volume * MUSIC_VOLUME_SCALE, 800);
         }
         introListenerRef.current = null;
       };
@@ -80,12 +120,13 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
         const { enabled: wasEnabled, volume: v } = JSON.parse(saved);
         if (typeof v === "number") setVolumeState(v);
 
-        // If user previously had audio enabled, restore UI + preload sounds
-        // Music starts on first user gesture (browser autoplay policy)
         if (wasEnabled) {
           setEnabled(true);
-          initAudio();
+          initAudioOnce();
           Howler.volume(v ?? 0.5);
+
+          // If music was playing before remount, continue
+          if (musicInstance?.playing()) return;
 
           const handler = () => {
             startMusicIfReady();
@@ -102,71 +143,22 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
         }
       }
     } catch {
-      // localStorage unavailable (SSR or private browsing)
+      // localStorage unavailable
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const initAudio = useCallback(() => {
-    if (initialized.current) return;
-    initialized.current = true;
-
-    // Create SFX Howl instances
-    for (const [name, src] of Object.entries(SFX_MAP)) {
-      sfxRef.current[name] = new Howl({
-        src: [src],
-        onloaderror: (_id: number, err: unknown) =>
-          console.warn(`[Audio] SFX load error (${name}):`, err),
-        onplayerror: (_id: number, err: unknown) =>
-          console.warn(`[Audio] SFX play error (${name}):`, err),
-      });
-    }
-
-    // Create music Howl (Web Audio API — fully preloads for instant playback)
-    const trackSrc = TRACKS[currentTrackIndex.current];
-    musicRef.current = new Howl({
-      src: trackSrc,
-      loop: true,
-      volume: 0,
-      preload: true,
-      onloaderror: (_id: number, err: unknown) =>
-        console.warn("[Audio] Music load error:", err),
-      onplayerror: (_id: number, err: unknown) =>
-        console.warn("[Audio] Music play error:", err),
-    });
-
-    // On track end, advance to next track
-    musicRef.current.on("end", () => {
-      currentTrackIndex.current =
-        (currentTrackIndex.current + 1) % TRACKS.length;
-      const nextSrc = TRACKS[currentTrackIndex.current];
-      if (musicRef.current) {
-        musicRef.current.unload();
-        musicRef.current = new Howl({
-          src: nextSrc,
-          loop: true,
-          volume: 0,
-          preload: true,
-        });
-        musicRef.current.play();
-        musicRef.current.fade(0, Howler.volume() * MUSIC_VOLUME_SCALE, 800);
-      }
-    });
-  }, []);
-
   const toggleAudio = useCallback(() => {
-    initAudio();
+    initAudioOnce();
     setEnabled((prev) => {
       const next = !prev;
       if (next) {
-        // Enable: play tink SFX, set global volume, start music
-        sfxRef.current["tink"]?.play();
+        sfxInstances["tink"]?.play();
         Howler.volume(volume);
         startMusicIfReady();
       } else {
-        // Disable: fade out music then pause
-        musicRef.current?.fade(volume * MUSIC_VOLUME_SCALE, 0, 1000);
-        setTimeout(() => musicRef.current?.pause(), 1000);
+        musicInstance?.fade(volume * MUSIC_VOLUME_SCALE, 0, 1000);
+        setTimeout(() => musicInstance?.pause(), 1000);
       }
       try {
         localStorage.setItem(
@@ -178,19 +170,18 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
       }
       return next;
     });
-  }, [initAudio, volume, startMusicIfReady]);
+  }, [volume, startMusicIfReady]);
 
   const playSfx = useCallback(
     (name: string) => {
-      if (!enabled || !sfxRef.current[name]) return;
+      if (!enabled || !sfxInstances[name]) return;
 
-      // Debounce: skip if same SFX played < 200ms ago
       const now = Date.now();
       const last = sfxLastPlayed.current[name] || 0;
       if (now - last < 200) return;
       sfxLastPlayed.current[name] = now;
 
-      sfxRef.current[name].play();
+      sfxInstances[name].play();
     },
     [enabled]
   );
@@ -211,11 +202,9 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     [enabled]
   );
 
-  // Cleanup on unmount
+  // No cleanup — module-level instances persist across remounts
   useEffect(() => {
     return () => {
-      musicRef.current?.unload();
-      Object.values(sfxRef.current).forEach((h) => h.unload());
       if (introListenerRef.current) {
         window.removeEventListener("kanji-intro-done", introListenerRef.current);
       }
