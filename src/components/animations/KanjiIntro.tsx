@@ -121,7 +121,7 @@ export function KanjiIntro() {
             duration: 0.04,
             repeat: 6,
             yoyo: true,
-            onComplete: () => gsap.set(container.current, { x: 0, y: 0 }),
+            onComplete: () => { gsap.set(container.current, { x: 0, y: 0 }); },
           }, "-=0.03");
 
           // Swap: hide full scene, show split halves — hero becomes visible here
