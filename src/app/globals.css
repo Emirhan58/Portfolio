@@ -71,3 +71,38 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Audio toggle pulse animation */
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(192, 57, 43, 0); }
+}
+.animate-pulse-red {
+  animation: pulse-red 2s ease-in-out infinite;
+}
+
+/* Audio volume slider styling */
+.audio-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(245, 240, 232, 0.2);
+  border-radius: 2px;
+  cursor: pointer;
+}
+.audio-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #c0392b;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.audio-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: #c0392b;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
