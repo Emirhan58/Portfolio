@@ -63,8 +63,9 @@ export function KanjiIntro() {
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const [visible, setVisible] = useState(true);
   const [waitingForClick, setWaitingForClick] = useState(false);
-  const { shouldAnimate, tier } = useReducedMotion();
-  const isMobile = tier === "reduced";
+  const { tier, isMobile } = useReducedMotion();
+  // Intro plays on mobile too — only skip for prefers-reduced-motion
+  const showIntro = tier !== "none";
   const locale = useLocale();
   const { playSfx } = useAudio();
 
@@ -162,8 +163,8 @@ export function KanjiIntro() {
   }, [waitingForClick, playSfx, isMobile]);
 
   useEffect(() => {
-    if (!shouldAnimate) setVisible(false);
-  }, [shouldAnimate]);
+    if (!showIntro) setVisible(false);
+  }, [showIntro]);
 
   useGSAP(
     () => {

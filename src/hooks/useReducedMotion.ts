@@ -27,7 +27,8 @@ export function useReducedMotion() {
 
   return {
     tier,
-    shouldAnimate: tier !== "none",
+    isMobile: tier === "reduced",
+    shouldAnimate: tier === "full",
     shouldParticle: tier === "full",
     shouldParallax: tier === "full",
     shouldSnap: tier !== "none",
