@@ -8,6 +8,7 @@ import { NAV_LINKS, SECTION_KANJI } from "@/lib/constants";
 import { cn } from "@/lib/cn";
 import { shojiLeft, shojiRight, shojiContent } from "@/lib/animation-variants";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { AudioToggle } from "./AudioToggle";
 
 export function Navbar() {
   const { activeSection, scrollTo } = useScrollContext();
@@ -123,6 +124,9 @@ export function Navbar() {
                 </svg>
               </button>
             </div>
+
+            {/* Audio Toggle */}
+            <AudioToggle />
 
             {/* CV Download Button */}
             <a

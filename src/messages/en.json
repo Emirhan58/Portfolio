@@ -6,7 +6,9 @@
     "projects": "Projects",
     "achievements": "Achievements",
     "contact": "Contact",
-    "downloadCV": "Download CV"
+    "downloadCV": "Download CV",
+    "soundOn": "Sound On/Off",
+    "soundOff": "Sound On/Off"
   },
   "hero": {
     "name": "Emirhan Kaya",

@@ -6,7 +6,9 @@
     "projects": "Projeler",
     "achievements": "Başarılar",
     "contact": "İletişim",
-    "downloadCV": "CV İndir"
+    "downloadCV": "CV İndir",
+    "soundOn": "Muzik Ac/Kapa",
+    "soundOff": "Muzik Ac/Kapa"
   },
   "hero": {
     "name": "Emirhan Kaya",
