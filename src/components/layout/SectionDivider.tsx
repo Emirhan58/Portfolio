@@ -27,10 +27,7 @@ export function SectionDivider() {
         trigger: container.current,
         start: "top 85%",
         once: true,
-        onEnter: () => {
-          console.log("[SectionDivider] onEnter triggered, calling playSfx('slash2')");
-          playSfxRef.current("slash2");
-        },
+        onEnter: () => playSfxRef.current("slash2"),
       },
     });
   }, { scope: container, dependencies: [shouldAnimate] });

@@ -13,9 +13,9 @@ Build a single-page samurai-themed portfolio from the ground up: establish the t
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Next.js 15 scaffold with i18n, design tokens, navigation, animation infrastructure, and accessibility groundwork
-- [ ] **Phase 2: Content and Visual Design** - All 7 themed sections with Japanese visual treatment, typography, textures, and decorative elements
-- [ ] **Phase 3: Animations** - Kanji intro, scroll-triggered reveals, parallax, particles, katana transitions, typing effect, and mobile reduction
-- [ ] **Phase 4: Audio and Deploy** - Ambient music, interaction SFX, audio toggle, and Vercel deployment
+- [x] **Phase 2: Content and Visual Design** - All 7 themed sections with Japanese visual treatment, typography, textures, and decorative elements
+- [x] **Phase 3: Animations** - Kanji intro, scroll-triggered reveals, parallax, particles, katana transitions, typing effect, and mobile reduction
+- [x] **Phase 4: Audio and Deploy** - Ambient music, interaction SFX, audio toggle, and Vercel deployment
 
 ## Phase Details
 
@@ -48,10 +48,10 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 02-00-PLAN.md — Wave 0: Test stubs for all section components and i18n parity (Nyquist compliance)
-- [ ] 02-01-PLAN.md — Foundation: i18n content, data module, font fix, shared UI components, section dividers, page.tsx rewire
-- [ ] 02-02-PLAN.md — Hero, About, and Skills sections with ink-wash background, photo frame, parchment cards
-- [ ] 02-03-PLAN.md — Experience timeline, Projects masonry, Achievements medals, Contact mon icons, final wiring
+- [x] 02-00-PLAN.md — Wave 0: Test stubs for all section components and i18n parity (Nyquist compliance)
+- [x] 02-01-PLAN.md — Foundation: i18n content, data module, font fix, shared UI components, section dividers, page.tsx rewire
+- [x] 02-02-PLAN.md — Hero, About, and Skills sections with ink-wash background, photo frame, parchment cards
+- [x] 02-03-PLAN.md — Experience timeline, Projects masonry, Achievements medals, Contact mon icons, final wiring
 
 ### Phase 3: Animations
 **Goal**: The site comes alive with the full animation experience — kanji intro, scroll-triggered ink/brush reveals, parallax depth layers, floating sakura particles, katana slash transitions, typing effect, and animated stat counters — with graceful degradation on mobile and reduced-motion
@@ -66,10 +66,10 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Test stubs for all animation components + GSAP DrawSVGPlugin/CustomEase registration
-- [ ] 03-02-PLAN.md — Kanji intro overlay (侍 brush stroke animation, katana slash transition, skip, sessionStorage)
-- [ ] 03-03-PLAN.md — Scroll-driven animations (ink splash reveals, katana slash dividers, parallax layers, sakura refinement)
-- [ ] 03-04-PLAN.md — Section animations (typing effect, stat counters, proficiency bars, timeline) + visual checkpoint
+- [x] 03-01-PLAN.md — Test stubs for all animation components + GSAP DrawSVGPlugin/CustomEase registration
+- [x] 03-02-PLAN.md — Kanji intro overlay (侍 brush stroke animation, katana slash transition, skip, sessionStorage)
+- [x] 03-03-PLAN.md — Scroll-driven animations (ink splash reveals, katana slash dividers, parallax layers, sakura refinement)
+- [x] 03-04-PLAN.md — Section animations (typing effect, stat counters, proficiency bars, timeline) + visual checkpoint
 
 ### Phase 4: Audio and Deploy
 **Goal**: The portfolio experience is completed with ambient Japanese music and interaction sound effects, and the site is deployed live on Vercel
@@ -83,8 +83,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 04-01-PLAN.md — AudioProvider (Howler.js), AudioToggle with volume slider, Navbar integration, i18n keys, test stubs
-- [ ] 04-02-PLAN.md — SFX integration into KanjiIntro and SectionDivider, package rename, build verification, audio checkpoint
+- [x] 04-01-PLAN.md — AudioProvider (Howler.js), AudioToggle with volume slider, Navbar integration, i18n keys, test stubs
+- [x] 04-02-PLAN.md — SFX integration into KanjiIntro and SectionSlash, package rename, build verification, Vercel deploy
 
 ## Progress
 
@@ -94,6 +94,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete | 2026-03-25 |
-| 2. Content and Visual Design | 0/4 | Not started | - |
-| 3. Animations | 1/4 | In Progress|  |
-| 4. Audio and Deploy | 0/2 | Not started | - |
+| 2. Content and Visual Design | 4/4 | Complete | 2026-03-26 |
+| 3. Animations | 3/3 | Complete | 2026-03-27 |
+| 4. Audio and Deploy | 2/2 | Complete | 2026-03-28 |

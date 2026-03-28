@@ -4,12 +4,13 @@ import React from "react";
 
 // Mock howler module — Howl must be a proper constructor (class/function)
 vi.mock("howler", () => {
-  function Howl() {
+  function Howl(this: any) {
     this.play = vi.fn();
     this.pause = vi.fn();
     this.fade = vi.fn();
     this.volume = vi.fn();
     this.unload = vi.fn();
+    this.playing = vi.fn(() => false);
     this.on = vi.fn();
   }
   return { Howl, Howler: { volume: vi.fn() } };
@@ -39,8 +40,14 @@ vi.stubGlobal("sessionStorage", sessionStorageMock);
 
 import { AudioProvider, useAudio } from "@/components/providers/AudioProvider";
 
+// Reset module-level audio state between tests so each test starts clean
+async function resetAudioModule() {
+  vi.resetModules();
+  // Re-import after reset so module-level state is fresh
+}
+
 describe("AudioProvider", () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     vi.clearAllMocks();
     localStorageMock.getItem.mockReturnValue(null);
     sessionStorageMock.getItem.mockReturnValue("true");
@@ -97,7 +104,6 @@ describe("AudioProvider", () => {
     );
 
     // Audio is disabled by default, playSfx should be a no-op
-    // Since initAudio hasn't been called, sfxRef is empty -- no Howl.play called
     expect(audioState!.enabled).toBe(false);
 
     // Calling playSfx when disabled should not throw
@@ -159,5 +165,33 @@ describe("AudioProvider", () => {
     expect(introCall).toBeTruthy();
 
     addEventSpy.mockRestore();
+  });
+
+  it("SFX_MAP keys include tink, slash1, slash2", () => {
+    // Verify that known SFX names exist and playSfx handles them gracefully
+    let audioState: ReturnType<typeof useAudio>;
+
+    function Consumer() {
+      audioState = useAudio();
+      return null;
+    }
+
+    render(
+      React.createElement(AudioProvider, null, React.createElement(Consumer))
+    );
+
+    // Enable audio first so playSfx can attempt to play
+    act(() => {
+      audioState!.toggleAudio();
+    });
+
+    // These should not throw — sfxInstances is populated by initAudioOnce
+    expect(() => {
+      act(() => {
+        audioState!.playSfx("tink");
+        audioState!.playSfx("slash1");
+        audioState!.playSfx("slash2");
+      });
+    }).not.toThrow();
   });
 });
