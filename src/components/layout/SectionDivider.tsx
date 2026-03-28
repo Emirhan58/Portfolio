@@ -3,10 +3,12 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap, ScrollTrigger } from "@/lib/gsap-config";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useAudio } from "@/components/providers/AudioProvider";
 
 export function SectionDivider() {
   const container = useRef<HTMLDivElement>(null);
   const { shouldAnimate } = useReducedMotion();
+  const { playSfx } = useAudio();
 
   useGSAP(() => {
     if (!shouldAnimate || !container.current) return;
@@ -23,9 +25,10 @@ export function SectionDivider() {
         trigger: container.current,
         start: "top 85%",
         once: true,
+        onEnter: () => playSfx("swoosh"),
       },
     });
-  }, { scope: container, dependencies: [shouldAnimate] });
+  }, { scope: container, dependencies: [shouldAnimate, playSfx] });
 
   return (
     <div ref={container} className="relative w-full h-8 overflow-hidden">

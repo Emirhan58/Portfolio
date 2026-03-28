@@ -3,6 +3,7 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap-config";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useAudio } from "@/components/providers/AudioProvider";
 
 // Stroke paths for 鍛冶 (Kaji — blacksmith/forge)
 const KANJI_STROKES = [
@@ -61,6 +62,7 @@ export function KanjiIntro() {
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const [visible, setVisible] = useState(true);
   const { shouldAnimate } = useReducedMotion();
+  const { playSfx } = useAudio();
 
   const skip = useCallback(() => {
     if (tlRef.current) tlRef.current.kill();
@@ -100,6 +102,9 @@ export function KanjiIntro() {
             { opacity: 1, scaleX: 0, transformOrigin: "left center" },
             { scaleX: 1, duration: 0.12, ease: "power4.in" }
           );
+
+          // Katana-slash SFX — syncs with visual slash
+          splitTl.call(() => playSfx("katana-slash"), [], "-=0.04");
 
           // Red glow flash
           splitTl.fromTo(
@@ -156,12 +161,25 @@ export function KanjiIntro() {
         { opacity: 1, duration: 0.8, ease: "power1.inOut" }
       );
 
+      // Stagger brush-stroke SFX during the 0.8s fade-in to evoke calligraphy
+      const brushCount = 5;
+      for (let i = 0; i < brushCount; i++) {
+        tl.call(
+          () => playSfx("brush-stroke"),
+          [],
+          (i * 0.8) / brushCount - 0.8
+        );
+      }
+
+      // Ink-drop SFX — ink settles after kanji fully visible
+      tl.call(() => playSfx("ink-drop"), []);
+
       // Brief hold before the cut
       tl.to({}, { duration: 0 });
 
       tlRef.current = tl;
     },
-    { scope: container, dependencies: [visible] }
+    { scope: container, dependencies: [visible, playSfx] }
   );
 
   if (!visible) return null;
