@@ -63,7 +63,8 @@ export function KanjiIntro() {
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const [visible, setVisible] = useState(true);
   const [waitingForClick, setWaitingForClick] = useState(false);
-  const { shouldAnimate } = useReducedMotion();
+  const { shouldAnimate, tier } = useReducedMotion();
+  const isMobile = tier === "reduced";
   const locale = useLocale();
   const { playSfx } = useAudio();
 
@@ -108,43 +109,57 @@ export function KanjiIntro() {
       "-=0.04"
     );
 
-    // Impact shake
-    splitTl.to(container.current, {
-      x: () => (Math.random() - 0.5) * 20,
-      y: () => (Math.random() - 0.5) * 12,
-      duration: 0.04,
-      repeat: 6,
-      yoyo: true,
-      onComplete: () => { gsap.set(container.current, { x: 0, y: 0 }); },
-    }, "-=0.03");
-
-    // Swap: hide full scene, show split halves
-    splitTl.call(() => {
-      scene.style.display = "none";
-      topHalf.style.display = "block";
-      bottomHalf.style.display = "block";
-    });
+    // Impact shake (skip on mobile — causes jank)
+    if (!isMobile) {
+      splitTl.to(container.current, {
+        x: () => (Math.random() - 0.5) * 20,
+        y: () => (Math.random() - 0.5) * 12,
+        duration: 0.04,
+        repeat: 6,
+        yoyo: true,
+        onComplete: () => { gsap.set(container.current, { x: 0, y: 0 }); },
+      }, "-=0.03");
+    }
 
     // Fade slash effects
     splitTl.to(slashGlow, { opacity: 0, duration: 0.2 });
     splitTl.to(slashTrail, { opacity: 0, duration: 0.2 }, "<");
 
-    // Halves separate
-    splitTl.to(topHalf, {
-      yPercent: -100,
-      duration: 0.65,
-      ease: "power2.in",
-    }, "-=0.1");
-    splitTl.to(bottomHalf, {
-      yPercent: 100,
-      duration: 0.65,
-      ease: "power2.in",
-      onComplete: () => {
-        sessionStorage.setItem("kanji-intro-seen", "true");
-        setVisible(false);
-      },
-    }, "<");
-  }, [waitingForClick, playSfx]);
+    if (isMobile) {
+      // Mobile: simple fade out — avoids split halves rendering glitch
+      splitTl.to(scene, {
+        opacity: 0,
+        duration: 0.5,
+        ease: "power2.in",
+        onComplete: () => {
+          sessionStorage.setItem("kanji-intro-seen", "true");
+          setVisible(false);
+        },
+      });
+    } else {
+      // Desktop: split halves separate
+      splitTl.call(() => {
+        scene.style.display = "none";
+        topHalf.style.display = "block";
+        bottomHalf.style.display = "block";
+      });
+
+      splitTl.to(topHalf, {
+        yPercent: -100,
+        duration: 0.65,
+        ease: "power2.in",
+      }, "-=0.1");
+      splitTl.to(bottomHalf, {
+        yPercent: 100,
+        duration: 0.65,
+        ease: "power2.in",
+        onComplete: () => {
+          sessionStorage.setItem("kanji-intro-seen", "true");
+          setVisible(false);
+        },
+      }, "<");
+    }
+  }, [waitingForClick, playSfx, isMobile]);
 
   useEffect(() => {
     if (!shouldAnimate) setVisible(false);

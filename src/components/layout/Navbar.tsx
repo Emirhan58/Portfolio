@@ -174,7 +174,7 @@ export function Navbar() {
               <>
                 {/* Left Shoji Panel */}
                 <motion.div
-                  className="fixed inset-y-0 left-0 w-1/2 bg-bg/95 backdrop-blur-sm"
+                  className="fixed inset-y-0 left-0 w-1/2 bg-bg"
                   style={{ zIndex: 199 }}
                   variants={shojiLeft}
                   initial="closed"
@@ -183,7 +183,7 @@ export function Navbar() {
                 />
                 {/* Right Shoji Panel */}
                 <motion.div
-                  className="fixed inset-y-0 right-0 w-1/2 bg-bg/95 backdrop-blur-sm"
+                  className="fixed inset-y-0 right-0 w-1/2 bg-bg"
                   style={{ zIndex: 199 }}
                   variants={shojiRight}
                   initial="closed"

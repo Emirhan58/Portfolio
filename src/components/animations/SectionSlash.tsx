@@ -11,10 +11,11 @@ interface SectionSlashProps {
 
 export function SectionSlash({ prevSectionId }: SectionSlashProps) {
   const container = useRef<HTMLDivElement>(null);
-  const { shouldAnimate } = useReducedMotion();
+  const { shouldAnimate, tier } = useReducedMotion();
   const { playSfx } = useAudio();
   const playSfxRef = useRef(playSfx);
   playSfxRef.current = playSfx;
+  const isMobile = tier === "reduced";
 
   useGSAP(() => {
     if (!shouldAnimate || !container.current) return;
@@ -25,11 +26,6 @@ export function SectionSlash({ prevSectionId }: SectionSlashProps) {
 
     const prevSection = document.getElementById(prevSectionId);
     if (!prevSection) return;
-
-    // Random values for parchment fall
-    const randomRot = (Math.random() - 0.5) * 4;
-    const randomX = (Math.random() - 0.5) * 20;
-    const randomOrigin = Math.random() > 0.5 ? "top left" : "top right";
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -55,42 +51,47 @@ export function SectionSlash({ prevSectionId }: SectionSlashProps) {
       "-=0.04"
     );
 
-    // 3. Previous section falls like cut parchment — lands on ground
-    tl.to(prevSection, {
-      rotation: randomRot,
-      x: randomX,
-      y: 60,
-      transformOrigin: randomOrigin,
-      scale: 0.97,
-      duration: 1.2,
-      ease: "power2.in",
-    }, "-=0.1");
+    // 3. Previous section falls (desktop only — causes jank and overlap on mobile)
+    if (!isMobile) {
+      const randomRot = (Math.random() - 0.5) * 4;
+      const randomX = (Math.random() - 0.5) * 20;
+      const randomOrigin = Math.random() > 0.5 ? "top left" : "top right";
+
+      tl.to(prevSection, {
+        rotation: randomRot,
+        x: randomX,
+        y: 60,
+        transformOrigin: randomOrigin,
+        scale: 0.97,
+        duration: 1.2,
+        ease: "power2.in",
+      }, "-=0.1");
+
+      // Click to bring fallen section to front
+      const onClick = () => {
+        document.querySelectorAll("[data-raised]").forEach((el) => {
+          if (el !== prevSection) {
+            gsap.set(el, { zIndex: "" });
+            el.removeAttribute("data-raised");
+          }
+        });
+
+        if (prevSection.hasAttribute("data-raised")) {
+          gsap.set(prevSection, { zIndex: "" });
+          prevSection.removeAttribute("data-raised");
+        } else {
+          gsap.set(prevSection, { zIndex: 20 });
+          prevSection.setAttribute("data-raised", "true");
+        }
+      };
+      prevSection.addEventListener("click", onClick);
+    }
 
     // 4. Glow + slash fade
-    tl.to(glow, { opacity: 0, duration: 0.3 }, "-=0.8");
+    tl.to(glow, { opacity: 0, duration: 0.3 }, isMobile ? "+=0.1" : "-=0.8");
     tl.to(slash, { opacity: 0, duration: 0.4 }, "<");
 
-    // 5. Click to bring fallen section to front (only one at a time)
-    const onClick = () => {
-      // Reset any previously raised section
-      document.querySelectorAll("[data-raised]").forEach((el) => {
-        if (el !== prevSection) {
-          gsap.set(el, { zIndex: "" });
-          el.removeAttribute("data-raised");
-        }
-      });
-
-      if (prevSection.hasAttribute("data-raised")) {
-        gsap.set(prevSection, { zIndex: "" });
-        prevSection.removeAttribute("data-raised");
-      } else {
-        gsap.set(prevSection, { zIndex: 20 });
-        prevSection.setAttribute("data-raised", "true");
-      }
-    };
-    prevSection.addEventListener("click", onClick);
-
-  }, { scope: container, dependencies: [shouldAnimate] });
+  }, { scope: container, dependencies: [shouldAnimate, isMobile] });
 
   return (
     <div ref={container} className="relative w-full h-0 overflow-visible z-10">
