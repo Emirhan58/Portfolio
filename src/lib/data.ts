@@ -73,18 +73,6 @@ export const PROJECTS_DATA = [
     tech: ["Kotlin", "Spring Boot", "Next.js", "TypeScript", "Docker"],
   },
   {
-    key: "portfolio",
-    github: "https://github.com/Emirhan58/Portfolio",
-    stars: 0,
-    tech: ["Next.js", "TypeScript", "GSAP", "Tailwind CSS"],
-  },
-  {
-    key: "microservices",
-    github: "https://github.com/Emirhan58/microservices-java",
-    stars: 3,
-    tech: ["Java", "Spring Boot", "Microservices", "Docker"],
-  },
-  {
     key: "flappybird",
     github: "https://github.com/Emirhan58/STM32-FLAPPY-BIRD",
     stars: 10,
@@ -97,6 +85,12 @@ export const PROJECTS_DATA = [
     tech: ["Python", "YOLOv8", "OpenCV", "AI"],
   },
   {
+    key: "portfolio",
+    github: "https://github.com/Emirhan58/Portfolio",
+    stars: 0,
+    tech: ["Next.js", "TypeScript", "GSAP", "Tailwind CSS"],
+  },
+  {
     key: "bunqchat",
     github: "https://github.com/Emirhan58/bunq-chat-app-backend",
     stars: 0,
@@ -107,6 +101,12 @@ export const PROJECTS_DATA = [
     github: "https://github.com/Emirhan58/allinpro",
     stars: 0,
     tech: ["PHP", "E-Commerce", "MySQL", "Payments"],
+  },
+  {
+    key: "microservices",
+    github: "https://github.com/Emirhan58/microservices-java",
+    stars: 3,
+    tech: ["Java", "Spring Boot", "Microservices", "Docker"],
   },
   {
     key: "facerecognition",
