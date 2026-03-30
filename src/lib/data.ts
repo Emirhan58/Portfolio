@@ -66,6 +66,19 @@ export const EXPERIENCE_DATA = [
 
 export const PROJECTS_DATA = [
   {
+    key: "farkle",
+    github: "https://github.com/Emirhan58/dice-game",
+    githubFrontend: "https://github.com/Emirhan58/dice-game-frontend",
+    stars: 0,
+    tech: ["Kotlin", "Spring Boot", "Next.js", "TypeScript", "Docker"],
+  },
+  {
+    key: "portfolio",
+    github: "https://github.com/Emirhan58/Portfolio",
+    stars: 0,
+    tech: ["Next.js", "TypeScript", "GSAP", "Tailwind CSS"],
+  },
+  {
     key: "microservices",
     github: "https://github.com/Emirhan58/microservices-java",
     stars: 3,
@@ -94,19 +107,6 @@ export const PROJECTS_DATA = [
     github: "https://github.com/Emirhan58/allinpro",
     stars: 0,
     tech: ["PHP", "E-Commerce", "MySQL", "Payments"],
-  },
-  {
-    key: "portfolio",
-    github: "https://github.com/Emirhan58/Portfolio",
-    stars: 0,
-    tech: ["Next.js", "TypeScript", "GSAP", "Tailwind CSS"],
-  },
-  {
-    key: "farkle",
-    github: "https://github.com/Emirhan58/dice-game",
-    githubFrontend: "https://github.com/Emirhan58/dice-game-frontend",
-    stars: 0,
-    tech: ["Kotlin", "Spring Boot", "Next.js", "TypeScript", "Docker"],
   },
   {
     key: "facerecognition",

@@ -166,7 +166,7 @@
         "shortDescription": "E-commerce platform with payments, admin panel, and mobile support"
       },
       "portfolio": {
-        "name": "Samurai Portfolio",
+        "name": "Portfolio",
         "description": "Japanese-themed personal portfolio built with Next.js 15, TypeScript, and Tailwind CSS 4. Features kanji brush-stroke intro animation, GSAP-powered scroll reveals, katana slash section transitions, sakura particle effects, and ambient audio system. Fully internationalized (TR/EN) with i18n routing. Server Components for zero client JS on content sections, responsive design with graceful mobile animation degradation. Deployed on Vercel.",
         "shortDescription": "Japanese-themed portfolio | Next.js 15, GSAP animations, i18n"
       },
