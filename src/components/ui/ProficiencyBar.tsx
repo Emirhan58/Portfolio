@@ -15,10 +15,10 @@ export function ProficiencyBar({ label, percentage, delay = 0 }: ProficiencyBarP
   const barRef = useRef<HTMLDivElement>(null);
   const fillRef = useRef<HTMLDivElement>(null);
   const sparkRef = useRef<HTMLDivElement>(null);
-  const { shouldAnimate } = useReducedMotion();
+  const { shouldAnimate, isMobile } = useReducedMotion();
 
   useGSAP(() => {
-    if (!shouldAnimate || !fillRef.current || !barRef.current) return;
+    if (isMobile || !shouldAnimate || !fillRef.current || !barRef.current) return;
 
     // Start with width 0
     gsap.set(fillRef.current, { width: "0%" });
@@ -44,7 +44,7 @@ export function ProficiencyBar({ label, percentage, delay = 0 }: ProficiencyBarP
         }
       },
     });
-  }, { dependencies: [shouldAnimate, percentage, delay] });
+  }, { dependencies: [shouldAnimate, isMobile, percentage, delay] });
 
   return (
     <div ref={barRef} className="flex flex-col gap-1">

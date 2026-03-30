@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 export type MotionTier = "full" | "reduced" | "none";
 
 export function useReducedMotion() {
-  const [tier, setTier] = useState<MotionTier>("full");
+  // Start "reduced" so mobile never flashes desktop animations before useEffect runs
+  const [tier, setTier] = useState<MotionTier>("reduced");
 
   useEffect(() => {
     const mqReduced = window.matchMedia("(prefers-reduced-motion: reduce)");

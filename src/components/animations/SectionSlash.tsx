@@ -18,6 +18,8 @@ export function SectionSlash({ prevSectionId }: SectionSlashProps) {
   const isMobile = tier === "reduced";
 
   useGSAP(() => {
+    // Mobile: no slash, no sound, no fall — sections stay connected
+    if (isMobile) return;
     if (!shouldAnimate || !container.current) return;
 
     const slash = container.current.querySelector(".slash-line") as HTMLElement;
@@ -92,6 +94,9 @@ export function SectionSlash({ prevSectionId }: SectionSlashProps) {
     tl.to(slash, { opacity: 0, duration: 0.4 }, "<");
 
   }, { scope: container, dependencies: [shouldAnimate, isMobile] });
+
+  // Mobile: render nothing — no slash line, no glow, no visual separator
+  if (isMobile) return null;
 
   return (
     <div ref={container} className="relative w-full h-0 overflow-visible z-10">

@@ -7,13 +7,13 @@ import { useAudio } from "@/components/providers/AudioProvider";
 
 export function SectionDivider() {
   const container = useRef<HTMLDivElement>(null);
-  const { shouldAnimate } = useReducedMotion();
+  const { shouldAnimate, isMobile } = useReducedMotion();
   const { playSfx } = useAudio();
   const playSfxRef = useRef(playSfx);
   playSfxRef.current = playSfx;
 
   useGSAP(() => {
-    if (!shouldAnimate || !container.current) return;
+    if (isMobile || !shouldAnimate || !container.current) return;
 
     const slashLine = container.current.querySelector(".katana-slash");
     if (!slashLine) return;
@@ -30,7 +30,7 @@ export function SectionDivider() {
         onEnter: () => playSfxRef.current("slash2"),
       },
     });
-  }, { scope: container, dependencies: [shouldAnimate] });
+  }, { scope: container, dependencies: [shouldAnimate, isMobile] });
 
   return (
     <div ref={container} className="relative w-full h-8 overflow-hidden">

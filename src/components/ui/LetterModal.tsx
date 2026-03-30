@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 
 interface LetterModalProps {
   isOpen: boolean;
@@ -48,9 +49,9 @@ export function LetterModal({
 
   if (!isOpen && phase === "closed") return null;
 
-  return (
+  const modal = (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300 ${
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto transition-all duration-300 ${
         phase === "closed" ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
       onClick={handleClose}
@@ -213,4 +214,9 @@ export function LetterModal({
       </div>
     </div>
   );
+
+  // Portal to body — prevents parent transforms from breaking fixed positioning
+  return typeof document !== "undefined"
+    ? createPortal(modal, document.body)
+    : modal;
 }
