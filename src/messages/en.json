@@ -165,10 +165,10 @@
         "description": "End-to-end e-commerce platform built with PHP and MySQL. Covers the full flow: product catalog with filtering, persistent shopping cart, checkout with payment gateway, and an admin panel for inventory and orders. Includes role-based auth, email notifications, image uploads, and responsive mobile design. Handles concurrent checkouts with proper DB locking.",
         "shortDescription": "E-commerce platform with payments, admin panel, and mobile support"
       },
-      "cansat": {
-        "name": "CanSat Ground Control",
-        "description": "Ground station for the CanSat competition (NASA / Lockheed Martin). Receives live telemetry from a miniature satellite during descent and displays it in real-time graphs: altitude, temperature, pressure, GPS. Built with Python and PyQt5. Includes 3D trajectory visualization, CSV logging, and serial port recovery. Successfully used during the ST FOCOUNT team's competition flight at 1 Hz telemetry.",
-        "shortDescription": "CanSat ground station | live telemetry, 3D trajectory, GPS tracking"
+      "portfolio": {
+        "name": "Samurai Portfolio",
+        "description": "Japanese-themed personal portfolio built with Next.js 15, TypeScript, and Tailwind CSS 4. Features kanji brush-stroke intro animation, GSAP-powered scroll reveals, katana slash section transitions, sakura particle effects, and ambient audio system. Fully internationalized (TR/EN) with i18n routing. Server Components for zero client JS on content sections, responsive design with graceful mobile animation degradation. Deployed on Vercel.",
+        "shortDescription": "Japanese-themed portfolio | Next.js 15, GSAP animations, i18n"
       },
       "farkle": {
         "name": "Farkle Dice Game",

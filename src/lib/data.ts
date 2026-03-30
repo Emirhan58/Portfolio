@@ -96,10 +96,10 @@ export const PROJECTS_DATA = [
     tech: ["PHP", "E-Commerce", "MySQL", "Payments"],
   },
   {
-    key: "cansat",
-    github: "https://github.com/Emirhan58/CANSAT-GROUND-CONTROL-SYSTEM",
+    key: "portfolio",
+    github: "https://github.com/Emirhan58/Portfolio",
     stars: 0,
-    tech: ["Python", "PyQt5", "Telemetry"],
+    tech: ["Next.js", "TypeScript", "GSAP", "Tailwind CSS"],
   },
   {
     key: "farkle",
