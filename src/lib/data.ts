@@ -137,7 +137,7 @@ export const CONTACT_LINKS = {
 
 export const STATS_DATA = [
   { key: "experience", value: "1+" },
-  { key: "projects", value: "39+" },
+  { key: "projects", value: "42+" },
   { key: "companies", value: "4" },
 ] as const;
 
